@@ -36,7 +36,6 @@ public class UI {
         this.srvMesaje = srvMesaje;
         this.srvCereri = srvCereri;
         this.srvGrup = srvGrup;
-
         this.srvLogin = srvLogin;
         this.srvCereriPrietenie = srvCereriPrietenie;
         idLogin=-1L;

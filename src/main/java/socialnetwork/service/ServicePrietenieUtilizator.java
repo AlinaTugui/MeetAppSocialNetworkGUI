@@ -74,7 +74,7 @@ public class ServicePrietenieUtilizator {
      *
      * @return numarul comunitatilor - int
      */
-    public int numarComunitati() {
+    public Integer numarComunitati() {
         updateListaPrietenii();
         int rez = 0;
         List<Utilizator> utilizatori = new ArrayList<>();
