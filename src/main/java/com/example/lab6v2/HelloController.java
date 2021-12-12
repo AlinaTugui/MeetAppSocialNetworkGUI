@@ -26,24 +26,17 @@ public class HelloController {
     @FXML
     private Label welcomeText;
 
-    public void initialize(){
-        Repository0<Long, Utilizator> repoUtilizator = new UtilizatorDbRepo(
-                "jdbc:postgresql://localhost:13030/postgres", "postgres",
-                "postgres",
+    public void initialize(String url, String user, String password){
+        Repository0<Long, Utilizator> repoUtilizator = new UtilizatorDbRepo(url, user, password,
                 new UtilizatorValidator());
         Repository0<Tuple<Long, Long>, Prietenie> repoPrietenie = new PrietenieDbRepo(
-                "jdbc:postgresql://localhost:13030/postgres", "postgres", "postgres",
+                url, user, password,
                 new PrietenieValidator());
-        MesajeDbRepo repoMsgCoresp = new MesajeDbRepo(
-                "jdbc:postgresql://localhost:13030/postgres", "postgres", "postgres");
-        CereriDbRepo repoCereri = new CereriDbRepo("jdbc:postgresql://localhost:13030/postgres",
-                "postgres", "postgres", repoUtilizator);
-        LoginDbRepo repoLogin = new LoginDbRepo(
-                "jdbc:postgresql://localhost:13030/postgres", "postgres", "postgres");
-        GrupDbRepo repoGrup = new GrupDbRepo("jdbc:postgresql://localhost:13030/postgres",
-                "postgres", "postgres");
-        UseriGrupDbRepo repoUseriGrup = new UseriGrupDbRepo("jdbc:postgresql://localhost:13030/postgres",
-                "postgres", "postgres");
+        MesajeDbRepo repoMsgCoresp = new MesajeDbRepo(url, user, password);
+        CereriDbRepo repoCereri = new CereriDbRepo(url, user, password, repoUtilizator);
+        LoginDbRepo repoLogin = new LoginDbRepo(url, user, password);
+        GrupDbRepo repoGrup = new GrupDbRepo(url, user, password);
+        UseriGrupDbRepo repoUseriGrup = new UseriGrupDbRepo(url, user, password);
         ServiceUtilizator srvUtilizatori = new ServiceUtilizator(repoUtilizator);
         ServicePrietenie srvPrietenie = new ServicePrietenie(repoPrietenie);
         ServiceMesaje srvMesaje = new ServiceMesaje(repoUtilizator, repoPrietenie,

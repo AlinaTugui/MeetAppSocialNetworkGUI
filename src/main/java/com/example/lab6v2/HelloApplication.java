@@ -16,7 +16,10 @@ public class HelloApplication extends Application {
         VBox root=loader.load();
 
         HelloController ctrl=loader.getController();
-        ctrl.initialize();
+        String url="jdbc:postgresql://localhost:5432/postgres";
+        String user="postgres";
+        String password="postgres";
+        ctrl.initialize(url, user, password);
 
         primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.setTitle("Social Network");
