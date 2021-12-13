@@ -65,6 +65,19 @@ public class ServiceCereri {
         }
     }
 
+    public void acceptCerere(Long id) {
+        Cerere c = repoCereri.findOne(id);
+        if(c==null)
+            throw new ServiceException("Cererea cu id-ul dat nu exista!");
+            repoCereri.update(id,"approved",LocalDateTime.now());
+            srvPrietenie.addPrietenie(c.getFrom(), c.getTo());
+    }
+    public void declineCerere(Long id) {
+        Cerere c = repoCereri.findOne(id);
+        if(c==null)
+            throw new ServiceException("Cererea cu id-ul dat nu exista!");
+        repoCereri.update(id,"rejected",LocalDateTime.now());
+    }
     public void delete(Long id1, Long id2) {
         repoCereri.deleteCerere(id1,id2);
     }
