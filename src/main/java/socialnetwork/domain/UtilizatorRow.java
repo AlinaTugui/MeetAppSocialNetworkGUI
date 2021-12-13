@@ -1,18 +1,23 @@
 package socialnetwork.domain;
 
+import javafx.scene.control.Button;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Utilizator extends Entity<Long>{
+public class UtilizatorRow extends Entity<Long>{
     private String firstName;
     private String lastName;
+    private Button bDel;
 
-    public Utilizator(Long id, String firstName, String lastName) {
+    public UtilizatorRow(Long id, String firstName, String lastName) {
         super.setId(id);
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -50,6 +55,14 @@ public class Utilizator extends Entity<Long>{
     @Override
     public int hashCode() {
         return Objects.hash(getFirstName(), getLastName());
+    }
+
+    public Button getbDel() {
+        return bDel;
+    }
+
+    public void setbDel(Button bDel) {
+        this.bDel = bDel;
     }
 
 
