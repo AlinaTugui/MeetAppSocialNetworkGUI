@@ -27,7 +27,7 @@ public class LoginDbRepo {
             ps.setString(1, email);
             ps.setString(2, parola);
             ResultSet resultSet = ps.executeQuery();
-            if(!resultSet.next()) throw new RepositoryException("Cont invalid!");
+            if(!resultSet.next()) throw new RepositoryException("User not found!");
             return resultSet.getLong("id");
 
         } catch (SQLException e) {
