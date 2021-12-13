@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class MainViewController {
     private static Long idLogin;
-
+    public static Long getIdLogin() {return idLogin;}
     public static void setIdLogin(Long _idLogin) {
         idLogin = _idLogin;
     }
