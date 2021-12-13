@@ -81,5 +81,9 @@ public class ServiceCereri {
     public void delete(Long id1, Long id2) {
         repoCereri.deleteCerere(id1,id2);
     }
+
+    public Cerere findOne(Long id) {
+        return repoCereri.findOne(id);
+    }
 }
 
