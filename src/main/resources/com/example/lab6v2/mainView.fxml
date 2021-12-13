@@ -10,9 +10,9 @@
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="86.0">
             <children>
                 <Button layoutX="8.0" layoutY="287.0" onAction="#test" text="Friend requests" />
-               <Button layoutX="27.0" layoutY="160.0" mnemonicParsing="false" text="Friends" />
-               <Button layoutX="18.0" layoutY="223.0" mnemonicParsing="false" text="Add friend" />
-               <Button layoutX="27.0" layoutY="342.0" mnemonicParsing="false" text="Logout" />
+               <Button layoutX="27.0" layoutY="160.0" mnemonicParsing="false" onAction="#showFriends" text="Friends" />
+               <Button layoutX="18.0" layoutY="223.0" mnemonicParsing="false" onAction="#openAddFriends" text="Add friends" />
+               <Button layoutX="27.0" layoutY="342.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
             </children>
          </AnchorPane>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="252.0" />

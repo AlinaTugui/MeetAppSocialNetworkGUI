@@ -14,4 +14,16 @@ public class MainViewController {
     public void test(ActionEvent actionEvent) throws IOException {
         HelloApplication.addScene("requests-view.fxml","Requests");
     }
+
+    public void showFriends(ActionEvent actionEvent) throws IOException {
+        HelloApplication.addScene("showFriendsView.fxml", "Friends");
+    }
+
+    public void openAddFriends(ActionEvent actionEvent) throws IOException {
+        HelloApplication.addScene("openAddFriendView.fxml", "Add Friends");
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        HelloApplication.changeScene("hello-view.fmxl", actionEvent, "Main View");
+    }
 }

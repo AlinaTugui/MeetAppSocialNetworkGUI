@@ -7,14 +7,10 @@ import java.io.IOException;
 
 public class HelloController {
 
-    private ServiceManager sM;
+    private static ServiceManager sM = ServiceManager.getInstance();
 
     @FXML
     private Label welcomeText;
-
-    public void initialize(){
-       sM = ServiceManager.getInstance();
-    }
 
     public void openLogin(ActionEvent actionEvent) throws IOException {
         HelloApplication.changeScene("login.fxml", actionEvent,"Login");

@@ -21,7 +21,6 @@ public class HelloApplication extends Application {
         VBox root=loader.load();
 
         HelloController ctrl=loader.getController();
-        ctrl.initialize();
 
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Social Network");

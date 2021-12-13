@@ -13,7 +13,7 @@ import socialnetwork.service.ServiceManager;
 import java.io.IOException;
 
 public class LoginController {
-    static ServiceManager sM = ServiceManager.getInstance();
+    private static ServiceManager sM = ServiceManager.getInstance();
     @FXML
     public Label loginFailed;
     @FXML
