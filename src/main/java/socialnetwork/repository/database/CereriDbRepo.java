@@ -87,11 +87,12 @@ public class CereriDbRepo {
              ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
+                Long idCerere = resultSet.getLong("id");
                 Long idSender = resultSet.getLong("id_sender");
                 Long idReceiver = resultSet.getLong("id_receiver");
                 String status = resultSet.getString("status");
                 LocalDateTime timestamp = resultSet.getTimestamp("timestamp").toLocalDateTime();
-                Cerere cerere = new Cerere(idSender,idReceiver,status,timestamp);
+                Cerere cerere = new Cerere(idCerere,idSender,idReceiver,status,timestamp);
                 cereri.add(cerere);
             }
             return cereri;

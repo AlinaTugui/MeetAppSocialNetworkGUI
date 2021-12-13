@@ -2,8 +2,11 @@ package com.example.lab6v2;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,6 +22,7 @@ import socialnetwork.service.*;
 
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class FriendRequestsController  {
@@ -35,18 +39,57 @@ public class FriendRequestsController  {
     TableColumn<Cerere, LocalDateTime> tableColumnTimeStamp=new TableColumn<>("Timestamp");
 
     @FXML
+    TableColumn<Cerere, Button> tableColumnAccept=new TableColumn<>("Accept Request");
+
+    @FXML
+    TableColumn<Cerere, Button> tableColumnDecline=new TableColumn<>("Decline Request");
+
+    @FXML
     TableView<Cerere> tableViewCereri= new TableView<>();
+    TableColumn actionCol = new TableColumn("Action");
+
+    private Button createAcceptButton(Long id) {
+        Button acceptButton=new Button("Accept");
+        acceptButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                sM.getSrvCereri().acceptCerere(id);
+            }
+        }
+        );
+        return acceptButton;
+    }
+
+    private Button createDeclineButton(Long id) {
+        Button declineButton=new Button("Decline");
+        declineButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                sM.getSrvCereri().declineCerere(id);
+            }
+        });
+        return declineButton;
+    }
 
     @FXML
     protected void onFriendRequestsButtonClick() {
         System.out.println(sM.getSrvCereri().cereriUtilizator(1L));
-        modelCereri.setAll(sM.getSrvCereri().cereriUtilizator(1L));
+        List<Cerere> res=sM.getSrvCereri().cereriUtilizator(1L);
+        for(Cerere c : res) {
+            c.setButtonAccept(createAcceptButton(c.getId()));
+            c.setButtonDecline(createDeclineButton(c.getId()));
+
+        }
+        modelCereri.setAll(res);
     }
 
     public void initialize() {
         tableColumnIdSender.setCellValueFactory(new PropertyValueFactory<Cerere, Long>("from"));
         tableColumnStatus.setCellValueFactory(new PropertyValueFactory<Cerere, String>("status"));
         tableColumnTimeStamp.setCellValueFactory(new PropertyValueFactory<Cerere, LocalDateTime>("timestamp"));
+        tableColumnAccept.setCellValueFactory(new PropertyValueFactory<Cerere, Button>("buttonAccept"));
+        tableColumnDecline.setCellValueFactory(new PropertyValueFactory<Cerere, Button>("buttonDecline"));
+        actionCol.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
         tableViewCereri.setItems(modelCereri);
     }
 }

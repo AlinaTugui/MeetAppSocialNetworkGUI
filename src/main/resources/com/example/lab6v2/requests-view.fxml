@@ -16,6 +16,8 @@
             <TableColumn fx:id="tableColumnIdSender" prefWidth="75.0" text="IdSender" />
             <TableColumn fx:id="tableColumnStatus" prefWidth="75.0" text="Status" />
             <TableColumn fx:id="tableColumnTimeStamp" prefWidth="75.0" text="Timestamp" />
+            <TableColumn fx:id="tableColumnAccept" prefWidth="75.0" text="Accept Request" />
+            <TableColumn fx:id="tableColumnDecline" prefWidth="75.0" text="Decline Request" />
         </columns>
     </TableView>
     <Button fx:id="friendRequests" onAction="#onFriendRequestsButtonClick" text="Friend Requests" />
