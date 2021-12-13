@@ -54,6 +54,7 @@ public class FriendRequestsController  {
             @Override
             public void handle(ActionEvent event) {
                 sM.getSrvCereri().acceptCerere(id);
+                modelCereri.remove(sM.getSrvCereri().findOne(id));
             }
         }
         );
@@ -66,6 +67,7 @@ public class FriendRequestsController  {
             @Override
             public void handle(ActionEvent event) {
                 sM.getSrvCereri().declineCerere(id);
+                modelCereri.remove(sM.getSrvCereri().findOne(id));
             }
         });
         return declineButton;
@@ -73,8 +75,8 @@ public class FriendRequestsController  {
 
     @FXML
     protected void onFriendRequestsButtonClick() {
-        System.out.println(sM.getSrvCereri().cereriUtilizator(1L));
-        List<Cerere> res=sM.getSrvCereri().cereriUtilizator(1L);
+        System.out.println(sM.getSrvCereri().cereriUtilizator(MainViewController.getIdLogin()));
+        List<Cerere> res=sM.getSrvCereri().cereriUtilizator(MainViewController.getIdLogin());
         for(Cerere c : res) {
             c.setButtonAccept(createAcceptButton(c.getId()));
             c.setButtonDecline(createDeclineButton(c.getId()));
