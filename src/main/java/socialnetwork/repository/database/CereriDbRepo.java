@@ -24,13 +24,22 @@ public class CereriDbRepo {
 
     public void save(Long idSender, Long idReceiver, LocalDateTime timestamp) {
         String sql1 = "select * from cereri_de_prietenie where id_sender=? and id_receiver=?";
+        String sql2 = "select * from cereri_de_prietenie where id_sender=? and id_receiver=?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement ps = connection.prepareStatement(sql1)) {
+             PreparedStatement ps = connection.prepareStatement(sql1);
+             PreparedStatement ps1=connection.prepareStatement(sql2)) {
             ps.setInt(1, idSender.intValue());
             ps.setInt(2, idReceiver.intValue());
+            ps1.setInt(1,idReceiver.intValue());
+            ps1.setInt(2,idSender.intValue());
 
             ResultSet resultSet = ps.executeQuery();
-            if(resultSet.next()) throw new RepositoryException("Cerere existenta!");
+            ResultSet resultSet1 = ps1.executeQuery();
+
+            if(resultSet.next() && (resultSet.getString("status").equals("approved") || resultSet.getString("status").equals("pending")))
+                throw new RepositoryException("Cerere existenta!");
+            if(resultSet1.next() && resultSet1.getString("status").equals("approved") || resultSet1.getString("status").equals("pending"))
+                throw new RepositoryException("Utilizatorul v-a trimis deja o cerere de prietenie!");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -72,8 +81,9 @@ public class CereriDbRepo {
         List<Cerere> cereri = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(url, username, password)){
             PreparedStatement statement = connection.prepareStatement("SELECT * from cereri_de_prietenie " +
-                    "where id_receiver=?");
+                    "where id_receiver=? and status=?");
             statement.setInt(1,id.intValue());
+            statement.setString(2,"pending");
              ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
