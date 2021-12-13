@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -22,7 +21,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
-public class HelloController {
+public class FriendRequestsController implements Initializable {
     private ServiceUtilizator srvUtilizator;
     private ServicePrietenie srvPrietenie;
     private ServicePrietenieUtilizator srvPrietenieUtilizator;
@@ -31,9 +30,6 @@ public class HelloController {
     private ServiceLogin srvLogin;
     private ServiceCereriPrietenie srvCereriPrietenie;
     private ServiceGrup srvGrup;
-
-    @FXML
-    private Label welcomeText;
 
     public void init(String url, String user, String password){
         Repository0<Long, Utilizator> repoUtilizator = new UtilizatorDbRepo(url, user, password,
@@ -65,10 +61,30 @@ public class HelloController {
         this.srvLogin = srvLogin;
         this.srvCereriPrietenie = srvCereriPrietenie;
     }
+    ObservableList<Cerere> modelCereri = FXCollections.observableArrayList();
+    @FXML
+    TableColumn<Cerere, Long> tableColumnIdSender= new TableColumn<>("Id sender");
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText(srvPrietenieUtilizator.numarComunitati().toString());
+    TableColumn<Cerere, String> tableColumnStatus=new TableColumn<>("Status");
+
+    @FXML
+    TableColumn<Cerere, LocalDateTime> tableColumnTimeStamp=new TableColumn<>("Timestamp");
+
+    @FXML
+    TableView<Cerere> tableViewCereri= new TableView<>();
+
+    @FXML
+    protected void onFriendRequestsButtonClick() {
+        System.out.println(srvCereri.cereriUtilizator(1L));
+        modelCereri.setAll(srvCereri.cereriUtilizator(1L));
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        tableColumnIdSender.setCellValueFactory(new PropertyValueFactory<Cerere, Long>("from"));
+        tableColumnStatus.setCellValueFactory(new PropertyValueFactory<Cerere, String>("status"));
+        tableColumnTimeStamp.setCellValueFactory(new PropertyValueFactory<Cerere, LocalDateTime>("timestamp"));
+        tableViewCereri.setItems(modelCereri);
+    }
 }

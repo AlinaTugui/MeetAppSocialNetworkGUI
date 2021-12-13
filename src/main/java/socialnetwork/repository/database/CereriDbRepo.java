@@ -1,5 +1,6 @@
 package socialnetwork.repository.database;
 
+import socialnetwork.domain.Cerere;
 import socialnetwork.domain.*;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.RepositoryException;
@@ -7,9 +8,7 @@ import socialnetwork.repository.RepositoryException;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class CereriDbRepo {
     private String url;

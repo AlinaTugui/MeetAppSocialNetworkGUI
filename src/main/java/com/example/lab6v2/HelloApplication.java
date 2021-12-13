@@ -12,15 +12,14 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("requests-view.fxml"));
         VBox root=loader.load();
 
-        HelloController ctrl=loader.getController();
+        FriendRequestsController ctrl=loader.getController();
         String url="jdbc:postgresql://localhost:5432/postgres";
         String user="postgres";
         String password="postgres";
-        ctrl.initialize(url, user, password);
-
+        ctrl.init(url, user, password);
         primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.setTitle("Social Network");
         primaryStage.show();
