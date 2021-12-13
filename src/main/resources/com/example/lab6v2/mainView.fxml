@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.lab6v2.MainViewController"
-            prefHeight="400.0" prefWidth="600.0">
-    <Button onAction="#test" text="Login" />
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.MainViewController">
+   <SplitPane dividerPositions="0.18749999999999997" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+     <items>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="86.0">
+            <children>
+                <Button layoutX="8.0" layoutY="287.0" onAction="#test" text="Friend requests" />
+               <Button layoutX="27.0" layoutY="160.0" mnemonicParsing="false" text="Friends" />
+               <Button layoutX="18.0" layoutY="223.0" mnemonicParsing="false" text="Add friend" />
+               <Button layoutX="27.0" layoutY="342.0" mnemonicParsing="false" text="Logout" />
+            </children>
+         </AnchorPane>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="252.0" />
+     </items>
+   </SplitPane>
 </AnchorPane>
