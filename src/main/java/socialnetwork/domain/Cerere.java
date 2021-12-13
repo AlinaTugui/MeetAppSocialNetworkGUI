@@ -1,9 +1,11 @@
 package socialnetwork.domain;
 
+import socialnetwork.domain.Entity;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Cerere extends Entity<Long>{
+public class Cerere extends Entity<Long> {
     Long to;
     Long from;
     String status;

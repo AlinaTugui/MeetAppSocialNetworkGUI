@@ -7,10 +7,7 @@ import socialnetwork.domain.Utilizator;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.database.CereriDbRepo;
 
-import java.sql.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceCereri {
@@ -52,6 +49,9 @@ public class ServiceCereri {
         repoCereri.findAllUsers(id).forEach(System.out::println);
     }
 
+    public List<Cerere> cereriUtilizator(Long id) {
+        return repoCereri.findAllUsers(id);
+    }
     public void procesareCerere(Long id, Long optiune) {
         Cerere c = repoCereri.findOne(id);
         if(c==null)

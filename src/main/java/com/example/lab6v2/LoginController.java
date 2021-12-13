@@ -34,7 +34,7 @@ public class LoginController {
             try {
                 Long idLogin = sM.getSrvLogin().login(emailS, passwordS);
                 MainViewController.setIdLogin(idLogin);
-                HelloApplication.changeScene("mainView.fxml", actionEvent);
+                HelloApplication.changeScene("mainView.fxml", actionEvent,"Main View");
             }catch(RepositoryException re){
                 loginFailed.setText(re.getMessage());
             }

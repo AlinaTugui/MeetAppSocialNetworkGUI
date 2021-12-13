@@ -32,13 +32,19 @@ public class HelloApplication extends Application {
         launch();
     }
 
-    public static void changeScene(String fxml, ActionEvent actionEvent) throws IOException {
+    public static void changeScene(String fxml, ActionEvent actionEvent,String title) throws IOException {
         ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
+        addScene(fxml,title);
+
+    }
+
+
+    public static void addScene(String fxml, String title) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(HelloApplication.class.getResource(fxml));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
-        stage.setTitle("Login window");
+        stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
     }
