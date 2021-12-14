@@ -6,19 +6,20 @@ import socialnetwork.domain.Tuple;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.database.MesajeDbRepo;
+import socialnetwork.repository.database.PrietenieDbRepo;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class ServiceMesaje {
     private Repository0<Long, Utilizator> repoUtilizator;
-    private Repository0<Tuple<Long, Long>, Prietenie> repoPrietenie;
+    private PrietenieDbRepo repoPrietenie;
     private MesajeDbRepo repoMsgCoresp;
     private ServiceUtilizator srvUtilizator;
     private ServicePrietenie srvPrietenie;
 
     public ServiceMesaje(Repository0<Long, Utilizator> repoUtilizator,
-                                      Repository0<Tuple<Long, Long>, Prietenie> repoPrietenie,
+                                      PrietenieDbRepo repoPrietenie,
                                       MesajeDbRepo repoMsgCoresp,
                                       ServiceUtilizator srvUtilizator,
                                       ServicePrietenie srvPrietenie) {

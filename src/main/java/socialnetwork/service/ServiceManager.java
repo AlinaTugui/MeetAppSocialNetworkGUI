@@ -31,7 +31,7 @@ public class ServiceManager {
         String password="postgres";
         Repository0<Long, Utilizator> repoUtilizator = new UtilizatorDbRepo(url, user, password,
                 new UtilizatorValidator());
-        Repository0<Tuple<Long, Long>, Prietenie> repoPrietenie = new PrietenieDbRepo(
+        PrietenieDbRepo repoPrietenie = new PrietenieDbRepo(
                 url, user, password,
                 new PrietenieValidator());
         MesajeDbRepo repoMsgCoresp = new MesajeDbRepo(url, user, password);

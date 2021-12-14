@@ -46,7 +46,7 @@ public class UI {
             Repository0<Long, Utilizator> repoUtilizator = new UtilizatorDbRepo(
                     args[0], args[1], args[2],
                     new UtilizatorValidator());
-            Repository0<Tuple<Long, Long>, Prietenie> repoPrietenie = new PrietenieDbRepo(
+            PrietenieDbRepo repoPrietenie = new PrietenieDbRepo(
                     args[0], args[1], args[2],
                     new PrietenieValidator());
             MesajeDbRepo repoMsgCoresp = new MesajeDbRepo(

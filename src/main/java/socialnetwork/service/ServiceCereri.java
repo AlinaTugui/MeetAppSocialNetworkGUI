@@ -6,19 +6,20 @@ import socialnetwork.domain.Tuple;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.database.CereriDbRepo;
+import socialnetwork.repository.database.PrietenieDbRepo;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class ServiceCereri {
     private Repository0<Long, Utilizator> repoUtilizator;
-    private Repository0<Tuple<Long, Long>, Prietenie> repoPrietenie;
+    private PrietenieDbRepo repoPrietenie;
     private CereriDbRepo repoCereri;
     private ServiceUtilizator srvUtilizator;
     private ServicePrietenie srvPrietenie;
 
     public ServiceCereri(Repository0<Long, Utilizator> repoUtilizator,
-                         Repository0<Tuple<Long, Long>, Prietenie> repoPrietenie,
+                         PrietenieDbRepo repoPrietenie,
                          CereriDbRepo repoCereri, ServiceUtilizator srvUtilizator,
                          ServicePrietenie srvPrietenie) {
         this.repoUtilizator = repoUtilizator;

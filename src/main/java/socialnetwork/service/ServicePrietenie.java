@@ -6,6 +6,7 @@ import socialnetwork.domain.Tuple;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.RepositoryException;
+import socialnetwork.repository.database.PrietenieDbRepo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.StreamSupport;
 public class ServicePrietenie {
-    private Repository0<Tuple<Long,Long>, Prietenie> repoPrietenie;
+    private PrietenieDbRepo repoPrietenie;
 
-    public ServicePrietenie(Repository0<Tuple<Long,Long>, Prietenie> repoPrietenie){
+    public ServicePrietenie(PrietenieDbRepo repoPrietenie){
         this.repoPrietenie = repoPrietenie;
     }
 
@@ -73,4 +74,6 @@ public class ServicePrietenie {
     public Iterable<Prietenie> findAll() {
         return repoPrietenie.findAll();
     }
+
+    public Iterable<Long> findAllUser(Long id){return repoPrietenie.findAllUser(id);}
 }

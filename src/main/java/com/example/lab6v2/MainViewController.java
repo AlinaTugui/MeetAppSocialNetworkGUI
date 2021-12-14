@@ -24,6 +24,6 @@ public class MainViewController {
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {
-        HelloApplication.changeScene("hello-view.fmxl", actionEvent, "Main View");
+        HelloApplication.changeScene("hello-view.fxml", actionEvent, "Main View");
     }
 }

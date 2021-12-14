@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.StreamSupport;
 
-public class PrietenieDbRepo implements Repository0<Tuple<Long,Long>, Prietenie> {
+public class PrietenieDbRepo {
     private String url;
     private String username;
     private String password;
@@ -27,7 +27,7 @@ public class PrietenieDbRepo implements Repository0<Tuple<Long,Long>, Prietenie>
         this.password = password;
         this.validator = validator;
     }
-    @Override
+
     public Prietenie findOne(Tuple<Long, Long> t) {
         Prietenie pValidate = new Prietenie(LocalDateTime.now());
 
@@ -57,7 +57,6 @@ public class PrietenieDbRepo implements Repository0<Tuple<Long,Long>, Prietenie>
         return null;
     }
 
-    @Override
     public Iterable<Prietenie> findAll() {
         Set<Prietenie> pritenii = new HashSet<>();
         try (Connection connection = DriverManager.getConnection(url, username, password);
@@ -85,7 +84,31 @@ public class PrietenieDbRepo implements Repository0<Tuple<Long,Long>, Prietenie>
         return pritenii;
     }
 
-    @Override
+    public Iterable<Long> findAllUser(Long id) {
+        Set<Long> pritenii = new HashSet<>();
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement("SELECT id2 from friends where id1=?");
+             PreparedStatement statement2 = connection.prepareStatement("SELECT id1 from friends where id2=?")){
+
+            statement.setLong(1, id);
+            statement2.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet2 = statement.executeQuery();
+            while (resultSet.next()) {
+                Long id2 = resultSet.getLong("id2");
+                pritenii.add(id2);
+            }
+            while (resultSet2.next()) {
+                Long id1 = resultSet.getLong("id1");
+                pritenii.add(id1);
+            }
+            return pritenii;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public Prietenie save(Prietenie prietenie) {
         validator.validate(prietenie);
         String sql1 = "select * from friends where id1=? and id2=?";
@@ -118,26 +141,29 @@ public class PrietenieDbRepo implements Repository0<Tuple<Long,Long>, Prietenie>
         return null;
     }
 
-    @Override
     public Prietenie delete(Tuple<Long, Long> t) {
         Prietenie pValidate = new Prietenie(LocalDateTime.now());
         pValidate.setId(t);
         validator.validate(pValidate);
         String sql = "delete from friends where id1=? and id2=?";
+        String sql2 = "delete from friends where id2=? and id1=?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+             PreparedStatement ps = connection.prepareStatement(sql);
+             PreparedStatement ps2 = connection.prepareStatement(sql2)) {
 
             ps.setInt(1, t.getLeft().intValue());
             ps.setInt(2, t.getRight().intValue());
+            ps2.setInt(1, t.getLeft().intValue());
+            ps2.setInt(2, t.getRight().intValue());
 
             ps.executeUpdate();
+            ps2.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    @Override
     public Prietenie update(Prietenie prietenie) {
         return null;
     }

@@ -17,6 +17,12 @@ public class UtilizatorRow extends Entity<Long>{
         this.lastName = lastName;
     }
 
+    public UtilizatorRow(Utilizator u) {
+        super.setId(u.getId());
+        this.firstName = u.getFirstName();
+        this.lastName = u.getLastName();
+    }
+
 
     public String getFirstName() {
         return firstName;

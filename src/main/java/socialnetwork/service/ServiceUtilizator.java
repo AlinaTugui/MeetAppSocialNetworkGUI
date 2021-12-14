@@ -34,5 +34,7 @@ public class ServiceUtilizator {
         return repo.update(u);
     }
 
+    public Utilizator findOne(Long id){return repo.findOne(id);}
+
 }
 
