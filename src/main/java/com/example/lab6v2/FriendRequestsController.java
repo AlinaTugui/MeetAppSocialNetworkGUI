@@ -91,7 +91,6 @@ public class FriendRequestsController  {
         tableColumnTimeStamp.setCellValueFactory(new PropertyValueFactory<Cerere, LocalDateTime>("timestamp"));
         tableColumnAccept.setCellValueFactory(new PropertyValueFactory<Cerere, Button>("buttonAccept"));
         tableColumnDecline.setCellValueFactory(new PropertyValueFactory<Cerere, Button>("buttonDecline"));
-        actionCol.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
         tableViewCereri.setItems(modelCereri);
     }
 }

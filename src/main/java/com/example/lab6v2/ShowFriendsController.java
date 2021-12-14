@@ -46,7 +46,7 @@ public class ShowFriendsController {
 
     }
 
-    @FXML
+   /* @FXML
     protected void onFriendRequestsButtonClick() {
         System.out.println(sM.getSrvCereri().cereriUtilizator(1L));
         List<Cerere> res=sM.getSrvCereri().cereriUtilizator(1L);
@@ -63,5 +63,5 @@ public class ShowFriendsController {
         tableColumnButton.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, Button>("bDel"));
         tableViewPrieteni.setItems(modelPrieteni);
 
-    }
+    }*/
 }

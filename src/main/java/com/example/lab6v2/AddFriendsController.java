@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import socialnetwork.domain.Cerere;
+import socialnetwork.domain.UtilizatorRow;
 import socialnetwork.service.ServiceManager;
 
 import java.util.List;
@@ -17,14 +18,14 @@ import java.util.List;
 public class AddFriendsController {
     private ServiceManager sM=ServiceManager.getInstance();
 
-    ObservableList<AfisarePrietenRow> modelPrieteni = FXCollections.observableArrayList();
+    ObservableList<UtilizatorRow> modelPrieteni = FXCollections.observableArrayList();
 
     @FXML
-    TableColumn<AfisarePrietenRow, String> tableColumnName = new TableColumn<>("nume");
+    TableColumn<UtilizatorRow, String> tableColumnName = new TableColumn<>("nume");
     @FXML
-    TableColumn<AfisarePrietenRow, Button> tableColumnButton = new TableColumn<>("bDel");
+    TableColumn<UtilizatorRow, Button> tableColumnButton = new TableColumn<>("bDel");
     @FXML
-    TableView<AfisarePrietenRow> tableViewPrieteni= new TableView<>();
+    TableView<UtilizatorRow> tableViewPrieteni= new TableView<>();
 
     private Button createDeleteButton(Long id) {
         Button deleteButton=new Button("Delete");
@@ -37,22 +38,4 @@ public class AddFriendsController {
         return deleteButton;
     }
 
-    @FXML
-    protected void onFriendRequestsButtonClick() {
-        System.out.println(sM.getSrvCereri().cereriUtilizator(1L));
-        List<Cerere> res=sM.getSrvCereri().cereriUtilizator(1L);
-        for(Cerere c : res) {
-            c.setButtonAccept(createAcceptButton(c.getId()));
-            c.setButtonDecline(createDeclineButton(c.getId()));
-        }
-        modelCereri.setAll(res);
-    }
-
-    public void initialize() {
-        tableColumnName.setCellValueFactory(new PropertyValueFactory<AfisarePrietenRow, String>("nume"));
-        tableColumnButton.setCellValueFactory(new PropertyValueFactory<AfisarePrietenRow, Button>("bDel"));
-        tableViewPrieteni.setItems(modelPrieteni);
-
-        textFieldName
-    }
 }
