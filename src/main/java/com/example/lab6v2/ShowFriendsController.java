@@ -50,7 +50,7 @@ public class ShowFriendsController implements Initializable {
         if(prieteniID == null) return modelPrieteni;
         prieteniID.forEach(x -> {
             UtilizatorRow u = new UtilizatorRow(sM.getSrvUtilizator().findOne(x));
-            u.setbDel(createDeleteButton(x));
+            u.setBDel(createDeleteButton(x));
             listaPrieteni.add(u);
         });
         return listaPrieteni;

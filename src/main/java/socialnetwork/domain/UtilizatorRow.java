@@ -63,13 +63,11 @@ public class UtilizatorRow extends Entity<Long>{
         return Objects.hash(getFirstName(), getLastName());
     }
 
-    public Button getbDel() {
+    public Button getBDel() {
         return bDel;
     }
 
-    public void setbDel(Button bDel) {
+    public void setBDel(Button bDel) {
         this.bDel = bDel;
     }
-
-
 }
