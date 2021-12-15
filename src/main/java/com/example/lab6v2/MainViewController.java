@@ -20,7 +20,7 @@ public class MainViewController {
     }
 
     public void openAddFriends(ActionEvent actionEvent) throws IOException {
-        HelloApplication.addScene("openAddFriendView.fxml", "Add Friends");
+        HelloApplication.addScene("AddFriendsView.fxml", "Add Friends");
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {
