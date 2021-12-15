@@ -79,8 +79,12 @@ public class ServiceCereri {
             throw new ServiceException("Cererea cu id-ul dat nu exista!");
         repoCereri.update(id,"rejected",LocalDateTime.now());
     }
+    public void delete(Long id1, Long id2, LocalDateTime timestamp) {
+        repoCereri.delete(id1, id2, timestamp);
+    }
+
     public void delete(Long id1, Long id2) {
-        repoCereri.deleteCerere(id1,id2);
+        repoCereri.deleteCerere(id1, id2);
     }
 
     public Cerere findOne(Long id) {
@@ -92,6 +96,15 @@ public class ServiceCereri {
 
     public void deleteCerere(Long id) {
         repoCereri.delete(id);
+    }
+
+    public Cerere findOne(Long idSender, Long idReceiver) {
+        List<Cerere> res = repoCereri.findAll();
+        for(Cerere c : res) {
+            if(c.getTo().equals(idReceiver) && c.getFrom().equals(idSender))
+                return c;
+        }
+        return null;
     }
 }
 

@@ -38,7 +38,7 @@ public class CereriDbRepo {
 
             if(resultSet.next() && (resultSet.getString("status").equals("approved") || resultSet.getString("status").equals("pending")))
                 throw new RepositoryException("Cerere existenta!");
-            if(resultSet1.next() && resultSet1.getString("status").equals("approved") || resultSet1.getString("status").equals("pending"))
+            if(resultSet1.next() && (resultSet1.getString("status").equals("approved") || resultSet1.getString("status").equals("pending")))
                 throw new RepositoryException("Utilizatorul v-a trimis deja o cerere de prietenie!");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -46,7 +46,7 @@ public class CereriDbRepo {
 
        String sql = "insert into cereri_de_prietenie (id_sender,id_receiver,status,timestamp) values (?,?,?,?)";
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement ps = connection.prepareStatement(sql);) {
+             PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setInt(1, idSender.intValue());
             ps.setInt(2, idReceiver.intValue());
@@ -158,6 +158,20 @@ public class CereriDbRepo {
             ps.setInt(2, idReceiver.intValue());
             ps.setInt(4, idSender.intValue());
             ps.setInt(3, idReceiver.intValue());
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void delete(Long id1, Long id2, LocalDateTime timestamp) {
+        String sql = "delete from cereri_de_prietenie where id_sender=? and id_receiver=? and timestamp=?";
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setInt(1, id1.intValue());
+            ps.setInt(2, id2.intValue());
+            ps.setTimestamp(3, Timestamp.valueOf(timestamp));
             ps.executeUpdate();
 
         } catch (SQLException e) {
