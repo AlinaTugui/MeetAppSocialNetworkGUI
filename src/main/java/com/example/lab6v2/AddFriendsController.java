@@ -81,29 +81,9 @@ public class AddFriendsController {
         String lastName = textFieldLastName.getText();
         System.out.println(lastName);
         List<Utilizator> users = sM.getSrvUtilizator().findAllByName(firstName, lastName);
-        //System.out.println(users);
-        /*for (Utilizator u : users) {
-            u.setAddFriendBtn(createAddFriendBtn(u.getId()));
-        }*/
         modelPrieteni.setAll(users);
         listView.setItems(modelPrieteni);
-        /*listView.setCellFactory(list -> new ListCell<Utilizator>() {
-            @Override
-            protected void updateItem(Utilizator item, boolean empty) {
-                super.updateItem(item, empty);
-                if (item == null || empty) {
-                    setText(null);
-                } else {
-                    if (sM.getSrvPrietenie().findOne(new Tuple<Long, Long>(item.getId(),
-                            MainViewController.getIdLogin())) == null && sM.getSrvPrietenie().findOne(new Tuple<Long, Long>(MainViewController.getIdLogin(),
-                            item.getId())) == null)
-                        setText(item.getFirstName() + " " + item.getLastName()+item.getLabel());
-                    else {
-                        setText(item.getFirstName()+" "+ item.getLastName()+item.getAddFriendBtn());
-                    }
-                }
-            }
-        });*/
+
         listView.setCellFactory(new Callback<ListView<Utilizator>, ListCell<Utilizator>>() {
             @Override
             public ListCell<Utilizator> call(ListView<Utilizator> param) {
