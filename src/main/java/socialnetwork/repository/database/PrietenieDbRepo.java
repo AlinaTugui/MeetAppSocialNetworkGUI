@@ -93,13 +93,13 @@ public class PrietenieDbRepo {
             statement.setLong(1, id);
             statement2.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
-            ResultSet resultSet2 = statement.executeQuery();
+            ResultSet resultSet2 = statement2.executeQuery();
             while (resultSet.next()) {
                 Long id2 = resultSet.getLong("id2");
                 pritenii.add(id2);
             }
             while (resultSet2.next()) {
-                Long id1 = resultSet.getLong("id1");
+                Long id1 = resultSet2.getLong("id1");
                 pritenii.add(id1);
             }
             return pritenii;

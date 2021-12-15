@@ -13,6 +13,7 @@ import socialnetwork.domain.Cerere;
 import socialnetwork.domain.UtilizatorRow;
 import socialnetwork.service.ServiceManager;
 
+import java.io.IOException;
 import java.util.List;
 
 public class AddFriendsController {
@@ -26,6 +27,9 @@ public class AddFriendsController {
     TableColumn<UtilizatorRow, Button> tableColumnButton = new TableColumn<>("bDel");
     @FXML
     TableView<UtilizatorRow> tableViewPrieteni= new TableView<>();
+
+    public AddFriendsController() throws IOException {
+    }
 
     private Button createDeleteButton(Long id) {
         Button deleteButton=new Button("Delete");

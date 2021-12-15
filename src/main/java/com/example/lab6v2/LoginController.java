@@ -13,13 +13,16 @@ import socialnetwork.service.ServiceManager;
 import java.io.IOException;
 
 public class LoginController {
-    private static ServiceManager sM = ServiceManager.getInstance();
+    private ServiceManager sM = ServiceManager.getInstance();
     @FXML
     public Label loginFailed;
     @FXML
     public TextField email;
     @FXML
     public PasswordField password;
+
+    public LoginController() throws IOException {
+    }
 
     public void login(ActionEvent actionEvent) throws IOException {
         String emailS = email.getText().toString();
@@ -40,4 +43,5 @@ public class LoginController {
             }
         }
     }
+
 }

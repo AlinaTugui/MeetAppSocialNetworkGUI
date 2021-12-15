@@ -1,12 +1,15 @@
 package socialnetwork.service;
 
-import socialnetwork.domain.Prietenie;
-import socialnetwork.domain.Tuple;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.domain.validators.PrietenieValidator;
 import socialnetwork.domain.validators.UtilizatorValidator;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.database.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class ServiceManager {
     private static ServiceManager instance;
@@ -20,15 +23,16 @@ public class ServiceManager {
     private final ServiceCereriPrietenie srvCereriPrietenie;
     private final ServiceGrup srvGrup;
 
-    public static ServiceManager getInstance() {
+    public static ServiceManager getInstance() throws IOException {
         if(instance == null)  instance = new ServiceManager();
         return instance;
     }
 
-    public ServiceManager() {
-        String url="jdbc:postgresql://localhost:5432/postgres";
-        String user="postgres";
-        String password="postgres";
+    public ServiceManager() throws IOException {
+        BufferedReader in = new BufferedReader( new FileReader("Data/DbConnectData.txt"));
+        String url = in.readLine();
+        String user= in.readLine();
+        String password= in.readLine();
         Repository0<Long, Utilizator> repoUtilizator = new UtilizatorDbRepo(url, user, password,
                 new UtilizatorValidator());
         PrietenieDbRepo repoPrietenie = new PrietenieDbRepo(

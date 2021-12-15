@@ -20,6 +20,7 @@ import socialnetwork.repository.Repository0;
 import socialnetwork.repository.database.*;
 import socialnetwork.service.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -47,6 +48,9 @@ public class FriendRequestsController  {
     @FXML
     TableView<Cerere> tableViewCereri= new TableView<>();
     TableColumn actionCol = new TableColumn("Action");
+
+    public FriendRequestsController() throws IOException {
+    }
 
     private Button createAcceptButton(Long id) {
         Button acceptButton=new Button("Accept");

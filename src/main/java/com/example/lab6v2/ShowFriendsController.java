@@ -4,34 +4,33 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import socialnetwork.domain.Cerere;
-import socialnetwork.domain.Utilizator;
 import socialnetwork.domain.UtilizatorRow;
 import socialnetwork.service.ServiceManager;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ShowFriendsController {
+public class ShowFriendsController implements Initializable {
     private ServiceManager sM=ServiceManager.getInstance();
 
-    ObservableList<UtilizatorRow> modelPrieteni = FXCollections.observableArrayList();
+    public ObservableList<UtilizatorRow> modelPrieteni = FXCollections.observableArrayList();
 
-    @FXML
-    public TextField textFieldSearch;
-    @FXML
-    TableColumn<UtilizatorRow, String> tableColumnFirstName = new TableColumn<>("firstName");
-    @FXML
-    TableColumn<UtilizatorRow, String> tableColumnLastName = new TableColumn<>("lastName");
-    @FXML
-    TableColumn<UtilizatorRow, Button> tableColumnButton = new TableColumn<>("bDel");
-    @FXML
-    TableView<UtilizatorRow> tableViewPrieteni= new TableView<>();
+    public TableColumn<UtilizatorRow, String> columnFirstName;
+    public TableColumn<UtilizatorRow, String> columnLastName;
+    public TableColumn<UtilizatorRow, Button> columnButton;
+    public TableView<UtilizatorRow> tableViewPrieteni;
+
+    public ShowFriendsController() throws IOException {
+    }
 
     private Button createDeleteButton(Long id) {
         Button deleteButton=new Button("Delete");
@@ -48,6 +47,7 @@ public class ShowFriendsController {
     private List<UtilizatorRow> load(){
         List<UtilizatorRow> listaPrieteni = new ArrayList<>();
         Iterable<Long> prieteniID = sM.getSrvPrietenie().findAllUser(MainViewController.getIdLogin());
+        if(prieteniID == null) return modelPrieteni;
         prieteniID.forEach(x -> {
             UtilizatorRow u = new UtilizatorRow(sM.getSrvUtilizator().findOne(x));
             u.setbDel(createDeleteButton(x));
@@ -56,10 +56,11 @@ public class ShowFriendsController {
         return listaPrieteni;
     }
 
-    public void initialize() {
-        tableColumnFirstName.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, String>("firstName"));
-        tableColumnLastName.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, String>("lastName"));
-        tableColumnButton.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, Button>("bDel"));
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        columnFirstName.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, String>("firstName"));
+        columnLastName.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, String>("lastName"));
+        columnButton.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, Button>("bDel"));
         modelPrieteni.setAll(load());
         tableViewPrieteni.setItems(modelPrieteni);
     }
