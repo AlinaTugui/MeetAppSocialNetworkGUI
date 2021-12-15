@@ -15,8 +15,8 @@ public class ServiceUtilizator {
         this.repo = repo;
     }
 
-    public Utilizator addUtilizator(Long id, String firstName, String lastName) {
-        Utilizator u = new Utilizator(id, firstName, lastName);
+    public Utilizator addUtilizator(String firstName, String lastName, String email, String password) {
+        Utilizator u = new Utilizator(0L, firstName, lastName, email, password);
         return repo.save(u);
     }
 
@@ -29,8 +29,8 @@ public class ServiceUtilizator {
         return u;
     }
 
-    public Utilizator updateUtilizator(Long id, String firstName, String lastName) {
-        Utilizator u = new Utilizator(id, firstName, lastName);
+    public Utilizator updateUtilizator(Long id, String firstName, String lastName, String email, String password) {
+        Utilizator u = new Utilizator(id, firstName, lastName, email, password);
         return repo.update(u);
     }
 
@@ -43,7 +43,7 @@ public class ServiceUtilizator {
         List<Utilizator> res = new ArrayList<>();
         for (Utilizator u : all) {
             if (u.getFirstName().equals(firstName) && u.getLastName().equals(lastName))
-                res.add(new Utilizator(u.getId(), u.getFirstName(), u.getLastName()));
+                res.add(new Utilizator(u.getId(), u.getFirstName(), u.getLastName(), u.getEmail(), u.getPassword()));
         }
         return res;
     }

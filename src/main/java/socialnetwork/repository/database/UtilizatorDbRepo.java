@@ -20,17 +20,20 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
         this.password = password;
         this.validator = validator;
     }
+
     @Override
     public Utilizator findOne(Long id) {
-        String sql = "select first_name, last_name from users where id=?";
+        String sql = "select first_name, last_name, email, parola from users where id=?";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setInt(1, id.intValue());
             ResultSet resultSet = ps.executeQuery();
-            if(!resultSet.next()) return null;
-            return new Utilizator(id, resultSet.getString("first_name"), resultSet.getString("last_name"));
+            if (!resultSet.next()) return null;
+            return new Utilizator(id, resultSet.getString("first_name"),
+                    resultSet.getString("last_name"), resultSet.getString("email"),
+                    resultSet.getString("parola"));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,8 +52,11 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
                 Long id = resultSet.getLong("id");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
+                String email = resultSet.getString("email");
+                String parola = resultSet.getString("parola");
 
-                Utilizator utilizator = new Utilizator(id, firstName, lastName);
+
+                Utilizator utilizator = new Utilizator(id, firstName, lastName, email, parola);
                 users.add(utilizator);
             }
             return users;
@@ -64,16 +70,25 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
     public Utilizator save(Utilizator entity) {
         validator.validate(entity);
 
-        String sql = "insert into users (id, first_name, last_name ) values (?, ?, ?)";
+        String sql = "insert into users (first_name, last_name, email, parola ) values (?, ?, ?, ?)";
+        String sql2 = "select id from users where email=?";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+             PreparedStatement ps = connection.prepareStatement(sql);
+             PreparedStatement ps2 = connection.prepareStatement(sql2);) {
 
-            ps.setInt(1, entity.getId().intValue());
-            ps.setString(2, entity.getFirstName());
-            ps.setString(3, entity.getLastName());
 
+            ps.setString(1, entity.getFirstName());
+            ps.setString(2, entity.getLastName());
+            ps.setString(3, entity.getEmail());
+            ps.setString(4, entity.getPassword());
             ps.executeUpdate();
+
+            ps2.setString(1, entity.getEmail());
+            ResultSet resultSet = ps2.executeQuery();
+            resultSet.next();
+            entity.setId(resultSet.getLong("id"));
+            return entity;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,13 +113,16 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
     @Override
     public Utilizator update(Utilizator entity) {
         validator.validate(entity);
-        String sql = "update users set first_name=?, last_name=? where id=?";
+        String sql = "update users set first_name=?, last_name=?, email=?, parola=? where id=?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
 
+
             ps.setString(1, entity.getFirstName());
             ps.setString(2, entity.getLastName());
-            ps.setLong(3, entity.getId());
+            ps.setString(3, entity.getEmail());
+            ps.setString(4, entity.getPassword());
+            ps.setLong(5, entity.getId());
 
             ps.executeUpdate();
         } catch (SQLException e) {

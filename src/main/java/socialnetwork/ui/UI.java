@@ -124,7 +124,7 @@ public class UI {
         String firstName = sc.nextLine();
         System.out.print("lastName: ");
         String lastName = sc.nextLine();
-        srvUtilizator.addUtilizator(id, firstName, lastName);
+        //srvUtilizator.addUtilizator(id, firstName, lastName);
         System.out.println("Utilizator adaugat!");
     }
 
@@ -137,7 +137,7 @@ public class UI {
         String firstName = sc.nextLine();
         System.out.print("lastName: ");
         String lastName = sc.nextLine();
-        srvUtilizator.updateUtilizator(id, firstName, lastName);
+        //srvUtilizator.updateUtilizator(id, firstName, lastName);
         System.out.println("Utilizator modificat!");
     }
 

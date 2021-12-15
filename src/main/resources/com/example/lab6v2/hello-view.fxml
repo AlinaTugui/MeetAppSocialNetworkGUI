@@ -13,5 +13,6 @@
 
     <Label fx:id="welcomeText" />
     <Button onAction="#openLogin" text="Login" />
+   <Button mnemonicParsing="false" onAction="#openRegister" text="Register" />
    <Button mnemonicParsing="false" onAction="#fastLogin" text="fastLogin" />
 </VBox>

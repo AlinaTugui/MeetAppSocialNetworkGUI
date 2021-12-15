@@ -23,4 +23,8 @@ public class HelloController {
         MainViewController.setIdLogin(2L);
         HelloApplication.changeScene("mainView.fxml", actionEvent,"Main View");
     }
+
+    public void openRegister(ActionEvent actionEvent) throws IOException {
+        HelloApplication.changeScene("register.fxml", actionEvent,"Login");
+    }
 }

@@ -13,4 +13,7 @@ public class ServiceLogin {
     public Long login(String email, String parola){
         return repo.login(email,parola);
     }
+
+    public void verifyExistingEmail(String email) {repo.findByEmail(email);}
+
 }

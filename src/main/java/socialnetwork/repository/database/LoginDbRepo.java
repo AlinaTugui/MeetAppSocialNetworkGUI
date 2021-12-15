@@ -36,4 +36,18 @@ public class LoginDbRepo {
         return null;
     }
 
+    public void findByEmail(String email) {
+        String sql = "select id from users where email=?";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+            ResultSet resultSet = ps.executeQuery();
+            if(resultSet.next()) throw new RepositoryException("Email exists already!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
