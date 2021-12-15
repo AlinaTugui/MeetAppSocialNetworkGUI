@@ -80,19 +80,16 @@ public class FriendRequestsController {
                 .collect(Collectors.toList());
         System.out.println(res);
         for (Cerere c : res)
-            c.setButtonUnsend(createUnsendButton(c.getFrom(), c.getTo()));
+            c.setButtonUnsend(createUnsendButton(c.getFrom(), c.getTo(), c.getTimestamp()));
         modelCereri.setAll(res);
         tableViewCereri.setItems(modelCereri);
     }
 
-    private Button createUnsendButton(Long idSender, Long idReceiver) {
+    private Button createUnsendButton(Long idSender, Long idReceiver, LocalDateTime timestamp ) {
         Button unsendButton = new Button("Unsend");
-        Predicate<Cerere> p1 = n -> n.getTo().equals(idSender);
-        Predicate<Cerere> p2 = n -> n.getTo().equals(idReceiver);
         unsendButton.setOnAction(event -> {
-                    sM.getSrvCereri().delete(idSender, idReceiver);
-                    modelCereri.remove(sM.getSrvCereri().findAll()
-                            .stream().filter(p1.and(p2)).collect(Collectors.toList()).get(0));
+                    sM.getSrvCereri().delete(idSender, idReceiver,timestamp);
+                    modelCereri.remove(sM.getSrvCereri().findOne(idSender,idReceiver));
                 }
         );
         return unsendButton;

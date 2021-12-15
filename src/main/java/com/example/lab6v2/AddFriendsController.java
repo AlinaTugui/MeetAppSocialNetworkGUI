@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import socialnetwork.domain.Tuple;
 import socialnetwork.domain.Utilizator;
+import socialnetwork.repository.RepositoryException;
 import socialnetwork.service.ServiceManager;
 
 import java.io.IOException;
@@ -37,16 +38,23 @@ public class AddFriendsController {
         Label label = new Label();
         Button button = new Button("Add friend");
         Utilizator u;
+        Label exceptionLabel = new Label();
         private ServiceManager sM = ServiceManager.getInstance();
         public CustomCell() {
             super();
             button.setVisible(false);
-            hbox.getChildren().addAll(label, button);
+            hbox.getChildren().addAll(label, button, exceptionLabel);
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    sM.getSrvCereri().trimiteCerereDePrietenie(MainViewController.getIdLogin(),u.getId());
-                }
+                    try {
+                        sM.getSrvCereri().trimiteCerereDePrietenie(MainViewController.getIdLogin(), u.getId());
+                    } catch (Exception exception) {
+                        System.out.println(exception.getMessage());
+                        exceptionLabel.setText(exception.getMessage());
+                        button.setVisible(false);
+                    }
+                };
             });
         }
         @Override
