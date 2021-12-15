@@ -84,7 +84,7 @@ public class FriendRequestsController  {
         }
         modelCereri.setAll(res);
     }
-
+    @FXML
     public void initialize() {
         tableColumnIdSender.setCellValueFactory(new PropertyValueFactory<Cerere, Long>("from"));
         tableColumnStatus.setCellValueFactory(new PropertyValueFactory<Cerere, String>("status"));

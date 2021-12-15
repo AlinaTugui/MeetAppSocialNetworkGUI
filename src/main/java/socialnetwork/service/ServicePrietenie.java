@@ -1,18 +1,13 @@
 package socialnetwork.service;
 
-import socialnetwork.domain.PrietenSiData;
 import socialnetwork.domain.Prietenie;
 import socialnetwork.domain.Tuple;
-import socialnetwork.domain.Utilizator;
 import socialnetwork.repository.Repository0;
-import socialnetwork.repository.RepositoryException;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.StreamSupport;
+
 public class ServicePrietenie {
     private Repository0<Tuple<Long,Long>, Prietenie> repoPrietenie;
 
@@ -72,5 +67,9 @@ public class ServicePrietenie {
 
     public Iterable<Prietenie> findAll() {
         return repoPrietenie.findAll();
+    }
+
+    public Prietenie findOne(Tuple<Long, Long> t) {
+        return repoPrietenie.findOne(t);
     }
 }
