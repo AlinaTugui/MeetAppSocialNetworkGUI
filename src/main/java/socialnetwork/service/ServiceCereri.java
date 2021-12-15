@@ -86,5 +86,12 @@ public class ServiceCereri {
     public Cerere findOne(Long id) {
         return repoCereri.findOne(id);
     }
+    public List<Cerere> findAll() {
+        return repoCereri.findAll();
+    }
+
+    public void deleteCerere(Long id) {
+        repoCereri.delete(id);
+    }
 }
 

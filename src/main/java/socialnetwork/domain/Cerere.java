@@ -14,6 +14,15 @@ public class Cerere extends Entity<Long> {
     LocalDateTime timestamp;
     private Button buttonAccept;
     private Button buttonDecline;
+    private Button buttonUnsend;
+
+    public void setButtonUnsend(Button buttonUnsend) {
+        this.buttonUnsend = buttonUnsend;
+    }
+
+    public Button getButtonUnsend() {
+        return buttonUnsend;
+    }
 
     public Cerere(Long from, Long to, String status, LocalDateTime timestamp) {
         this.to = to;

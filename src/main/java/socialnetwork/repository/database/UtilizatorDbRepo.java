@@ -6,9 +6,7 @@ import socialnetwork.repository.Repository0;
 import socialnetwork.repository.RepositoryException;
 
 import java.sql.*;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
     private String url;
@@ -114,7 +112,5 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
         }
         return null;
     }
-
-
 
 }

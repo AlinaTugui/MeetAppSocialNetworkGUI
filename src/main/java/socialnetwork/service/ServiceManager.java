@@ -23,16 +23,24 @@ public class ServiceManager {
     private final ServiceCereriPrietenie srvCereriPrietenie;
     private final ServiceGrup srvGrup;
 
-    public static ServiceManager getInstance() throws IOException {
+    public static ServiceManager getInstance() {
         if(instance == null)  instance = new ServiceManager();
         return instance;
     }
 
-    public ServiceManager() throws IOException {
-        BufferedReader in = new BufferedReader( new FileReader("Data/DbConnectData.txt"));
-        String url = in.readLine();
-        String user= in.readLine();
-        String password= in.readLine();
+    public ServiceManager()  {
+        BufferedReader in = null;
+        try { in = new BufferedReader( new FileReader("Data/DbConnectData.txt"));
+        } catch (FileNotFoundException e) { e.printStackTrace();}
+        String url = null;
+        try { url = in.readLine();
+        } catch (IOException e) { e.printStackTrace();}
+        String user= null;
+        try { user = in.readLine();
+        } catch (IOException e) { e.printStackTrace();}
+        String password= null;
+        try { password = in.readLine();
+        } catch (IOException e) { e.printStackTrace();}
         Repository0<Long, Utilizator> repoUtilizator = new UtilizatorDbRepo(url, user, password,
                 new UtilizatorValidator());
         PrietenieDbRepo repoPrietenie = new PrietenieDbRepo(

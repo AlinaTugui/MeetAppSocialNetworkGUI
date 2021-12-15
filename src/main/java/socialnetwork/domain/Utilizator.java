@@ -1,10 +1,13 @@
 package socialnetwork.domain;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Utilizator extends Entity<Long>{
+public class Utilizator extends Entity<Long> {
     private String firstName;
     private String lastName;
 
@@ -13,6 +16,7 @@ public class Utilizator extends Entity<Long>{
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
     public String getFirstName() {
         return firstName;
     }

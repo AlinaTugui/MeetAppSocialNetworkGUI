@@ -33,7 +33,7 @@ public class PrietenieDbRepo {
 
         pValidate.setId(t);
         validator.validate(pValidate);
-        String sql = "select date from friends where id1=? and id2=?";
+        String sql = "select * from friends where id1=? and id2=?";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -42,15 +42,17 @@ public class PrietenieDbRepo {
             ps.setInt(2, t.getRight().intValue());
             ResultSet resultSet = ps.executeQuery();
             LocalDateTime ld = null;
-            if(resultSet.getDate("date") != null &&
-                    resultSet.getTime("time") != null )
-                ld = LocalDateTime.of(resultSet.getDate("date").toLocalDate(),
-                        resultSet.getTime("time").toLocalTime());
+            if(resultSet.next()) {
+                if (resultSet.getDate("date") != null &&
+                        resultSet.getTime("time") != null)
+                    ld = LocalDateTime.of(resultSet.getDate("date").toLocalDate(),
+                            resultSet.getTime("time").toLocalTime());
 
-            Prietenie p = new Prietenie(ld);
+                Prietenie p = new Prietenie(ld);
 
-            p.setId(new Tuple(t.getLeft(),t.getRight()));
-            return p;
+                p.setId(new Tuple(t.getLeft(), t.getRight()));
+                return p;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

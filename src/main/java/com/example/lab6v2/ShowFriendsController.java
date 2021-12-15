@@ -29,8 +29,6 @@ public class ShowFriendsController implements Initializable {
     public TableColumn<UtilizatorRow, Button> columnButton;
     public TableView<UtilizatorRow> tableViewPrieteni;
 
-    public ShowFriendsController() throws IOException {
-    }
 
     private Button createDeleteButton(Long id) {
         Button deleteButton=new Button("Delete");

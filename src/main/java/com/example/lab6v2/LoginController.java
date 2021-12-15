@@ -21,8 +21,6 @@ public class LoginController {
     @FXML
     public PasswordField password;
 
-    public LoginController() throws IOException {
-    }
 
     public void login(ActionEvent actionEvent) throws IOException {
         String emailS = email.getText().toString();

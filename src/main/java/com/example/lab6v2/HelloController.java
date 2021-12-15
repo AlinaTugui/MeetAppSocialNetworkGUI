@@ -14,8 +14,6 @@ public class HelloController {
     @FXML
     private Label welcomeText;
 
-    public HelloController() throws IOException {
-    }
 
     public void openLogin(ActionEvent actionEvent) throws IOException {
         HelloApplication.changeScene("login.fxml", actionEvent,"Login");
