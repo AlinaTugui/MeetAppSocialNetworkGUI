@@ -3,19 +3,34 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.MainViewController">
-   <SplitPane dividerPositions="0.18749999999999997" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.18749999999999997" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
      <items>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="86.0">
             <children>
-                <Button layoutX="8.0" layoutY="287.0" onAction="#test" text="Friend requests" />
-               <Button layoutX="27.0" layoutY="160.0" mnemonicParsing="false" onAction="#showFriends" text="Friends" />
-               <Button layoutX="18.0" layoutY="223.0" mnemonicParsing="false" onAction="#openAddFriends" text="Add friends" />
-               <Button layoutX="27.0" layoutY="342.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+               <SplitPane dividerPositions="0.37348790322580644" orientation="VERTICAL" prefHeight="398.0" prefWidth="110.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                 <items>
+                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="97.0" />
+                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="108.0">
+                        <children>
+                           <VBox alignment="CENTER" layoutY="-6.0" prefHeight="196.0" prefWidth="108.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                 <Button mnemonicParsing="false" text="Chat" />
+                                 <Button mnemonicParsing="false" onAction="#showFriends" text="Friends" />
+                                 <Button mnemonicParsing="false" onAction="#openAddFriends" text="Add friends" />
+                                  <Button onAction="#openFriendRequests" prefHeight="21.0" prefWidth="98.0" text="Friend requests" />
+                                 <Button mnemonicParsing="false" onAction="#logout" text="Logout" />
+                              </children>
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                 </items>
+               </SplitPane>
             </children>
          </AnchorPane>
-       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="252.0" />
+       <AnchorPane fx:id="rightPane" />
      </items>
    </SplitPane>
 </AnchorPane>

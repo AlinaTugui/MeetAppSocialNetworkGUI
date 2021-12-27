@@ -97,6 +97,12 @@ public class FriendRequestsController {
 
     @FXML
     public void initialize() {
+        tableColumnIdSender.prefWidthProperty().bind(tableViewCereri.widthProperty().multiply(0.166));
+        tableColumnStatus.prefWidthProperty().bind(tableViewCereri.widthProperty().multiply(0.166));
+        tableColumnTimeStamp.prefWidthProperty().bind(tableViewCereri.widthProperty().multiply(0.166));
+        tableColumnAccept.prefWidthProperty().bind(tableViewCereri.widthProperty().multiply(0.166));
+        tableColumnDecline.prefWidthProperty().bind(tableViewCereri.widthProperty().multiply(0.166));
+        tableColumnUnsend.prefWidthProperty().bind(tableViewCereri.widthProperty().multiply(0.166));
         tableColumnIdSender.setCellValueFactory(new PropertyValueFactory<>("from"));
         tableColumnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         tableColumnTimeStamp.setCellValueFactory(new PropertyValueFactory<>("timestamp"));

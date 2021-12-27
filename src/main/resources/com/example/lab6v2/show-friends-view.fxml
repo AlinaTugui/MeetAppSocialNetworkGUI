@@ -4,13 +4,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="338.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ShowFriendsController">
+<AnchorPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ShowFriendsController">
    <children>
-      <TableView fx:id="tableViewPrieteni" layoutX="27.0" layoutY="28.0" prefHeight="282.0" prefWidth="290.0">
+      <TableView  fx:id="tableViewPrieteni" layoutX="27.0" layoutY="28.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn fx:id="columnFirstName" prefWidth="108.0000057220459" text="FirstName" />
-            <TableColumn fx:id="columnLastName" prefWidth="108.0" text="LastName" />
-            <TableColumn fx:id="columnButton" minWidth="4.0" prefWidth="72.80002441406248" text="Button" />
+          <TableColumn styleClass="centered-table-column" fx:id="columnFirstName" text="FirstName" />
+            <TableColumn styleClass="centered-table-column" fx:id="columnLastName"  text="LastName" />
+            <TableColumn styleClass="centered-table-column" fx:id="columnButton" sortable="false" text="Unfriend" />
         </columns>
       </TableView>
    </children>

@@ -56,6 +56,9 @@ public class ShowFriendsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        columnFirstName.prefWidthProperty().bind(tableViewPrieteni.widthProperty().multiply(0.4));
+        columnLastName.prefWidthProperty().bind(tableViewPrieteni.widthProperty().multiply(0.4));
+        columnButton.prefWidthProperty().bind(tableViewPrieteni.widthProperty().multiply(0.2));
         columnFirstName.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, String>("firstName"));
         columnLastName.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, String>("lastName"));
         columnButton.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, Button>("bDel"));

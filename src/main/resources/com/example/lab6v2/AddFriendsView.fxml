@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="319.0" prefWidth="448.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.AddFriendsController">
+<AnchorPane fx:id="anchorPane" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.AddFriendsController">
    <children>
       <TextField fx:id="textField" layoutX="133.0" layoutY="19.0" prefHeight="25.0" prefWidth="204.0" />
       <Label fx:id="label" alignment="CENTER" layoutX="348.0" layoutY="21.0" prefHeight="21.0" prefWidth="88.0" text="First Name">
