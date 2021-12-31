@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.lab6v2.FriendRequestsControllerNew"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.FriendRequestsControllerNew">
+    <children>
+        <Label fx:id="sentFriendReq" layoutX="40.0" layoutY="22.0" text="Sent Friend Requests">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Label>
+        <Label fx:id="recFriendReq" layoutX="354.0" layoutY="22.0" text="Received Friend Requests">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Label>
+        <TableView fx:id="sentReqTableView" layoutX="14.0" layoutY="76.0">
+            <columns>
+                <TableColumn fx:id="receiverNameTableColumn" text="Receiver Name" />
+                <TableColumn fx:id="timestampTableColumn" text="TimeStamp" />
+                <TableColumn fx:id="unsendTableColumn" text="Unsend" />
+            </columns>
+        </TableView>
+        <TableView fx:id="recReqTableView" layoutX="290.0" layoutY="76.0">
+            <columns>
+                <TableColumn fx:id="senderNameTableColumn" text="Sender Name" />
+                <TableColumn fx:id="timestampTableColumn1" text="TimeStamp" />
+                <TableColumn fx:id="acceptTableColumn" text="Accept" />
+                <TableColumn fx:id="declineTableColumn" text="Decline" />
+            </columns>
+        </TableView>
+    </children>
 </AnchorPane>

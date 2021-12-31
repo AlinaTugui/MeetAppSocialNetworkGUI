@@ -28,11 +28,11 @@ public class MainViewController {
     }
 
     public void openAddFriends(ActionEvent actionEvent) throws IOException {
-        changeRightPane("AddFriendsView.fxml");
+        changeRightPane("AddFriendsNewView.fxml");
     }
 
     public void openFriendRequests(ActionEvent actionEvent) throws IOException {
-        changeRightPane("requests-view.fxml");
+        changeRightPane("FriendRequestsNewView.fxml");
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {

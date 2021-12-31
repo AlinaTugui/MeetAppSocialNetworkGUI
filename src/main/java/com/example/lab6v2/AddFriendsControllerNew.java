@@ -21,26 +21,28 @@ public class AddFriendsControllerNew {
     @FXML
     private TextField textField = new TextField();
     @FXML
-    private TableView tableView =new TableView();
+    private TableView<UserRecord> tableView =new TableView();
     @FXML
     private TableColumn<UserRecord, String> nameColumn = new TableColumn<>("Name");
     @FXML
     private TableColumn<UserRecord, Button> addFriendColumn = new TableColumn<>("Add Friend");
-    private SimpleObjectProperty<ObservableList<UserRecord>> userRecordList = new SimpleObjectProperty<ObservableList<UserRecord>>(this, "userRecordList", FXCollections.observableArrayList());
+    private ObservableList<UserRecord> userRecordList = FXCollections.observableArrayList();
     private final ServiceManager sM = ServiceManager.getInstance();
 
     @FXML
     public void initialize() {
+        //nameColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.4));
+        //addFriendColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.4));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addFriendColumn.setCellValueFactory(new PropertyValueFactory<>("btnAddFriend"));
         textField.textProperty().addListener((obs,oldTxt,newTxt)->findUserByName());
-        tableView.setItems(userRecordList.get());
+        tableView.setItems(userRecordList);
         updateTableWithUsersAtSearch("");
     }
 
     private void updateTableWithUsersAtSearch(String searchName) {
         tableView.getItems().clear();
-        userRecordList.get().setAll(getUserRecordList(searchName));
+        userRecordList.setAll(getUserRecordList(searchName));
     }
 
     private ObservableList<UserRecord> getUserRecordList(String searchName) {
