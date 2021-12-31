@@ -1,6 +1,8 @@
 package com.example.lab6v2;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -24,7 +26,7 @@ public class AddFriendsControllerNew {
     private TableColumn<UserRecord, String> nameColumn = new TableColumn<>("Name");
     @FXML
     private TableColumn<UserRecord, Button> addFriendColumn = new TableColumn<>("Add Friend");
-    private ObservableList<UserRecord> userRecordList = FXCollections.observableArrayList();
+    private SimpleObjectProperty<ObservableList<UserRecord>> userRecordList = new SimpleObjectProperty<ObservableList<UserRecord>>(this, "userRecordList", FXCollections.observableArrayList());
     private final ServiceManager sM = ServiceManager.getInstance();
 
     @FXML
@@ -32,13 +34,13 @@ public class AddFriendsControllerNew {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addFriendColumn.setCellValueFactory(new PropertyValueFactory<>("btnAddFriend"));
         textField.textProperty().addListener((obs,oldTxt,newTxt)->findUserByName());
-        tableView.setItems(userRecordList);
+        tableView.setItems(userRecordList.get());
         updateTableWithUsersAtSearch("");
     }
 
     private void updateTableWithUsersAtSearch(String searchName) {
         tableView.getItems().clear();
-        userRecordList.setAll(getUserRecordList(searchName));
+        userRecordList.get().setAll(getUserRecordList(searchName));
     }
 
     private ObservableList<UserRecord> getUserRecordList(String searchName) {

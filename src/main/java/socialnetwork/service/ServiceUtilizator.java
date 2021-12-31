@@ -47,5 +47,16 @@ public class ServiceUtilizator {
         }
         return res;
     }
+
+    public List<Utilizator> findAllByNameTest(String searchName) {
+        Iterable<Utilizator> all = findAll();
+        List<Utilizator> res = new ArrayList<>();
+        for (Utilizator u : all) {
+            String name = u.getFirstName()+" "+u.getLastName();
+            if(name.equals(searchName))
+                res.add(new Utilizator(u.getId(), u.getFirstName(), u.getLastName()));
+        }
+        return res;
+    }
 }
 
