@@ -19,15 +19,34 @@ import java.util.ResourceBundle;
 public class ChatPaneController implements Initializable {
     private ServiceManager sM=ServiceManager.getInstance();
 
-    public VBox chatLeftVbox;
+    public VBox chatLeftUpperVbox;
+    public VBox chatLeftBottomVbox;
     public AnchorPane chatRightPane;
+
+    public void changeRightPane(Utilizator u){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("chatMessagesPane.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent) loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ChatMessagesPaneController ctrl = loader.getController();
+        ctrl.setValues(u);
+        chatRightPane.getChildren().setAll(root);
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
+        loadContacteSiGrupuriCuCareAiMesaje();
+    }
+
+    private void loadContacteSiGrupuriCuCareAiMesaje() {
         List<Utilizator> listaUseri = sM.getSrvMesaje().ultimulMesajDeLaToateContacteleUnuiUser(MainViewController.getIdLogin());
         for(Utilizator u : listaUseri){
-            FXMLLoader loader = null;
-            loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
             Parent root = null;
             try {
                 root = (Parent) loader.load();
@@ -35,9 +54,9 @@ public class ChatPaneController implements Initializable {
                 e.printStackTrace();
             }
             ChatUserPaneController ctrl = loader.getController();
-            ctrl.setNume(u.getFirstName()+u.getLastName());
+            ctrl.setValues(u,this);
 
-            chatLeftVbox.getChildren().add(root);
+            chatLeftUpperVbox.getChildren().add(root);
         }
     }
 }

@@ -5,10 +5,23 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ChatPaneController">
-    <SplitPane dividerPositions="0.3190954773869346" layoutX="-1.0" prefHeight="402.0" prefWidth="638.0">
+    <SplitPane dividerPositions="0.2916188289322617" layoutX="-1.0" prefHeight="500.0" prefWidth="698.0">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="170.0">
-            <VBox fx:id="chatLeftVbox" prefHeight="400.8" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="498.4" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <items>
+             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                  <children>
+                        <VBox fx:id="chatLeftUpperVbox" layoutX="8.0" layoutY="-14.0" prefHeight="245.6" prefWidth="198.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </children>
+               </AnchorPane>
+             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                  <children>
+                     <VBox fx:id="chatLeftDownVBox" prefHeight="245.6" prefWidth="198.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </children>
+               </AnchorPane>
+           </items>
+         </SplitPane>
         </AnchorPane>
-        <AnchorPane fx:id="chatRightPane" minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="498.0" />
+        <AnchorPane fx:id="chatRightPane" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="488.0" />
     </SplitPane>
 </AnchorPane>

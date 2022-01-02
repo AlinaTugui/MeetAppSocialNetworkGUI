@@ -12,11 +12,13 @@ public class MainViewController {
     private static Long idLogin;
     public AnchorPane rightPane;
 
-    public static Long getIdLogin() {return idLogin;}
+    public static Long getIdLogin() {
+        return idLogin;
+    }
+
     public static void setIdLogin(Long _idLogin) {
         idLogin = _idLogin;
     }
-
 
     private void changeRightPane(String fxmlName) throws IOException {
         Pane newLoadedPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlName)));
