@@ -12,13 +12,28 @@ public class Utilizator extends Entity<Long> {
     private String lastName;
     private String email;
     private String password;
+    private List<Long> grupuri;
 
-    public Utilizator(Long id, String firstName, String lastName, String email, String password) {
+    public Utilizator(Long id, String firstName, String lastName, String email, String password,
+                      List<Long> grupuri) {
         super.setId(id);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.grupuri = grupuri;
+    }
+
+    public void addGrup(Long idGrup){
+        grupuri.add(idGrup);
+    }
+
+    public List<Long> getGrupuri() {
+        return grupuri;
+    }
+
+    public void setGrupuri(List<Long> grupuri) {
+        this.grupuri = grupuri;
     }
 
     public String getEmail() {

@@ -5,7 +5,9 @@ import socialnetwork.domain.Tuple;
 import socialnetwork.repository.Repository0;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UseriGrupDbRepo {
@@ -18,10 +20,6 @@ public class UseriGrupDbRepo {
         this.url = url;
         this.username = username;
         this.password = password;
-    }
-
-    public Grup findOne(Long id) {
-        return null;
     }
 
     public void delete(Tuple<Long,Long> aLong) {

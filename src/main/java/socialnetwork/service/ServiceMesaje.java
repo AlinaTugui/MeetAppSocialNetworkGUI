@@ -9,6 +9,7 @@ import socialnetwork.repository.database.MesajeDbRepo;
 import socialnetwork.repository.database.PrietenieDbRepo;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceMesaje {
@@ -28,6 +29,12 @@ public class ServiceMesaje {
         this.srvUtilizator = srvUtilizator;
         this.srvPrietenie = srvPrietenie;
         this.repoMsgCoresp = repoMsgCoresp;
+    }
+
+    public List<Utilizator> ultimulMesajDeLaToateContacteleUnuiUser(Long id){
+        List<Utilizator> listaUseri = new ArrayList<>();
+        repoMsgCoresp.ultimulMesajDeLaToateContacteleUnuiUser(id).forEach( id1 -> listaUseri.add(repoUtilizator.findOne(id1)));
+        return listaUseri;
     }
 
     public void adaugaMesaj(Long idSender, List<Long> idReceivers, String msg){

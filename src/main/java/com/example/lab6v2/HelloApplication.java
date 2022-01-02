@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HelloApplication extends Application {
 //    private static Stage stg;
@@ -37,11 +38,11 @@ public class HelloApplication extends Application {
 
     }
 
-
     public static void addScene(String fxml, String title) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(HelloApplication.class.getResource(fxml));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(Objects.requireNonNull(HelloApplication.class.getResource("StyleSheet.css")).toExternalForm());
         Stage stage = new Stage();
         stage.setTitle(title);
         stage.setScene(scene);

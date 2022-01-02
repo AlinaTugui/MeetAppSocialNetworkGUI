@@ -5,6 +5,7 @@ import socialnetwork.domain.Prietenie;
 import socialnetwork.domain.Tuple;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.domain.validators.Validator;
+import socialnetwork.service.ServiceManager;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -88,6 +89,35 @@ public class MesajeDbRepo {
             return listConv;
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Long> ultimulMesajDeLaToateContacteleUnuiUser(Long id){
+        String sql = "select (case when id_sender < id_receiver then id_sender else id_receiver end) as id_sender, "+
+                "(case when id_sender < id_receiver then id_receiver else id_sender end) as id_receiver "+
+                "from mesaje " +
+                "where id_sender=? or id_receiver=? " +
+                "group by (case when id_sender < id_receiver then id_sender else id_receiver end), " +
+                "(case when id_sender < id_receiver then id_receiver else id_sender end) " +
+                "order by MAX(TIMESTAMP);";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            List<Long> listUseri = new ArrayList<>();
+            ps.setLong(1, id);
+            ps.setLong(2, id);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                Long idOtherUser=(rs.getLong("id_sender") == id?rs.getLong("id_receiver"):rs.getLong("id_sender"));
+                listUseri.add(idOtherUser);
+            }
+            return listUseri;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("mda");
         }
         return null;
     }

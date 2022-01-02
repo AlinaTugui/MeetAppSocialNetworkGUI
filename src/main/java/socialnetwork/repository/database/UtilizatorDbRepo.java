@@ -21,9 +21,30 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
         this.validator = validator;
     }
 
+    public List<Long> findGrupuriUser(Long idUser) {
+        List<Long> idGrupuri = new ArrayList<>();
+        String sql = "select id_grup from useri_grup where id_user=?";
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setLong(1, idUser);
+
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                idGrupuri.add(rs.getLong("id_grup"));
+            }
+            return idGrupuri;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @Override
     public Utilizator findOne(Long id) {
         String sql = "select first_name, last_name, email, parola from users where id=?";
+
+        List<Long> idGrupuri = findGrupuriUser(id);
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -33,7 +54,7 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
             if (!resultSet.next()) return null;
             return new Utilizator(id, resultSet.getString("first_name"),
                     resultSet.getString("last_name"), resultSet.getString("email"),
-                    resultSet.getString("parola"));
+                    resultSet.getString("parola"), idGrupuri);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,9 +75,9 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
                 String lastName = resultSet.getString("last_name");
                 String email = resultSet.getString("email");
                 String parola = resultSet.getString("parola");
+                List<Long> idGrupuri = findGrupuriUser(id);
 
-
-                Utilizator utilizator = new Utilizator(id, firstName, lastName, email, parola);
+                Utilizator utilizator = new Utilizator(id, firstName, lastName, email, parola, idGrupuri);
                 users.add(utilizator);
             }
             return users;

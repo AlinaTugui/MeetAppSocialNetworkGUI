@@ -25,7 +25,7 @@ public class ServiceGrup {
     
     public void addGrup(String nume, Long id_admin, List<Long> membrii) {
         if(repoUtilizator.findOne(id_admin) == null) throw new RepositoryException("Id admin invalid!");
-        membrii.forEach(idUser -> {if(repoUtilizator.findOne(idUser) == null) throw new RepositoryException("Id membrii invalid!");});
+        membrii.forEach(idUser -> {if(repoUtilizator.findOne(idUser) == null) throw new RepositoryException("Iduri membrii invalid!");});
         Long idGrup = repoGrup.save(new Grup(1L, nume, id_admin)).getId();
         membrii.forEach(idUser -> repoUseriGrup.save(idGrup, idUser));
     }

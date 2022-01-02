@@ -23,6 +23,10 @@ public class MainViewController {
         rightPane.getChildren().setAll(newLoadedPane);
     }
 
+    public void openChat(ActionEvent actionEvent) throws IOException {
+        changeRightPane("chatPane.fxml");
+    }
+
     public void showFriends(ActionEvent actionEvent) throws IOException {
         changeRightPane("show-friends-view.fxml");
     }
@@ -38,4 +42,6 @@ public class MainViewController {
     public void logout(ActionEvent actionEvent) throws IOException {
         HelloApplication.changeScene("hello-view.fxml", actionEvent, "Main View");
     }
+
+
 }

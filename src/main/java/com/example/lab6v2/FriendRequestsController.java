@@ -10,10 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import socialnetwork.domain.Cerere;
 import socialnetwork.service.*;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class FriendRequestsController {

@@ -10,10 +10,8 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import socialnetwork.domain.Tuple;
 import socialnetwork.domain.Utilizator;
-import socialnetwork.repository.RepositoryException;
 import socialnetwork.service.ServiceManager;
 
-import java.io.IOException;
 import java.util.List;
 
 public class AddFriendsController {

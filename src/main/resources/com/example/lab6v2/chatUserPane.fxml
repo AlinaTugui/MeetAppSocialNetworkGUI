@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ChatUserPaneController">
+   <Circle fx:id="poza" fill="DODGERBLUE" layoutX="27.0" layoutY="30.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+   <Label fx:id="nume" layoutX="57.0" layoutY="4.0" prefHeight="22.0" prefWidth="106.0" text="Nume">
+      <font>
+         <Font name="System Bold" size="13.0" />
+      </font>
+   </Label>
+   <Label fx:id="mesaj" layoutX="58.0" layoutY="30.0" prefHeight="18.0" prefWidth="132.0" text="Mesaj" />
+   <Label fx:id="ora" alignment="TOP_RIGHT" layoutX="171.0" layoutY="5.0" prefHeight="18.0" prefWidth="26.0" text="Ora">
+      <font>
+         <Font size="11.0" />
+      </font>
+   </Label>
+</AnchorPane>

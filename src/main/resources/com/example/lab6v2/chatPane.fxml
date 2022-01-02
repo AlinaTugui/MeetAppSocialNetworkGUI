@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ChatPaneController">
-   <children>
-      <SplitPane dividerPositions="0.24057788944723613" layoutX="-1.0" prefHeight="402.0" prefWidth="638.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="138.0" />
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="498.0">
-               <children>
-                  <Label layoutX="86.0" layoutY="100.0" text="Label" />
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+    <SplitPane dividerPositions="0.3190954773869346" layoutX="-1.0" prefHeight="402.0" prefWidth="638.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="170.0">
+            <VBox fx:id="chatLeftVbox" prefHeight="400.8" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        </AnchorPane>
+        <AnchorPane fx:id="chatRightPane" minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="498.0" />
+    </SplitPane>
 </AnchorPane>
