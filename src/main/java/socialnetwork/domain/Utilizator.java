@@ -36,6 +36,12 @@ public class Utilizator extends Entity<Long> {
         this.grupuri = grupuri;
     }
 
+    public Utilizator(Long id, String firstName, String lastName) {
+        super.setId(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getEmail() {
         return email;
     }
