@@ -31,8 +31,8 @@ public class AddFriendsControllerNew {
 
     @FXML
     public void initialize() {
-        //nameColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.4));
-        //addFriendColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.4));
+        nameColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.5));
+        addFriendColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.5));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addFriendColumn.setCellValueFactory(new PropertyValueFactory<>("btnAddFriend"));
         textField.textProperty().addListener((obs,oldTxt,newTxt)->findUserByName());
