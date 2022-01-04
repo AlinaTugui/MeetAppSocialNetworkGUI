@@ -19,15 +19,15 @@ public class GrupDbRepo implements Repository0<Long, Grup> {
     }
     @Override
     public Grup findOne(Long id) {
-        String sql = "select nume, id_admin from grups where id=?";
+        String sql = "select name, id_admin from groups where id=?";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
 
-            ps.setInt(1, id.intValue());
+            ps.setLong(1, id);
             ResultSet resultSet = ps.executeQuery();
             if(!resultSet.next()) return null;
-            return new Grup(id, resultSet.getString("nume"), resultSet.getLong("id_admin"));
+            return new Grup(id, resultSet.getString("name"), resultSet.getLong("id_admin"));
 
         } catch (SQLException e) {
             e.printStackTrace();

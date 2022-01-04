@@ -58,7 +58,7 @@ public class UI {
             UseriGrupDbRepo repoUseriGrup = new UseriGrupDbRepo(args[0], args[1], args[2]);
             ServiceUtilizator srvUtilizatori = new ServiceUtilizator(repoUtilizator);
             ServicePrietenie srvPrietenie = new ServicePrietenie(repoPrietenie);
-            ServiceMesaje srvMesaje = new ServiceMesaje(repoUtilizator, repoPrietenie,
+            ServiceMesaje srvMesaje = new ServiceMesaje(repoUtilizator, repoGrup, repoPrietenie,
                     repoMsgCoresp, srvUtilizatori, srvPrietenie);
             ServiceLogin srvLogin = new ServiceLogin(repoLogin);
             ServicePrietenieUtilizator srvUtilizatoriPrieteni =

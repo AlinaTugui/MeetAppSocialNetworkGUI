@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import socialnetwork.domain.Grup;
 import socialnetwork.domain.MesajConv;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.service.ServiceManager;
@@ -36,6 +37,7 @@ public class ChatMessagesPaneController implements Initializable {
     public Circle imagine;
     public Label nume;
     private Utilizator user2;
+    private Grup grup;
 
     private void load_messages(){
         vbox_messages.heightProperty().addListener(new ChangeListener<Number>() {
@@ -54,9 +56,31 @@ public class ChatMessagesPaneController implements Initializable {
         }
     }
 
+    private void load_messages_grup(){
+        vbox_messages.heightProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                sp_main.setVvalue((Double) newValue);
+            }
+        });
+        List<MesajConv> mesaje = sM.getSrvMesaje().afisareConversatieGrup(MainViewController.getIdLogin(), grup.getId());
+        for (MesajConv mesaj : mesaje) {
+            if (mesaj.getFrom().getId() == MainViewController.getIdLogin()) {
+                addMsgSenderToGUI(mesaj.getMsg());
+            } else {
+                addMsgReceiverToGUI(mesaj.getMsg());
+            }
+        }
+    }
+
     public void setValues(Utilizator user2) {
         this.user2 = user2;
         load_messages();
+    }
+
+    public void setValues(Grup grup) {
+        this.grup = grup;
+        load_messages_grup();
     }
 
     private void addMsgSenderToGUI(String mesaj) {
@@ -104,8 +128,9 @@ public class ChatMessagesPaneController implements Initializable {
     public void onSendMessage(ActionEvent actionEvent) {
         String mesaj = tf_message.getText();
         addMsgSenderToGUI(mesaj);
-        sM.getSrvMesaje().adaugaMesaj(MainViewController.getIdLogin(),
+        if(user2 != null) sM.getSrvMesaje().adaugaMesaj(MainViewController.getIdLogin(),
                 new ArrayList<Long>(){{add(user2.getId());}}, mesaj);
+        else sM.getSrvMesaje().adaugaMesajGrup(MainViewController.getIdLogin(), grup.getId(), mesaj);
     }
 }
 

@@ -53,7 +53,7 @@ public class ServiceManager {
         UseriGrupDbRepo repoUseriGrup = new UseriGrupDbRepo(url, user, password);
         ServiceUtilizator srvUtilizatori = new ServiceUtilizator(repoUtilizator);
         ServicePrietenie srvPrietenie = new ServicePrietenie(repoPrietenie);
-        ServiceMesaje srvMesaje = new ServiceMesaje(repoUtilizator, repoPrietenie,
+        ServiceMesaje srvMesaje = new ServiceMesaje(repoUtilizator, repoGrup, repoPrietenie,
                 repoMsgCoresp, srvUtilizatori, srvPrietenie);
         ServiceLogin srvLogin = new ServiceLogin(repoLogin);
         ServicePrietenieUtilizator srvUtilizatoriPrieteni =

@@ -1,9 +1,6 @@
 package socialnetwork.repository.database;
 
-import socialnetwork.domain.MesajConv;
-import socialnetwork.domain.Prietenie;
-import socialnetwork.domain.Tuple;
-import socialnetwork.domain.Utilizator;
+import socialnetwork.domain.*;
 import socialnetwork.domain.validators.Validator;
 import socialnetwork.service.ServiceManager;
 
@@ -136,5 +133,29 @@ public class MesajeDbRepo {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<MesajConv> afisareConversatieGrup(Grup g){
+        String sql = "select id_sender ,msg, timestamp from mesaje_grup " +
+                "where id_grup=? " +
+                "order by timestamp";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            List<MesajConv> listConv = new ArrayList<>();
+            ps.setInt(1, g.getId().intValue());
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                listConv.add(new MesajConv( new Utilizator(Long.valueOf(rs.getLong("id_sender")),null,null,null,null,null),
+                        rs.getString("msg"),
+                        rs.getTimestamp("timestamp").toLocalDateTime()));
+            }
+            return listConv;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

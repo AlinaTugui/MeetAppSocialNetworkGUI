@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import socialnetwork.domain.Grup;
 import socialnetwork.domain.Utilizator;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class ChatUserPaneController implements Initializable{
     public Circle poza;
     public Label nume = new Label();
     private Utilizator user;
+    private Grup grup;
 
     public void setValues(Utilizator u, ChatPaneController chatPaneController){
         this.nume.setText(u.getFirstName() + " " + u.getLastName());
@@ -27,8 +29,16 @@ public class ChatUserPaneController implements Initializable{
         this.chatPaneController = chatPaneController;
     }
 
+    public void setValues(Grup g, ChatPaneController chatPaneController){
+        this.nume.setText(g.getNume());
+        this.grup = g;
+        this.chatPaneController = chatPaneController;
+    }
+
+
     public void openUserChat(MouseEvent mouseEvent) {
-        chatPaneController.changeRightPane(user);
+        if(user != null) chatPaneController.changeRightPane(user);
+        else chatPaneController.chatRightPane(grup);
     }
 
     @Override

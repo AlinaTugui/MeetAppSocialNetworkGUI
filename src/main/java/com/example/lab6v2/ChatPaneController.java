@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import socialnetwork.domain.Grup;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.service.ServiceManager;
 
@@ -36,6 +37,18 @@ public class ChatPaneController implements Initializable {
         chatRightPane.getChildren().setAll(root);
     }
 
+    public void chatRightPane(Grup grup) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("chatMessagesPane.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent) loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ChatMessagesPaneController ctrl = loader.getController();
+        ctrl.setValues(grup);
+        chatRightPane.getChildren().setAll(root);
+    }
 
 
     @Override
@@ -58,5 +71,22 @@ public class ChatPaneController implements Initializable {
 
             chatLeftUpperVbox.getChildren().add(root);
         }
+        Utilizator user = sM.getSrvUtilizator().findOne(MainViewController.getIdLogin());
+        for(Long idGrup : user.getGrupuri()){
+            Grup grup = sM.getSrvGrup().findOne(idGrup);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
+            Parent root = null;
+            try {
+                root = (Parent) loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ChatUserPaneController ctrl = loader.getController();
+            ctrl.setValues(grup,this);
+
+            chatLeftBottomVbox.getChildren().add(root);
+        }
     }
+
+
 }

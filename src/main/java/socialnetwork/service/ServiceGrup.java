@@ -22,6 +22,10 @@ public class ServiceGrup {
         this.repoGrup = repoGrup;
         this.repoUseriGrup = repoUseriGrup;
     }
+
+    public Grup findOne(Long id){
+        return repoGrup.findOne(id);
+    }
     
     public void addGrup(String nume, Long id_admin, List<Long> membrii) {
         if(repoUtilizator.findOne(id_admin) == null) throw new RepositoryException("Id admin invalid!");

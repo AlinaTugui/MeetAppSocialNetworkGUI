@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public class MesajConv extends Entity<Long> {
     Utilizator from;
+    Grup fromG;
     String msg;
     LocalDateTime dateTime;
 
