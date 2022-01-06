@@ -25,6 +25,7 @@ import socialnetwork.service.ServiceManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ChatMessagesPaneController implements Initializable {
@@ -39,7 +40,7 @@ public class ChatMessagesPaneController implements Initializable {
     private Utilizator user2;
     private Grup grup;
 
-    private void load_messages(){
+    private void load_messages() {
         vbox_messages.heightProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -56,16 +57,12 @@ public class ChatMessagesPaneController implements Initializable {
         }
     }
 
-    private void load_messages_grup(){
-        vbox_messages.heightProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                sp_main.setVvalue((Double) newValue);
-            }
-        });
+    private void load_messages_grup() {
+        vbox_messages.heightProperty().addListener((observable, oldValue, newValue) ->
+                sp_main.setVvalue((Double) newValue));
         List<MesajConv> mesaje = sM.getSrvMesaje().afisareConversatieGrup(MainViewController.getIdLogin(), grup.getId());
         for (MesajConv mesaj : mesaje) {
-            if (mesaj.getFrom().getId() == MainViewController.getIdLogin()) {
+            if (Objects.equals(mesaj.getFrom().getId(), MainViewController.getIdLogin())) {
                 addMsgSenderToGUI(mesaj.getMsg());
             } else {
                 addMsgReceiverToGUI(mesaj.getMsg());
@@ -84,11 +81,11 @@ public class ChatMessagesPaneController implements Initializable {
     }
 
     private void addMsgSenderToGUI(String mesaj) {
-        if(!mesaj.isEmpty()){
+        if (!mesaj.isEmpty()) {
             HBox hBox = new HBox();
             hBox.onMouseEnteredProperty();
             hBox.setAlignment(Pos.CENTER_RIGHT);
-            hBox.setPadding(new Insets(5,5,5,10));
+            hBox.setPadding(new Insets(5, 5, 5, 10));
 
             Text text = new Text(mesaj);
             TextFlow textFlow = new TextFlow(text);
@@ -96,8 +93,8 @@ public class ChatMessagesPaneController implements Initializable {
                     "-fx-background-color: rgb(15,125,242);" +
                     "-fx-background-radius: 20px;");
 
-            textFlow.setPadding(new Insets(5,10,5,10));
-            text.setFill(Color.color(0.93,0.94, 0.996));
+            textFlow.setPadding(new Insets(5, 10, 5, 10));
+            text.setFill(Color.color(0.93, 0.94, 0.996));
             hBox.getChildren().add(textFlow);
             vbox_messages.getChildren().add(hBox);
 
@@ -106,18 +103,18 @@ public class ChatMessagesPaneController implements Initializable {
     }
 
     private void addMsgReceiverToGUI(String mesaj) {
-            HBox hBox = new HBox();
-            hBox.setAlignment(Pos.CENTER_LEFT);
-            hBox.setPadding(new Insets(5,5,5,10));
+        HBox hBox = new HBox();
+        hBox.setAlignment(Pos.CENTER_LEFT);
+        hBox.setPadding(new Insets(5, 5, 5, 10));
 
-            Text text = new Text(mesaj);
-            TextFlow textFlow = new TextFlow(text);
-            textFlow.setStyle("-fx-color: rgb(233,233,235);" +
-                    "-fx-background-radius: 20px;");
+        Text text = new Text(mesaj);
+        TextFlow textFlow = new TextFlow(text);
+        textFlow.setStyle("-fx-color: rgb(233,233,235);" +
+                "-fx-background-radius: 20px;");
 
-            textFlow.setPadding(new Insets(5,10,5,10));
-            hBox.getChildren().add(textFlow);
-            vbox_messages.getChildren().add(hBox);
+        textFlow.setPadding(new Insets(5, 10, 5, 10));
+        hBox.getChildren().add(textFlow);
+        vbox_messages.getChildren().add(hBox);
     }
 
     @Override
@@ -128,8 +125,10 @@ public class ChatMessagesPaneController implements Initializable {
     public void onSendMessage(ActionEvent actionEvent) {
         String mesaj = tf_message.getText();
         addMsgSenderToGUI(mesaj);
-        if(user2 != null) sM.getSrvMesaje().adaugaMesaj(MainViewController.getIdLogin(),
-                new ArrayList<Long>(){{add(user2.getId());}}, mesaj);
+        if (user2 != null) sM.getSrvMesaje().adaugaMesaj(MainViewController.getIdLogin(),
+                new ArrayList<Long>() {{
+                    add(user2.getId());
+                }}, mesaj);
         else sM.getSrvMesaje().adaugaMesajGrup(MainViewController.getIdLogin(), grup.getId(), mesaj);
     }
 }

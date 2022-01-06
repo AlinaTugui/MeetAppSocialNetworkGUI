@@ -7,10 +7,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import socialnetwork.config.Encryptor;
 import socialnetwork.repository.RepositoryException;
 import socialnetwork.service.ServiceManager;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 public class LoginController {
     private ServiceManager sM = ServiceManager.getInstance();
@@ -33,10 +35,12 @@ public class LoginController {
             loginFailed.setText("Password is missing!");
         else{
             try {
+                Encryptor encryptor = new Encryptor();
+                passwordS = encryptor.encryptString(passwordS);
                 Long idLogin = sM.getSrvLogin().login(emailS, passwordS);
                 MainViewController.setIdLogin(idLogin);
                 HelloApplication.changeScene("mainView.fxml", actionEvent,"Main View");
-            }catch(RepositoryException re){
+            }catch(RepositoryException | NoSuchAlgorithmException re){
                 loginFailed.setText(re.getMessage());
             }
         }
