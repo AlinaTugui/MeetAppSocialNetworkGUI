@@ -1,0 +1,21 @@
+.linear-grad {
+    -fx-background-color: linear-gradient(to bottom left, #05ffa1,#b967ff);
+}
+.text-id {
+    -fx-font-smoothing-type: lcd;
+    -fx-fill: white;
+    -fx-font-size: 20pt;
+}
+
+.button1 {
+    -fx-border-radius: 1px;
+    -fx-background-color: linear-gradient(to bottom left, #05ffa1,#28d392);
+    -fx-text-fill: #2e107a;
+    -fx-text-alignment: bold italic;
+    -fx-border-color: #2e107a;
+}
+
+.pane {
+    /*-fx-background-color: linear-gradient(to bottom left, #a8a1a1, #d9d9d0);*/
+    -fx-background-color: #ffffff;
+}

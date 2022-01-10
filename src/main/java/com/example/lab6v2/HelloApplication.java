@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -18,13 +19,14 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        VBox root=loader.load();
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("hello-view1.fxml"));
+        AnchorPane root=loader.load();
 
         HelloController ctrl=loader.getController();
 
         primaryStage.setScene(new Scene(root));
-        primaryStage.setTitle("Social Network");
+        //primaryStage.setTitle("Social Network");
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }
 
