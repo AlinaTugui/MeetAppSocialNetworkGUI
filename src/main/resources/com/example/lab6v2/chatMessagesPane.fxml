@@ -20,7 +20,7 @@
         <TextField fx:id="tf_message" layoutX="14.0" layoutY="440.0" prefHeight="36.0" prefWidth="394.0" />
         <Button fx:id="button_send" layoutX="422.0" layoutY="440.0" onAction="#onSendMessage" prefHeight="36.0" prefWidth="53.0" text="Send" />
       <Circle fill="DODGERBLUE" layoutX="40.0" layoutY="40.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="79.0" layoutY="27.0" prefHeight="25.0" prefWidth="45.0" text="nume">
+      <Label fx:id="nume" layoutX="79.0" layoutY="27.0" text="nume">
          <font>
             <Font size="16.0" />
          </font>

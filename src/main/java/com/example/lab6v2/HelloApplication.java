@@ -6,15 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import socialnetwork.config.Encryptor;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
-//    private static Stage stg;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
