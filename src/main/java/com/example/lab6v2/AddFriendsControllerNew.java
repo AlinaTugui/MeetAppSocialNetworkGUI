@@ -3,6 +3,7 @@ package com.example.lab6v2;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -51,8 +52,8 @@ public class AddFriendsControllerNew {
                         sM.getSrvPrietenie().findOne(new Tuple<>(MainViewController.getIdLogin(),u.getId()))==null
                                 && sM.getSrvPrietenie().findOne(new Tuple<>(u.getId(),MainViewController.getIdLogin()))==null))
                 .filter(u->(
-                        sM.getSrvCereri().findOne(MainViewController.getIdLogin(),u.getId())==null
-                                && sM.getSrvCereri().findOne(u.getId(),MainViewController.getIdLogin())==null))
+                        sM.getSrvCereri().findOneStatus(MainViewController.getIdLogin(),u.getId(),"pending")==null
+                                && sM.getSrvCereri().findOneStatus(u.getId(),MainViewController.getIdLogin(),"pending")==null))
                 .collect(Collectors.toList());
         ObservableList<UserRecord> userRecordObservableList = FXCollections.observableArrayList();
         for (Utilizator u : users) {
@@ -76,5 +77,9 @@ public class AddFriendsControllerNew {
 
     private void findUserByName() {
         updateTableWithUsersAtSearch(textField.getText());
+    }
+
+    public void onRefreshBtn(ActionEvent actionEvent) {
+        findUserByName();
     }
 }
