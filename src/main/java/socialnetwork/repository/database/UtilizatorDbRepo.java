@@ -144,8 +144,8 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
             ps.setString(2, entity.getLastName());
             ps.setString(3, entity.getEmail());
             ps.setString(4, entity.getPassword());
-            ps.setLong(5, entity.getId());
-            ps.setString(6, entity.getImage_path());
+            ps.setString(5, entity.getImage_path());
+            ps.setLong(6, entity.getId());
 
             ps.executeUpdate();
         } catch (SQLException e) {

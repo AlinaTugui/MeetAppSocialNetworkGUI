@@ -16,9 +16,13 @@
                  <items>
                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="97.0">
                         <children>
-                           <Circle fill="DODGERBLUE" layoutX="73.0" layoutY="56.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
-                           <Label fx:id="numeLogat" layoutX="56.0" layoutY="103.0" text="Nume" />
-                           <Button layoutX="27.0" layoutY="132.0" mnemonicParsing="false" onAction="#changeImage" text="Change image" />
+                           <VBox alignment="CENTER" layoutX="32.0" layoutY="-10.0" prefHeight="179.2" prefWidth="145.6" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                 <Circle fx:id="pozaLogat" fill="DODGERBLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+                                 <Label fx:id="numeLogat" text="Nume" />
+                                 <Button mnemonicParsing="false" onAction="#changeImage" text="Change image" />
+                              </children>
+                           </VBox>
                         </children></AnchorPane>
                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="108.0">
                         <children>

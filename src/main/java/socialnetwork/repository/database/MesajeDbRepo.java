@@ -148,7 +148,7 @@ public class MesajeDbRepo {
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
-                listConv.add(new MesajConv( new Utilizator(Long.valueOf(rs.getLong("id_sender")),null,null,null,null,null),
+                listConv.add(new MesajConv( new Utilizator(Long.valueOf(rs.getLong("id_sender")),null,null,null,null,null,null),
                         rs.getString("msg"),
                         rs.getTimestamp("timestamp").toLocalDateTime()));
             }

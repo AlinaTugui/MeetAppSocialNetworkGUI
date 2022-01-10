@@ -2,8 +2,12 @@ package com.example.lab6v2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.service.ServiceManager;
 
@@ -14,9 +18,25 @@ import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 
 public class MainViewController {
+
     private ServiceManager sM=ServiceManager.getInstance();
     private static Long idLogin;
+    public Circle pozaLogat;
+    public Label numeLogat = new Label();
     public AnchorPane rightPane;
+
+    private void changeImage(){
+        String path = "file:///" + sM.getSrvUtilizator().findOne(idLogin).getImage_path();
+        if(path == null) return;
+        Image img = new Image(path,false);
+        pozaLogat.setFill(new ImagePattern(img));
+    }
+
+    public void setValues() {
+        Utilizator u = sM.getSrvUtilizator().findOne(idLogin);
+        numeLogat.setText(u.getFirstName() + " " + u.getLastName());
+        changeImage();
+    }
 
     public static Long getIdLogin() {
         return idLogin;
@@ -59,7 +79,7 @@ public class MainViewController {
         JFileChooser chooser = new JFileChooser();
         int returnVal = chooser.showOpenDialog(null);
         if(returnVal != JFileChooser.APPROVE_OPTION) {
-            System.out.println("Eroare aici");
+            return;
         }
         File file = chooser.getSelectedFile();
         String path = "C:\\Users\\turtu\\Desktop\\Lucrari\\IntelliGay\\Lab6v2\\imaginiUseri\\Imagini\\";
@@ -73,5 +93,6 @@ public class MainViewController {
         Utilizator u = sM.getSrvUtilizator().findOne(idLogin);
         u.setImage_path(newPath);
         sM.getSrvUtilizator().updateUtilizator(u);
+        changeImage();
     }
 }
