@@ -4,11 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import socialnetwork.domain.Utilizator;
+import socialnetwork.service.ServiceManager;
 
-import java.io.IOException;
+import javax.swing.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 
 public class MainViewController {
+    private ServiceManager sM=ServiceManager.getInstance();
     private static Long idLogin;
     public AnchorPane rightPane;
 
@@ -46,4 +52,26 @@ public class MainViewController {
     }
 
 
+    public void changeImage(ActionEvent actionEvent) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("imaginiUseri/ImagineNr.txt"));
+        Integer imgNr = Integer.parseInt(bufferedReader.readLine());
+        bufferedReader.close();
+        JFileChooser chooser = new JFileChooser();
+        int returnVal = chooser.showOpenDialog(null);
+        if(returnVal != JFileChooser.APPROVE_OPTION) {
+            System.out.println("Eroare aici");
+        }
+        File file = chooser.getSelectedFile();
+        String path = "C:\\Users\\turtu\\Desktop\\Lucrari\\IntelliGay\\Lab6v2\\imaginiUseri\\Imagini\\";
+        String newPath = path + imgNr + ".png";
+        Files.copy(file.toPath(),
+                (new File(newPath)).toPath(),
+                StandardCopyOption.REPLACE_EXISTING);
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("imaginiUseri/ImagineNr.txt"));
+        bufferedWriter.write(String.valueOf(imgNr+1));
+        bufferedWriter.close();
+        Utilizator u = sM.getSrvUtilizator().findOne(idLogin);
+        u.setImage_path(newPath);
+        sM.getSrvUtilizator().updateUtilizator(u);
+    }
 }

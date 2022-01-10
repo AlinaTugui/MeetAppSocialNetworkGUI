@@ -17,9 +17,12 @@ import java.util.ResourceBundle;
 
 public class ChatUserPaneController implements Initializable{
 
+
     private ChatPaneController chatPaneController;
     public Circle poza;
     public Label nume = new Label();
+    public Label mesaj;
+    public Label ora;
     private Utilizator user;
     private Grup grup;
 

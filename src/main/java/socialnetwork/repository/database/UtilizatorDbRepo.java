@@ -42,7 +42,7 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
 
     @Override
     public Utilizator findOne(Long id) {
-        String sql = "select first_name, last_name, email, parola from users where id=?";
+        String sql = "select first_name, last_name, email, parola, image_path from users where id=?";
 
         List<Long> idGrupuri = findGrupuriUser(id);
 
@@ -54,7 +54,7 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
             if (!resultSet.next()) return null;
             return new Utilizator(id, resultSet.getString("first_name"),
                     resultSet.getString("last_name"), resultSet.getString("email"),
-                    resultSet.getString("parola"), idGrupuri);
+                    resultSet.getString("parola"), idGrupuri, resultSet.getString("image_path"));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,9 +75,10 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
                 String lastName = resultSet.getString("last_name");
                 String email = resultSet.getString("email");
                 String parola = resultSet.getString("parola");
+                String image_path = resultSet.getString("image_path");
                 List<Long> idGrupuri = findGrupuriUser(id);
 
-                Utilizator utilizator = new Utilizator(id, firstName, lastName, email, parola, idGrupuri);
+                Utilizator utilizator = new Utilizator(id, firstName, lastName, email, parola, idGrupuri,image_path);
                 users.add(utilizator);
             }
             return users;
@@ -134,7 +135,7 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
     @Override
     public Utilizator update(Utilizator entity) {
         validator.validate(entity);
-        String sql = "update users set first_name=?, last_name=?, email=?, parola=? where id=?";
+        String sql = "update users set first_name=?, last_name=?, email=?, parola=?, image_path=? where id=?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
 
@@ -144,6 +145,7 @@ public class UtilizatorDbRepo implements Repository0<Long, Utilizator> {
             ps.setString(3, entity.getEmail());
             ps.setString(4, entity.getPassword());
             ps.setLong(5, entity.getId());
+            ps.setString(6, entity.getImage_path());
 
             ps.executeUpdate();
         } catch (SQLException e) {

@@ -36,7 +36,7 @@ public class ChatMessagesPaneController implements Initializable {
     public TextField tf_message;
     public Button button_send;
     public Circle imagine;
-    public Label nume;
+    public Label nume = new Label();
     private Utilizator user2;
     private Grup grup;
 
@@ -71,11 +71,13 @@ public class ChatMessagesPaneController implements Initializable {
     }
 
     public void setValues(Utilizator user2) {
+        this.nume.setText(user2.getFirstName() + " " + user2.getLastName());
         this.user2 = user2;
         load_messages();
     }
 
     public void setValues(Grup grup) {
+        this.nume.setText(grup.getNume());
         this.grup = grup;
         load_messages_grup();
     }
