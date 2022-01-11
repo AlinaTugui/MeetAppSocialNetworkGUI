@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import socialnetwork.domain.Grup;
+import socialnetwork.domain.MesajConv;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.service.ServiceManager;
 
@@ -58,15 +59,30 @@ public class ChatPaneController implements Initializable {
     }
 
     private void loadContacteSiGrupuriCuCareAiMesaje() {
-        List<Utilizator> listaUseriCuMesaje = sM.getSrvMesaje().ultimulMesajDeLaToateContacteleUnuiUser(MainViewController.getIdLogin());
+        List<MesajConv> listaUseriCuMesaje = sM.getSrvMesaje().ultimulMesajDeLaToateContacteleUnuiUser(MainViewController.getIdLogin());
+        for(MesajConv mesajConv : listaUseriCuMesaje){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
+            Parent root = null;
+            try {
+                root = (Parent) loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ChatUserPaneController ctrl = loader.getController();
+            ctrl.setValues(mesajConv,this);
+            chatLeftUpperVbox.getChildren().add(root);
+        }
+
         List<Utilizator> listUseriFaraMesaje = new ArrayList<>();
         Iterable<Long> l =sM.getSrvPrietenie().findAllUser(MainViewController.getIdLogin());
         l.forEach(x -> listUseriFaraMesaje.add(sM.getSrvUtilizator().findOne(x)));
-        List<Utilizator> listUseriFaraMesaje2 = listUseriFaraMesaje.stream().filter(val -> !listaUseriCuMesaje.contains(val)).toList();
-        List<Utilizator> listaToti = new ArrayList<>(){{addAll(listaUseriCuMesaje);
-            addAll(listUseriFaraMesaje2);
-        }};
-        for(Utilizator u : listaToti){
+        List<Utilizator> listUseriFaraMesaje2 = listUseriFaraMesaje.stream().filter(u -> {
+            for (MesajConv m: listaUseriCuMesaje) {
+                if( m.getFrom().getId().equals(u.getId()) ) return false;
+            }
+            return true;
+        } ).toList();
+        for(Utilizator u: listUseriFaraMesaje2){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
             Parent root = null;
             try {
@@ -76,11 +92,11 @@ public class ChatPaneController implements Initializable {
             }
             ChatUserPaneController ctrl = loader.getController();
             ctrl.setValues(u,this);
-
             chatLeftUpperVbox.getChildren().add(root);
         }
-        Utilizator user = sM.getSrvUtilizator().findOne(MainViewController.getIdLogin());
-        for(Long idGrup : user.getGrupuri()){
+
+        List<Long> grupuri = sM.getSrvGrup().findGrupuriUser(MainViewController.getIdLogin());
+        for(Long idGrup : grupuri){
             Grup grup = sM.getSrvGrup().findOne(idGrup);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
             Parent root = null;

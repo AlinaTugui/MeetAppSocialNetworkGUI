@@ -90,28 +90,40 @@ public class MesajeDbRepo {
         return null;
     }
 
-    public List<Long> ultimulMesajDeLaToateContacteleUnuiUser(Long id){
-        String sql = "select (case when id_sender < id_receiver then id_sender else id_receiver end) as id_sender, "+
-                "(case when id_sender < id_receiver then id_receiver else id_sender end) as id_receiver "+
-                "from mesaje " +
-                "where id_sender=? or id_receiver=? " +
-                "group by (case when id_sender < id_receiver then id_sender else id_receiver end), " +
-                "(case when id_sender < id_receiver then id_receiver else id_sender end) " +
-                "order by MAX(TIMESTAMP);";
+    public List<MesajConv> ultimulMesajDeLaToateContacteleUnuiUser(Long id){
+//        String sql = "select (case when id_sender < id_receiver then id_sender else id_receiver end) as id_sender, "+
+//                "(case when id_sender < id_receiver then id_receiver else id_sender end) as id_receiver, "+
+//                "msg, timestamp "+
+//                "from mesaje " +
+//                "where id_sender=? or id_receiver=? " +
+//                "group by (case when id_sender < id_receiver then id_sender else id_receiver end), " +
+//                "(case when id_sender < id_receiver then id_receiver else id_sender end) " +
+//                "order by MAX(TIMESTAMP);";
+        String sql= "SELECT  * "+
+        "FROM ( "+
+        "SELECT  *, "+
+        "ROW_NUMBER() OVER (PARTITION BY "+
+        "(case when id_sender < id_receiver then id_sender else id_receiver end), "+
+        "(case when id_sender < id_receiver then id_receiver else id_sender end) "+
+        "ORDER BY timestamp DESC) rn "+
+        "FROM  mesaje where id_sender=? or id_receiver=? "+
+        ") q "+
+        "WHERE   rn = 1 ";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
 
-            List<Long> listUseri = new ArrayList<>();
+            List<MesajConv> listMesaje = new ArrayList<>();
             ps.setLong(1, id);
             ps.setLong(2, id);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
                 Long idOtherUser=(rs.getLong("id_sender") == id?rs.getLong("id_receiver"):rs.getLong("id_sender"));
-                listUseri.add(idOtherUser);
+                listMesaje.add(new MesajConv(ServiceManager.getInstance().getSrvUtilizator().findOne(idOtherUser),
+                        rs.getString("msg"), rs.getTimestamp("timestamp").toLocalDateTime() ));
             }
-            return listUseri;
+            return listMesaje;
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("mda");
@@ -148,7 +160,7 @@ public class MesajeDbRepo {
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
-                listConv.add(new MesajConv( new Utilizator(Long.valueOf(rs.getLong("id_sender")),null,null,null,null,null,null),
+                listConv.add(new MesajConv( new Utilizator(Long.valueOf(rs.getLong("id_sender")),null,null,null,null,null),
                         rs.getString("msg"),
                         rs.getTimestamp("timestamp").toLocalDateTime()));
             }

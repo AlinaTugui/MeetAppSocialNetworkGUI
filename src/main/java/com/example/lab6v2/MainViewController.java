@@ -25,18 +25,18 @@ public class MainViewController {
     public Label numeLogat = new Label();
     public AnchorPane rightPane;
 
-    private void changeImage(){
-        String imgPath = sM.getSrvUtilizator().findOne(idLogin).getImage_path();
-        if(imgPath == null) return;
+    static ImagePattern changeImage(Long id){
+        String imgPath = ServiceManager.getInstance().getSrvUtilizator().findOne(id).getImage_path();
+        if(imgPath == null) imgPath="C:\\Users\\turtu\\Desktop\\Lucrari\\IntelliGay\\Lab6v2\\imaginiUseri\\default-user-image.png";
         String path = "file:///" + imgPath;
         Image img = new Image(path,false);
-        pozaLogat.setFill(new ImagePattern(img));
+        return new ImagePattern(img);
     }
 
     public void setValues() {
         Utilizator u = sM.getSrvUtilizator().findOne(idLogin);
         numeLogat.setText(u.getFirstName() + " " + u.getLastName());
-        changeImage();
+        pozaLogat.setFill(changeImage(idLogin));
     }
 
     public static Long getIdLogin() {
@@ -94,6 +94,6 @@ public class MainViewController {
         Utilizator u = sM.getSrvUtilizator().findOne(idLogin);
         u.setImage_path(newPath);
         sM.getSrvUtilizator().updateUtilizator(u);
-        changeImage();
+        pozaLogat.setFill( changeImage(idLogin));
     }
 }

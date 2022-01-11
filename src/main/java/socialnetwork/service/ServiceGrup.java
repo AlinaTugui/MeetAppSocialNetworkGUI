@@ -51,4 +51,8 @@ public class ServiceGrup {
         Grup g = new Grup( id, nume, id_admin);
         return repoGrup.update(g);
     }
+
+    public List<Long> findGrupuriUser(Long id){
+        return repoUseriGrup.findGrupuriUser(id);
+    }
 }

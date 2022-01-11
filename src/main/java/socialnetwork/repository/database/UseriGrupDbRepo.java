@@ -22,6 +22,8 @@ public class UseriGrupDbRepo {
         this.password = password;
     }
 
+
+
     public void delete(Tuple<Long,Long> aLong) {
         String sql = "delete from groups where id_grup=? and id_user=?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
@@ -48,6 +50,25 @@ public class UseriGrupDbRepo {
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public List<Long> findGrupuriUser(Long idUser) {
+        List<Long> idGrupuri = new ArrayList<>();
+        String sql = "select id_grup from useri_grup where id_user=?";
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setLong(1, idUser);
+
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                idGrupuri.add(rs.getLong("id_grup"));
+            }
+            return idGrupuri;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

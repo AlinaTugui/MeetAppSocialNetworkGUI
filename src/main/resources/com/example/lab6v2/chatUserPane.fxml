@@ -12,8 +12,8 @@
          <Font name="System Bold" size="13.0" />
       </font>
    </Label>
-   <Label fx:id="mesaj" layoutX="58.0" layoutY="30.0" prefHeight="18.0" prefWidth="132.0" text="Mesaj" />
-   <Label fx:id="ora" alignment="TOP_RIGHT" layoutX="178.0" layoutY="5.0" prefHeight="18.0" prefWidth="26.0" text="Ora">
+   <Label fx:id="mesaj" layoutX="58.0" layoutY="30.0" prefHeight="18.0" prefWidth="146.0" text="Mesaj" />
+   <Label fx:id="ora" alignment="TOP_RIGHT" layoutX="178.0" layoutY="5.0" text="Ora">
       <font>
          <Font size="11.0" />
       </font>

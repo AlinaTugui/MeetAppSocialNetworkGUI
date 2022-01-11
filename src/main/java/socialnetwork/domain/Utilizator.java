@@ -13,16 +13,14 @@ public class Utilizator extends Entity<Long> {
     private String email;
     private String password;
     private String image_path;
-    private List<Long> grupuri;
 
     public Utilizator(Long id, String firstName, String lastName, String email, String password,
-                      List<Long> grupuri, String image_path) {
+                       String image_path) {
         super.setId(id);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.grupuri = grupuri;
         this.image_path=image_path;
     }
 
@@ -32,18 +30,6 @@ public class Utilizator extends Entity<Long> {
 
     public void setImage_path(String image_path) {
         this.image_path = image_path;
-    }
-
-    public void addGrup(Long idGrup){
-        grupuri.add(idGrup);
-    }
-
-    public List<Long> getGrupuri() {
-        return grupuri;
-    }
-
-    public void setGrupuri(List<Long> grupuri) {
-        this.grupuri = grupuri;
     }
 
     public Utilizator(Long id, String firstName, String lastName) {

@@ -36,10 +36,8 @@ public class ServiceMesaje {
         this.repoGrup = repoGrup;
     }
 
-    public List<Utilizator> ultimulMesajDeLaToateContacteleUnuiUser(Long id) {
-        List<Utilizator> listaUseri = new ArrayList<>();
-        repoMsgCoresp.ultimulMesajDeLaToateContacteleUnuiUser(id).forEach(id1 -> listaUseri.add(repoUtilizator.findOne(id1)));
-        return listaUseri;
+    public List<MesajConv> ultimulMesajDeLaToateContacteleUnuiUser(Long id) {
+        return repoMsgCoresp.ultimulMesajDeLaToateContacteleUnuiUser(id);
     }
 
     public void adaugaMesaj(Long idSender, List<Long> idReceivers, String msg) {

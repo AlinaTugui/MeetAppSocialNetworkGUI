@@ -1,5 +1,6 @@
 package socialnetwork.service;
 
+import socialnetwork.domain.Grup;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.repository.Repository0;
 
@@ -16,7 +17,7 @@ public class ServiceUtilizator {
     }
 
     public Utilizator addUtilizator(String firstName, String lastName, String email, String password) {
-        Utilizator u = new Utilizator(0L, firstName, lastName, email, password, new ArrayList<>(), null);
+        Utilizator u = new Utilizator(0L, firstName, lastName, email, password, null);
         return repo.save(u);
     }
 
@@ -30,7 +31,7 @@ public class ServiceUtilizator {
     }
 
     public Utilizator updateUtilizator(Long id, String firstName, String lastName, String email, String password, String image_path) {
-        Utilizator u = new Utilizator(id, firstName, lastName, email, password, new ArrayList<>(), image_path);
+        Utilizator u = new Utilizator(id, firstName, lastName, email, password, image_path);
         return repo.update(u);
     }
     public Utilizator updateUtilizator(Utilizator u) {
@@ -46,7 +47,7 @@ public class ServiceUtilizator {
         List<Utilizator> res = new ArrayList<>();
         for (Utilizator u : all) {
             if (u.getFirstName().equals(firstName) && u.getLastName().equals(lastName))
-                res.add(new Utilizator(u.getId(), u.getFirstName(), u.getLastName(), u.getEmail(), u.getPassword(), u.getGrupuri(), u.getImage_path()));
+                res.add(new Utilizator(u.getId(), u.getFirstName(), u.getLastName(), u.getEmail(), u.getPassword(), u.getImage_path()));
         }
         return res;
     }
@@ -61,5 +62,6 @@ public class ServiceUtilizator {
         }
         return res;
     }
+
 }
 
