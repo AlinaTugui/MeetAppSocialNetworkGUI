@@ -53,9 +53,10 @@ public class ChatUserPaneController implements Initializable{
         else
             this.ora.setText(DateTimeFormatter.ofPattern("hh:mm")
                     .format(mesajConv.getDateTime().toLocalTime()).toString());
-        this.user = mesajConv.getFrom();
         if(mesajConv.getToGroup() == null) this.poza.setFill(MainViewController.changeImage(mesajConv.getFrom().getId()));
         else this.poza.setFill(MainViewController.ImageGrup());
+        this.user= mesajConv.getFrom();
+        this.grup = mesajConv.getToGroup();
         this.chatPaneController = chatPaneController;
     }
 
@@ -70,7 +71,7 @@ public class ChatUserPaneController implements Initializable{
 
 
     public void openUserChat(MouseEvent mouseEvent) {
-        if(user != null) chatPaneController.changeRightPane(user);
+        if(grup == null) chatPaneController.changeRightPane(user);
         else chatPaneController.chatRightPane(grup);
     }
 

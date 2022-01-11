@@ -72,12 +72,14 @@ public class ChatMessagesPaneController implements Initializable {
 
     public void setValues(Utilizator user2) {
         this.nume.setText(user2.getFirstName() + " " + user2.getLastName());
+        this.imagine.setFill(MainViewController.changeImage(user2.getId()));
         this.user2 = user2;
         load_messages();
     }
 
     public void setValues(Grup grup) {
         this.nume.setText(grup.getNume());
+        this.imagine.setFill(MainViewController.ImageGrup());
         this.grup = grup;
         load_messages_grup();
     }
