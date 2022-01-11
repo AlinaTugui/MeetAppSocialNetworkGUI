@@ -13,9 +13,11 @@ import socialnetwork.service.ServiceManager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.stream.StreamSupport;
 
 public class ChatPaneController implements Initializable {
     private ServiceManager sM=ServiceManager.getInstance();
@@ -57,8 +59,11 @@ public class ChatPaneController implements Initializable {
     }
 
     private void loadContacteSiGrupuriCuCareAiMesaje() {
-        List<Utilizator> listaUseri = sM.getSrvMesaje().ultimulMesajDeLaToateContacteleUnuiUser(MainViewController.getIdLogin());
-        for(Utilizator u : listaUseri){
+        List<Utilizator> listaUseriCuMesaje = sM.getSrvMesaje().ultimulMesajDeLaToateContacteleUnuiUser(MainViewController.getIdLogin());
+        Iterable<Utilizator> lista = sM.getSrvUtilizator().findAll();
+        //List<Utilizator> lista = StreamSupport.stream(lista.spliterator());
+        //List<Utilizator> listaToti = new ArrayList<>(){{addAll(listaUseriCuMesaje);addAll(listaUseri);}}
+        for(Utilizator u : listaUseriCuMesaje){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
             Parent root = null;
             try {

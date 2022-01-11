@@ -26,8 +26,9 @@ public class MainViewController {
     public AnchorPane rightPane;
 
     private void changeImage(){
-        String path = "file:///" + sM.getSrvUtilizator().findOne(idLogin).getImage_path();
-        if(path == null) return;
+        String imgPath = sM.getSrvUtilizator().findOne(idLogin).getImage_path();
+        if(imgPath == null) return;
+        String path = "file:///" + imgPath;
         Image img = new Image(path,false);
         pozaLogat.setFill(new ImagePattern(img));
     }
