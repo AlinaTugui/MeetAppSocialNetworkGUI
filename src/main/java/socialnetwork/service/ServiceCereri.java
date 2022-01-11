@@ -106,5 +106,13 @@ public class ServiceCereri {
         }
         return null;
     }
+    public Cerere findOneStatus(Long idSender, Long idReceiver, String status) {
+        List<Cerere> res = repoCereri.findAll();
+        for(Cerere c : res) {
+            if(c.getTo().equals(idReceiver) && c.getFrom().equals(idSender) && c.getStatus().equals(status))
+                return c;
+        }
+        return null;
+    }
 }
 

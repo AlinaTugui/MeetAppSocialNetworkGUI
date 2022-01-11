@@ -2,6 +2,7 @@ package com.example.lab6v2;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -127,5 +128,10 @@ public class FriendRequestsControllerNew {
                 }
         );
         return unsendButton;
+    }
+
+    public void onBtnRefresh(ActionEvent actionEvent) {
+        sentReqObservableList.setAll(loadSentRequests());
+        recReqObservableList.setAll(loadReceivedRequests());
     }
 }
