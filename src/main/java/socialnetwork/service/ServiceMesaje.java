@@ -1,9 +1,7 @@
 package socialnetwork.service;
 
-import socialnetwork.domain.MesajConv;
-import socialnetwork.domain.Prietenie;
-import socialnetwork.domain.Tuple;
-import socialnetwork.domain.Utilizator;
+import com.example.lab6v2.MainViewController;
+import socialnetwork.domain.*;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.database.GrupDbRepo;
 import socialnetwork.repository.database.MesajeDbRepo;
@@ -39,6 +37,11 @@ public class ServiceMesaje {
     public List<MesajConv> ultimulMesajDeLaToateContacteleUnuiUser(Long id) {
         return repoMsgCoresp.ultimulMesajDeLaToateContacteleUnuiUser(id);
     }
+
+    public List<MesajConv> ultimulMesajDeLaToateGrupurileUnuiUser(List<Long> idGrupuri){
+        return repoMsgCoresp.ultimulMesajDeLaToateGrupurileUnuiUser(idGrupuri);
+    }
+
 
     public void adaugaMesaj(Long idSender, List<Long> idReceivers, String msg) {
         if (repoUtilizator.findOne(idSender) == null) throw new ServiceException("Nu exista acesti utilizatori!");

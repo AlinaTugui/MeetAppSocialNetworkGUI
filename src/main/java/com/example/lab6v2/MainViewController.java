@@ -33,6 +33,12 @@ public class MainViewController {
         return new ImagePattern(img);
     }
 
+    static ImagePattern ImageGrup(){
+        String path = "file:///C:\\Users\\turtu\\Desktop\\Lucrari\\IntelliGay\\Lab6v2\\imaginiUseri\\default-group-image.png";
+        Image img = new Image(path,false);
+        return new ImagePattern(img);
+    }
+
     public void setValues() {
         Utilizator u = sM.getSrvUtilizator().findOne(idLogin);
         numeLogat.setText(u.getFirstName() + " " + u.getLastName());

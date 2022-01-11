@@ -91,14 +91,6 @@ public class MesajeDbRepo {
     }
 
     public List<MesajConv> ultimulMesajDeLaToateContacteleUnuiUser(Long id){
-//        String sql = "select (case when id_sender < id_receiver then id_sender else id_receiver end) as id_sender, "+
-//                "(case when id_sender < id_receiver then id_receiver else id_sender end) as id_receiver, "+
-//                "msg, timestamp "+
-//                "from mesaje " +
-//                "where id_sender=? or id_receiver=? " +
-//                "group by (case when id_sender < id_receiver then id_sender else id_receiver end), " +
-//                "(case when id_sender < id_receiver then id_receiver else id_sender end) " +
-//                "order by MAX(TIMESTAMP);";
         String sql= "SELECT  * "+
         "FROM ( "+
         "SELECT  *, "+
@@ -108,7 +100,8 @@ public class MesajeDbRepo {
         "ORDER BY timestamp DESC) rn "+
         "FROM  mesaje where id_sender=? or id_receiver=? "+
         ") q "+
-        "WHERE   rn = 1 ";
+        "WHERE   rn = 1 " +
+                "order by timestamp desc";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -126,7 +119,6 @@ public class MesajeDbRepo {
             return listMesaje;
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("mda");
         }
         return null;
     }
@@ -165,6 +157,38 @@ public class MesajeDbRepo {
                         rs.getTimestamp("timestamp").toLocalDateTime()));
             }
             return listConv;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<MesajConv> ultimulMesajDeLaToateGrupurileUnuiUser(List<Long> idGrupuri){
+        String sql= "SELECT  * "+
+                "FROM ( "+
+                "SELECT  *, "+
+                "ROW_NUMBER() OVER (PARTITION BY "+
+                "id_grup " +
+                "ORDER BY timestamp DESC) rn "+
+                "FROM  mesaje_grup"+
+                ") q "+
+                "WHERE   rn = 1 " +
+                "order by timestamp desc";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            List<MesajConv> listMesaje = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                if(!idGrupuri.contains(rs.getLong("id_grup"))) continue;
+                listMesaje.add(new MesajConv(
+                        ServiceManager.getInstance().getSrvUtilizator().findOne(rs.getLong("id_sender")),
+                        ServiceManager.getInstance().getSrvGrup().findOne(rs.getLong("id_grup")),
+                        rs.getString("msg"), rs.getTimestamp("timestamp").toLocalDateTime() ));
+            }
+            return listMesaje;
         } catch (SQLException e) {
             e.printStackTrace();
         }

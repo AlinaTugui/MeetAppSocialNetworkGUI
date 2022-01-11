@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public class MesajConv extends Entity<Long> {
     Utilizator from;
-    Grup fromG;
+    Grup toGroup;
     String msg;
     LocalDateTime dateTime;
 
@@ -13,6 +13,21 @@ public class MesajConv extends Entity<Long> {
         this.from = from;
         this.msg = msg;
         this.dateTime = dateTime;
+    }
+
+    public MesajConv(Utilizator from, Grup toGroup, String msg, LocalDateTime dateTime) {
+        this.from = from;
+        this.toGroup = toGroup;
+        this.msg = msg;
+        this.dateTime = dateTime;
+    }
+
+    public Grup getToGroup() {
+        return toGroup;
+    }
+
+    public void setToGroup(Grup toGroup) {
+        this.toGroup = toGroup;
     }
 
     public Utilizator getFrom() {

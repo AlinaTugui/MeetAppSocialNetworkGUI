@@ -96,8 +96,24 @@ public class ChatPaneController implements Initializable {
         }
 
         List<Long> grupuri = sM.getSrvGrup().findGrupuriUser(MainViewController.getIdLogin());
-        for(Long idGrup : grupuri){
-            Grup grup = sM.getSrvGrup().findOne(idGrup);
+        List<MesajConv> grupuriCuMesaje = sM.getSrvMesaje().ultimulMesajDeLaToateGrupurileUnuiUser(grupuri);
+
+        for(MesajConv mesajConv : grupuriCuMesaje){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
+            Parent root = null;
+            try {
+                root = (Parent) loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ChatUserPaneController ctrl = loader.getController();
+            ctrl.setValues(mesajConv,this);
+            chatLeftBottomVbox.getChildren().add(root);
+        }
+        grupuriCuMesaje.stream().map(x -> x.getToGroup().getId());
+        List<Grup> grupuriFaraMesaje = grupuri.stream().filter(idGrup -> grupuriCuMesaje.contains(idGrup))
+                .map(idGrup -> sM.getSrvGrup().findOne(idGrup)).toList();
+        for(Grup grup : grupuriFaraMesaje){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
             Parent root = null;
             try {
@@ -107,7 +123,6 @@ public class ChatPaneController implements Initializable {
             }
             ChatUserPaneController ctrl = loader.getController();
             ctrl.setValues(grup,this);
-
             chatLeftBottomVbox.getChildren().add(root);
         }
     }

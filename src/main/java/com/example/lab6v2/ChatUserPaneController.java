@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import socialnetwork.Main;
 import socialnetwork.domain.Grup;
 import socialnetwork.domain.MesajConv;
 import socialnetwork.domain.Utilizator;
@@ -43,22 +44,27 @@ public class ChatUserPaneController implements Initializable{
     }
 
     public void setValues(MesajConv mesajConv, ChatPaneController chatPaneController){
-        this.nume.setText(mesajConv.getFrom().getFirstName() + " " + mesajConv.getFrom().getLastName());
+        if(mesajConv.getToGroup() == null) this.nume.setText(mesajConv.getFrom().getFirstName() + " " + mesajConv.getFrom().getLastName());
+        else this.nume.setText(mesajConv.getToGroup().getNume());
         this.mesaj.setText(mesajConv.getMsg());
         if(Duration.between(mesajConv.getDateTime(),LocalDateTime.now()).toDays() >= 1 )
-            this.ora.setText(DateTimeFormatter.ofPattern("dd:MM")
+            this.ora.setText(DateTimeFormatter.ofPattern("dd/MM")
                     .format(mesajConv.getDateTime().toLocalDate()).toString());
         else
             this.ora.setText(DateTimeFormatter.ofPattern("hh:mm")
                     .format(mesajConv.getDateTime().toLocalTime()).toString());
         this.user = mesajConv.getFrom();
-        this.poza.setFill(MainViewController.changeImage(mesajConv.getFrom().getId()));
+        if(mesajConv.getToGroup() == null) this.poza.setFill(MainViewController.changeImage(mesajConv.getFrom().getId()));
+        else this.poza.setFill(MainViewController.ImageGrup());
         this.chatPaneController = chatPaneController;
     }
 
     public void setValues(Grup g, ChatPaneController chatPaneController){
         this.nume.setText(g.getNume());
         this.grup = g;
+        this.poza.setFill(MainViewController.ImageGrup());
+        this.mesaj.setVisible(false);
+        this.ora.setVisible(false);
         this.chatPaneController = chatPaneController;
     }
 
