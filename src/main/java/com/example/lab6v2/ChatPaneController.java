@@ -13,10 +13,9 @@ import socialnetwork.service.ServiceManager;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 public class ChatPaneController implements Initializable {
@@ -60,10 +59,14 @@ public class ChatPaneController implements Initializable {
 
     private void loadContacteSiGrupuriCuCareAiMesaje() {
         List<Utilizator> listaUseriCuMesaje = sM.getSrvMesaje().ultimulMesajDeLaToateContacteleUnuiUser(MainViewController.getIdLogin());
-        Iterable<Utilizator> lista = sM.getSrvUtilizator().findAll();
-        //List<Utilizator> lista = StreamSupport.stream(lista.spliterator());
-        //List<Utilizator> listaToti = new ArrayList<>(){{addAll(listaUseriCuMesaje);addAll(listaUseri);}}
-        for(Utilizator u : listaUseriCuMesaje){
+        List<Utilizator> listUseriFaraMesaje = new ArrayList<>();
+        Iterable<Long> l =sM.getSrvPrietenie().findAllUser(MainViewController.getIdLogin());
+        l.forEach(x -> listUseriFaraMesaje.add(sM.getSrvUtilizator().findOne(x)));
+        List<Utilizator> listUseriFaraMesaje2 = listUseriFaraMesaje.stream().filter(val -> !listaUseriCuMesaje.contains(val)).toList();
+        List<Utilizator> listaToti = new ArrayList<>(){{addAll(listaUseriCuMesaje);
+            addAll(listUseriFaraMesaje2);
+        }};
+        for(Utilizator u : listaToti){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
             Parent root = null;
             try {
