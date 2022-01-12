@@ -14,6 +14,7 @@ import socialnetwork.service.ServiceManager;
 import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 
@@ -89,17 +90,25 @@ public class MainViewController {
             return;
         }
         File file = chooser.getSelectedFile();
-        String path = "C:\\Users\\turtu\\Desktop\\Lucrari\\IntelliGay\\Lab6v2\\imaginiUseri\\Imagini\\";
-        String newPath = path + imgNr + ".png";
-        Files.copy(file.toPath(),
-                (new File(newPath)).toPath(),
-                StandardCopyOption.REPLACE_EXISTING);
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("imaginiUseri/ImagineNr.txt"));
-        bufferedWriter.write(String.valueOf(imgNr+1));
-        bufferedWriter.close();
-        Utilizator u = sM.getSrvUtilizator().findOne(idLogin);
-        u.setImage_path(newPath);
-        sM.getSrvUtilizator().updateUtilizator(u);
+        String pathUser = sM.getSrvUtilizator().findOne(idLogin).getImage_path();
+        if(pathUser == null){
+            pathUser = "C:\\Users\\turtu\\Desktop\\Lucrari\\IntelliGay\\Lab6v2\\imaginiUseri\\Imagini\\" +
+                    imgNr +".png";
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("imaginiUseri/ImagineNr.txt"));
+            bufferedWriter.write(String.valueOf(imgNr+1));
+            bufferedWriter.close();
+            Files.copy(file.toPath(),
+                    (new File(pathUser)).toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Utilizator u = sM.getSrvUtilizator().findOne(idLogin);
+            u.setImage_path(pathUser);
+            sM.getSrvUtilizator().updateUtilizator(u);
+        }
+        else{
+            Files.copy(file.toPath(),
+                    Path.of(pathUser),
+                    StandardCopyOption.REPLACE_EXISTING);
+        }
         pozaLogat.setFill( changeImage(idLogin));
     }
 }

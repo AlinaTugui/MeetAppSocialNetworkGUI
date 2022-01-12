@@ -15,6 +15,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import socialnetwork.domain.Grup;
@@ -22,6 +24,7 @@ import socialnetwork.domain.MesajConv;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.service.ServiceManager;
 
+import javax.swing.text.StyledEditorKit;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +55,7 @@ public class ChatMessagesPaneController implements Initializable {
             if (mesaj.getFrom().getId() == MainViewController.getIdLogin()) {
                 addMsgSenderToGUI(mesaj.getMsg());
             } else {
-                addMsgReceiverToGUI(mesaj.getMsg());
+                addMsgReceiverToGUI(mesaj);
             }
         }
     }
@@ -65,7 +68,7 @@ public class ChatMessagesPaneController implements Initializable {
             if (Objects.equals(mesaj.getFrom().getId(), MainViewController.getIdLogin())) {
                 addMsgSenderToGUI(mesaj.getMsg());
             } else {
-                addMsgReceiverToGUI(mesaj.getMsg());
+                addMsgReceiverToGUI(mesaj);
             }
         }
     }
@@ -89,7 +92,7 @@ public class ChatMessagesPaneController implements Initializable {
             HBox hBox = new HBox();
             hBox.onMouseEnteredProperty();
             hBox.setAlignment(Pos.CENTER_RIGHT);
-            hBox.setPadding(new Insets(5, 5, 5, 10));
+            hBox.setPadding(new Insets(0, 5, 5, 10));
 
             Text text = new Text(mesaj);
             TextFlow textFlow = new TextFlow(text);
@@ -106,17 +109,26 @@ public class ChatMessagesPaneController implements Initializable {
         }
     }
 
-    private void addMsgReceiverToGUI(String mesaj) {
+    private void addMsgReceiverToGUI(MesajConv mesaj) {
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPadding(new Insets(5, 5, 5, 10));
 
-        Text text = new Text(mesaj);
+        Text text = new Text(mesaj.getMsg());
         TextFlow textFlow = new TextFlow(text);
         textFlow.setStyle("-fx-color: rgb(233,233,235);" +
+                "-fx-background-color: rgb(203,206,218);" +
                 "-fx-background-radius: 20px;");
 
         textFlow.setPadding(new Insets(5, 10, 5, 10));
+
+        if(mesaj.getToGroup() != null) {
+            Text nume = new Text(mesaj.getFrom().getFirstName() + " " + mesaj.getFrom().getLastName() + ":");
+            TextFlow numeFlow = new TextFlow(nume);
+            numeFlow.setPadding(new Insets(0, 0, 0, 10));
+            numeFlow.setStyle("-fx-font-weight: bold");;
+            vbox_messages.getChildren().add(numeFlow);
+        }
         hBox.getChildren().add(textFlow);
         vbox_messages.getChildren().add(hBox);
     }

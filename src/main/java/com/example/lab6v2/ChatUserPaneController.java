@@ -17,6 +17,7 @@ import socialnetwork.domain.Utilizator;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -47,7 +48,7 @@ public class ChatUserPaneController implements Initializable{
         if(mesajConv.getToGroup() == null) this.nume.setText(mesajConv.getFrom().getFirstName() + " " + mesajConv.getFrom().getLastName());
         else this.nume.setText(mesajConv.getToGroup().getNume());
         this.mesaj.setText(mesajConv.getMsg());
-        if(Duration.between(mesajConv.getDateTime(),LocalDateTime.now()).toDays() >= 1 )
+        if(mesajConv.getDateTime().toLocalDate().compareTo(LocalDate.now()) != 0 )
             this.ora.setText(DateTimeFormatter.ofPattern("dd/MM")
                     .format(mesajConv.getDateTime().toLocalDate()).toString());
         else

@@ -140,7 +140,7 @@ public class MesajeDbRepo {
     }
 
     public List<MesajConv> afisareConversatieGrup(Grup g){
-        String sql = "select id_sender ,msg, timestamp from mesaje_grup " +
+        String sql = "select id_sender, id_grup ,msg, timestamp from mesaje_grup " +
                 "where id_grup=? " +
                 "order by timestamp";
 
@@ -153,6 +153,7 @@ public class MesajeDbRepo {
 
             while(rs.next()){
                 listConv.add(new MesajConv( new Utilizator(Long.valueOf(rs.getLong("id_sender")),null,null,null,null,null),
+                        ServiceManager.getInstance().getSrvGrup().findOne(rs.getLong("id_grup")),
                         rs.getString("msg"),
                         rs.getTimestamp("timestamp").toLocalDateTime()));
             }
