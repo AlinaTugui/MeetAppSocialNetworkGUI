@@ -130,7 +130,6 @@ public class EventsController {
     }
 
     private void load(List<Event> events) {
-        //List<Event> events = sM.getSrvEvents().getAllEvents();
         System.out.println(events);
         for(Event e:events) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("eventCellView.fxml"));

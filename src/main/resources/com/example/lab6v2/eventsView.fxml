@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="429.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.EventsController">
+<AnchorPane prefHeight="429.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.EventsController">
    <children>
       <TextField fx:id="textFieldSearchEvent" layoutX="379.0" layoutY="20.0" prefHeight="25.0" prefWidth="217.0" />
       <Label layoutX="291.0" layoutY="24.0" prefHeight="17.0" prefWidth="81.0" text="Search Event">
@@ -20,9 +20,9 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="eventsScrollPane" layoutX="293.0" layoutY="58.0" prefHeight="362.0" prefWidth="303.0">
+      <ScrollPane fx:id="eventsScrollPane" layoutX="293.0" layoutY="58.0" prefHeight="362.0" prefWidth="324.0">
          <content>
-            <VBox fx:id="eventsVBox" prefHeight="359.0" prefWidth="302.0" />
+            <VBox fx:id="eventsVBox" prefHeight="361.0" prefWidth="324.0" />
          </content>
       </ScrollPane>
       <Line endX="-100.0" endY="384.0" layoutX="375.0" layoutY="39.0" startX="-100.0" startY="-33.0" />

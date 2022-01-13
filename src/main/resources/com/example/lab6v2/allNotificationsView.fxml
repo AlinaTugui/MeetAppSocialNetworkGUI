@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="371.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.AllNotificationsController">
+<AnchorPane prefHeight="421.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.AllNotificationsController">
    <children>
-      <ScrollPane fx:id="scrollPane" layoutX="26.0" layoutY="60.0" prefHeight="294.0" prefWidth="465.0">
+      <ScrollPane fx:id="scrollPane" layoutX="26.0" layoutY="60.0" prefHeight="349.0" prefWidth="445.0">
          <content>
-            <VBox fx:id="vBox" prefHeight="293.0" prefWidth="463.0" />
+            <VBox fx:id="vBox" prefHeight="352.0" prefWidth="445.0" />
          </content>
       </ScrollPane>
       <Label layoutX="202.0" layoutY="28.0" prefHeight="21.0" prefWidth="90.0" text="Notifications">

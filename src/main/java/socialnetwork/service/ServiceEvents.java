@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ServiceEvents {
     private EventsDbRepo repo;
@@ -54,7 +55,15 @@ public class ServiceEvents {
                     notifications.add(new Notification(notificationTimer.getMessage(),notifyTime,e.getName()));
             }
         }
-        return notifications;
+        return notifications.stream().sorted((a,b)-> {
+            LocalDateTime timeA = a.getTime();
+            LocalDateTime timeB = b.getTime();
+            if(timeA.isAfter(timeB))
+                return -1;
+            if(timeB.isAfter(timeA))
+                return 1;
+            return 0;
+        }).collect(Collectors.toList());
     }
 
     private LocalDateTime findSubscriptionDate(Long idEvent) {

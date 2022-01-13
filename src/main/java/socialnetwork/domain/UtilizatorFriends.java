@@ -2,7 +2,6 @@ package socialnetwork.domain;
 
 import javafx.scene.control.Button;
 
-import java.util.Objects;
 
 public class UtilizatorFriends extends Entity<Long>{
     private String firstName;
