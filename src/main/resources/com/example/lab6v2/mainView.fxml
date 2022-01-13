@@ -43,7 +43,12 @@
                                        <Button mnemonicParsing="false" onAction="#openEvents" text="Events" />
                                     </children>
                                  </HBox>
-                                 <Button mnemonicParsing="false" onAction="#openAddFriends" text="Add friends" />
+                                 <HBox prefHeight="42.0" prefWidth="145.0">
+                                    <children>
+                                       <Button mnemonicParsing="false" onAction="#openAddFriends" prefHeight="48.0" prefWidth="77.0" text="Add friends" textAlignment="CENTER" wrapText="true" />
+                                       <Button mnemonicParsing="false" onAction="#openNotifications" prefHeight="47.0" prefWidth="69.0" text="Notificari" wrapText="true" />
+                                    </children>
+                                 </HBox>
                                   <Button onAction="#openFriendRequests" prefHeight="21.0" prefWidth="98.0" text="Friend requests" />
                                  <Button fx:id="rapoarte" mnemonicParsing="false" text="Rapoarte" />
                                  <Button mnemonicParsing="false" onAction="#logout" text="Logout" />

@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="371.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.NotificationsView">
+<AnchorPane prefHeight="371.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.AllNotificationsController">
    <children>
-      <ScrollPane layoutX="108.0" layoutY="57.0" prefHeight="296.0" prefWidth="278.0">
+      <ScrollPane fx:id="scrollPane" layoutX="26.0" layoutY="60.0" prefHeight="294.0" prefWidth="465.0">
          <content>
-            <VBox prefHeight="295.0" prefWidth="277.0" />
+            <VBox fx:id="vBox" prefHeight="293.0" prefWidth="463.0" />
          </content>
       </ScrollPane>
       <Label layoutX="202.0" layoutY="28.0" prefHeight="21.0" prefWidth="90.0" text="Notifications">
@@ -20,6 +19,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="413.0" layoutY="26.0" mnemonicParsing="false" text="Refresh" />
+      <Button fx:id="refreshButton" layoutX="413.0" layoutY="26.0" mnemonicParsing="false" onAction="#onRefreshButton" text="Refresh" />
    </children>
 </AnchorPane>

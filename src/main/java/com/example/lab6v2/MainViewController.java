@@ -104,4 +104,8 @@ public class MainViewController {
     public void openEvents(ActionEvent actionEvent) throws IOException{
         changeRightPane("eventsView.fxml");
     }
+
+    public void openNotifications(ActionEvent actionEvent) throws IOException{
+        changeRightPane("allNotificationsView.fxml");
+    }
 }

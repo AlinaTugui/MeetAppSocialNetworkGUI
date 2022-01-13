@@ -1,22 +1,17 @@
 package socialnetwork.repository.database;
-
-import socialnetwork.domain.Cerere;
 import socialnetwork.domain.Event;
-import socialnetwork.domain.Utilizator;
 import socialnetwork.repository.RepositoryException;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class EventsDbRepo {
 
-    private String url;
-    private String username;
-    private String password;
+    private final String url;
+    private final String username;
+    private final String password;
 
     public EventsDbRepo(String url, String username, String password) {
         this.url = url;
@@ -35,6 +30,7 @@ public class EventsDbRepo {
         event.setId(id);
         return event;
     }
+
     public void save(Event event) {
         String sql1 = "select * from events where name=?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
@@ -42,7 +38,7 @@ public class EventsDbRepo {
             ps.setString(1, event.getName());
 
             ResultSet resultSet = ps.executeQuery();
-            if(resultSet.next()) throw new RepositoryException("Event existent!");
+            if (resultSet.next()) throw new RepositoryException("Event existent!");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -51,7 +47,7 @@ public class EventsDbRepo {
 
         Integer id;
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, event.getName());
             ps.setString(2, event.getDescription());
@@ -59,9 +55,9 @@ public class EventsDbRepo {
             ps.setTimestamp(4, Timestamp.valueOf(event.getEndDate()));
             ps.setString(5, event.getCreator());
             ps.executeUpdate();
-            ResultSet rs= ps.getGeneratedKeys();
+            ResultSet rs = ps.getGeneratedKeys();
             rs.next();
-            id=rs.getInt(1);
+            id = rs.getInt(1);
             event.setId(id.longValue());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,7 +72,7 @@ public class EventsDbRepo {
             ps.setInt(1, idEvent.intValue());
             ps.setInt(2, idUser.intValue());
             ResultSet resultSet = ps.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 return idUser;
             }
         } catch (SQLException e) {
@@ -85,15 +81,16 @@ public class EventsDbRepo {
         return null;
     }
 
-    public void addUserToEvent(Long idUser, Long idEvent) {
-        String sql = "insert into events_users (id_event,id_user) values (?, ?)";
+    public void addUserToEvent(Long idUser, Long idEvent,LocalDateTime timestamp) {
+        String sql = "insert into events_users (id_event,id_user,subscription_date) values (?, ?,?)";
 
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
 
-            ps.setInt(1,idEvent.intValue());
-            ps.setInt(2,idUser.intValue());
+            ps.setInt(1, idEvent.intValue());
+            ps.setInt(2, idUser.intValue());
+            ps.setTimestamp(3,Timestamp.valueOf(timestamp));
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -114,25 +111,76 @@ public class EventsDbRepo {
             e.printStackTrace();
         }
     }
+
     public List<Event> getAll() {
         List<Event> events = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement statement = connection.prepareStatement("SELECT * from events");
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
-               /* String name = resultSet.getString("name");
-                String description = resultSet.getString("description");
-                String creator = resultSet.getString("creator");
-                LocalDateTime startDate = resultSet.getTimestamp("start_date").toLocalDateTime();
-                LocalDateTime endDate = resultSet.getTimestamp("end_date").toLocalDateTime();*/
-                /*Event event = new Event(name, description, startDate, endDate, creator);
-                events.add(event);*/
-                events.add(0,extractEntityFromResultSetEntry(resultSet));
+                Long idEvent = resultSet.getLong("id");
+                events.add(0, extractEvent(idEvent));
             }
             return events;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return events;
+    }
+
+    private Event extractEvent(Long idEvent) {
+        Event e = null;
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement("SELECT * from events where id=?")) {
+            statement.setInt(1, idEvent.intValue());
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String name=resultSet.getString("name");
+                String description=resultSet.getString("description");
+                String creator=resultSet.getString("creator");
+                LocalDateTime startDate = resultSet.getTimestamp("start_date").toLocalDateTime();
+                LocalDateTime endDate = resultSet.getTimestamp("end_date").toLocalDateTime();
+                e = new Event(name,description,startDate,endDate,creator);
+                e.setId(idEvent);
+            }
+            return e;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return e;
+    }
+
+    public List<Event> getAllEventsUser(Long idUser) {
+        List<Event> res = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement("SELECT * from events_users where id_user=?")) {
+            statement.setInt(1, idUser.intValue());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Long idEvent = resultSet.getLong("id_event");
+                res.add(0,extractEvent(idEvent));
+            }
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public LocalDateTime findSubscriptionDate(Long idEvent, Long idUser) {
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement("SELECT * from events_users where id_event=? and id_user=?")) {
+            statement.setInt(2, idUser.intValue());
+            statement.setInt(1, idEvent.intValue());
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                LocalDateTime timestamp = resultSet.getTimestamp("subscription_date").toLocalDateTime();
+                return timestamp;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
