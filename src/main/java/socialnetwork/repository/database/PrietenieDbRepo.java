@@ -1,10 +1,12 @@
 package socialnetwork.repository.database;
 
+import com.example.lab6v2.MainViewController;
 import socialnetwork.domain.*;
 import socialnetwork.domain.Prietenie;
 import socialnetwork.domain.validators.Validator;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.RepositoryException;
+import socialnetwork.service.ServiceManager;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -105,6 +107,32 @@ public class PrietenieDbRepo {
                 pritenii.add(id1);
             }
             return pritenii;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Iterable<Raport> findAllUserDate(Long id, LocalDate d1, LocalDate d2) {
+        Set<Raport> rapoarte = new HashSet<>();
+        String sql = "select id1, id2, date from friends where date >= ? and date <= ? and (id1=? or id2=?) " +
+                "order by date asc";
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement(sql)){
+
+            statement.setDate(1, Date.valueOf(d1));
+            statement.setDate(2, Date.valueOf(d2));
+            statement.setLong(3, id);
+            statement.setLong(4, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Long idOther = (id == resultSet.getLong("id1"))?
+                        resultSet.getLong("id2"):resultSet.getLong("id1");
+                Utilizator u = ServiceManager.getInstance().getSrvUtilizator().findOne(idOther);
+                rapoarte.add(new Raport("Te-ai imprieteni cu " + u.getFirstName() + " " + u.getLastName(),
+                        resultSet.getDate("date").toLocalDate()));
+            }
+            return rapoarte;
         } catch (SQLException e) {
             e.printStackTrace();
         }

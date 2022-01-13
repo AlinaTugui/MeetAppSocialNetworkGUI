@@ -5,7 +5,9 @@ import socialnetwork.domain.validators.Validator;
 import socialnetwork.service.ServiceManager;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -194,5 +196,35 @@ public class MesajeDbRepo {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<Raport> afisareConversatiiUseriData(Long id, LocalDate d1, LocalDate d2){
+        LocalDateTime d11 = d1.atTime(LocalTime.MIN);
+        LocalDateTime d22 = d2.atTime(LocalTime.MAX);
+        String sql="select id_sender, id_receiver, timestamp from mesaje where timestamp >= ? and timestamp <= ? " +
+                "and (id_sender=? or id_receiver=?) " +
+                "order by timestamp asc";
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            List<Raport> rapoarte = new ArrayList<>();
+            ps.setTimestamp(1, Timestamp.valueOf(d11));
+            ps.setTimestamp(2, Timestamp.valueOf(d22));
+            ps.setLong(3, id);
+            ps.setLong(4, id);
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Long idOther = (id == resultSet.getLong("id_sender"))?
+                        resultSet.getLong("id_receiver"):resultSet.getLong("id_sender");
+                Utilizator u = ServiceManager.getInstance().getSrvUtilizator().findOne(idOther);
+                rapoarte.add(new Raport("Ti-a scris " + u.getFirstName() + " " + u.getLastName(),
+                        resultSet.getDate("timestamp").toLocalDate()));
+            }
+            return rapoarte;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 }

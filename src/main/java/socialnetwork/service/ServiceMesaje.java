@@ -7,6 +7,7 @@ import socialnetwork.repository.database.GrupDbRepo;
 import socialnetwork.repository.database.MesajeDbRepo;
 import socialnetwork.repository.database.PrietenieDbRepo;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,5 +70,9 @@ public class ServiceMesaje {
         List<MesajConv> mesaje = repoMsgCoresp.afisareConversatieGrup(repoGrup.findOne(id2));
         mesaje.forEach(x -> x.setFrom(repoUtilizator.findOne(x.getFrom().getId())));
         return mesaje;
+    }
+
+    public List<Raport> afisareConversatiiUseriData(Long id, LocalDate d1, LocalDate d2) {
+        return repoMsgCoresp.afisareConversatiiUseriData(id, d1, d2);
     }
 }

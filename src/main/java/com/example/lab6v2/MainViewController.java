@@ -79,6 +79,10 @@ public class MainViewController {
         HelloApplication.changeScene("hello-view.fxml", actionEvent, "Main View");
     }
 
+    public void openRapoarte(ActionEvent actionEvent) throws IOException {
+        changeRightPane("rapoarte.fxml");
+    }
+
 
     public void changeImage(ActionEvent actionEvent) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("imaginiUseri/ImagineNr.txt"));
@@ -111,4 +115,6 @@ public class MainViewController {
         }
         pozaLogat.setFill( changeImage(idLogin));
     }
+
+
 }

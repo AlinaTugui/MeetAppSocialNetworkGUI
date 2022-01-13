@@ -32,7 +32,7 @@
                                  <Button mnemonicParsing="false" onAction="#showFriends" text="Friends" />
                                  <Button mnemonicParsing="false" onAction="#openAddFriends" text="Add friends" />
                                   <Button onAction="#openFriendRequests" prefHeight="21.0" prefWidth="98.0" text="Friend requests" />
-                                 <Button fx:id="rapoarte" mnemonicParsing="false" text="Rapoarte" />
+                                 <Button mnemonicParsing="false" onAction="#openRapoarte" text="Rapoarte" />
                                  <Button mnemonicParsing="false" onAction="#logout" text="Logout" />
                               </children>
                            </VBox>
