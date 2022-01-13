@@ -96,4 +96,12 @@ public class MainViewController {
         sM.getSrvUtilizator().updateUtilizator(u);
         changeImage();
     }
+
+    public void btnGroups(ActionEvent actionEvent) throws IOException {
+        changeRightPane("groupView.fxml");
+    }
+
+    public void openEvents(ActionEvent actionEvent) throws IOException{
+        changeRightPane("eventsView.fxml");
+    }
 }
