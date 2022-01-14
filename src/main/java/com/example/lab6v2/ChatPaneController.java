@@ -110,8 +110,8 @@ public class ChatPaneController implements Initializable {
             ctrl.setValues(mesajConv,this);
             chatLeftBottomVbox.getChildren().add(root);
         }
-        grupuriCuMesaje.stream().map(x -> x.getToGroup().getId());
-        List<Grup> grupuriFaraMesaje = grupuri.stream().filter(idGrup -> grupuriCuMesaje.contains(idGrup))
+        List<Long> idGrupuriCuMesaje = grupuriCuMesaje.stream().map(x -> x.getToGroup().getId()).toList();
+        List<Grup> grupuriFaraMesaje = grupuri.stream().filter(idGrup -> !idGrupuriCuMesaje.contains(idGrup))
                 .map(idGrup -> sM.getSrvGrup().findOne(idGrup)).toList();
         for(Grup grup : grupuriFaraMesaje){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chatUserPane.fxml"));
@@ -122,7 +122,7 @@ public class ChatPaneController implements Initializable {
                 e.printStackTrace();
             }
             ChatUserPaneController ctrl = loader.getController();
-            ctrl.setValues(grup,this);
+            ctrl.setValues(grup, this);
             chatLeftBottomVbox.getChildren().add(root);
         }
     }

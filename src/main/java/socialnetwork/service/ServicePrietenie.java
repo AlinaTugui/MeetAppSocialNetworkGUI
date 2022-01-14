@@ -1,10 +1,12 @@
 package socialnetwork.service;
 
 import socialnetwork.domain.Prietenie;
+import socialnetwork.domain.Raport;
 import socialnetwork.domain.Tuple;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.database.PrietenieDbRepo;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,5 +76,9 @@ public class ServicePrietenie {
 
     public Prietenie findOne(Tuple<Long, Long> t) {
         return repoPrietenie.findOne(t);
+    }
+
+    public Iterable<Raport> findAllUserDate(Long id, LocalDate d1, LocalDate d2){
+        return repoPrietenie.findAllUserDate(id, d1, d2);
     }
 }

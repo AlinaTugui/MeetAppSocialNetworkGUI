@@ -19,14 +19,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AddFriendsControllerNew {
-    @FXML
-    private TextField textField = new TextField();
-    @FXML
-    private TableView<UserRecord> tableView =new TableView();
-    @FXML
-    private TableColumn<UserRecord, String> nameColumn = new TableColumn<>("Name");
-    @FXML
-    private TableColumn<UserRecord, Button> addFriendColumn = new TableColumn<>("Add Friend");
+    public TextField textField = new TextField();
+    public TableView<UserRecord> tableView =new TableView();
+    public TableColumn<UserRecord, String> nameColumn = new TableColumn<>("Name");
+    public TableColumn<UserRecord, Button> addFriendColumn = new TableColumn<>("Add Friend");
     private final ObservableList<UserRecord> userRecordList = FXCollections.observableArrayList();
     private final ServiceManager sM = ServiceManager.getInstance();
 

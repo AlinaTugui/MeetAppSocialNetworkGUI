@@ -20,43 +20,30 @@ import java.util.stream.Collectors;
 
 public class EventsController {
     private final ServiceManager sM=ServiceManager.getInstance();
-    @FXML
-    ScrollPane eventsScrollPane;
+    public ScrollPane eventsScrollPane;
 
-    @FXML
-    VBox eventsVBox;
+    public VBox eventsVBox;
 
-    @FXML
-    TextField textFieldSearchEvent;
+    public TextField textFieldSearchEvent;
 
-    @FXML
-    TextField eventNameTextField;
+    public TextField eventNameTextField;
 
-    @FXML
-    TextArea descriptionTextArea;
+    public TextArea descriptionTextArea;
 
-    @FXML
-    DatePicker beginDatePicker;
+    public DatePicker beginDatePicker;
 
-    @FXML
-    DatePicker endDatePicker;
+    public DatePicker endDatePicker;
 
-    @FXML
-    Button createEventButton;
+    public Button createEventButton;
 
-    @FXML
-    ComboBox<String> beginHour;
+    public ComboBox<String> beginHour;
 
-    @FXML
-    ComboBox<String> beginMinute;
+    public ComboBox<String> beginMinute;
 
-    @FXML
-    ComboBox<String> endHour;
+    public ComboBox<String> endHour;
 
-    @FXML
-    ComboBox<String> endMinute;
+    public ComboBox<String> endMinute;
 
-    @FXML
     public void initialize(){
         ObservableList<String> hours = FXCollections.observableArrayList();
         for(int i = 0; i <= 9; i++){
@@ -89,8 +76,7 @@ public class EventsController {
                 .collect(Collectors.toList()));
     }
 
-    @FXML
-    protected void onCreateEventButtonClick(){
+    public void onCreateEventButtonClick(){
         String name = eventNameTextField.getText();
         String description = descriptionTextArea.getText();
         LocalDateTime begin = beginDatePicker.getValue().atTime(Integer.parseInt(beginHour.getValue()), Integer.parseInt(beginMinute.getValue()));

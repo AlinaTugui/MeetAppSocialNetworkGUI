@@ -14,7 +14,7 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <TableView fx:id="table1" layoutX="7.0" layoutY="126.0" prefHeight="311.0" prefWidth="306.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="126.0">
                 <columns>
-                    <TableColumn fx:id="tableType1" prefWidth="232.80001217126846" text="Type" />
+                    <TableColumn fx:id="tableActivity1" prefWidth="232.80001217126846" text="Activitate" />
                     <TableColumn fx:id="tableDate1" minWidth="7.20001220703125" prefWidth="70.40005493164062" text="Date" />
                 </columns>
             </TableView>
@@ -28,9 +28,9 @@
                     <Font size="14.0" />
                 </font>
             </Label>
-            <Button fx:id="exportButton1" layoutX="132.0" layoutY="444.0" mnemonicParsing="false" text="Export PDF" />
-            <TextField fx:id="dateActivity" layoutX="70.0" layoutY="62.0" prefHeight="26.0" prefWidth="165.0" promptText="dd/mm/yy - dd/mm/yy" />
-            <Button fx:id="findButton1" layoutX="266.0" layoutY="62.0" mnemonicParsing="false" text="Find" />
+            <Button layoutX="132.0" layoutY="444.0" mnemonicParsing="false" onAction="#onExportButton1" text="Export PDF" />
+            <TextField fx:id="dateActivity" layoutX="70.0" layoutY="62.0" prefHeight="26.0" prefWidth="165.0" promptText="dd/mm/yyyy - dd/mm/yyyy" />
+            <Button layoutX="266.0" layoutY="62.0" mnemonicParsing="false" onAction="#onFindButton1" text="Find" />
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <Label layoutX="106.0" layoutY="4.0" text="Received messages">
@@ -38,8 +38,8 @@
                     <Font name="System Bold" size="14.0" />
                 </font>
             </Label>
-            <Button fx:id="exportButton2" layoutX="123.0" layoutY="449.0" mnemonicParsing="false" text="Export PDF" />
-            <TextField fx:id="friendName" layoutX="75.0" layoutY="38.0" prefHeight="26.0" prefWidth="158.0" />
+            <Button layoutX="123.0" layoutY="449.0" mnemonicParsing="false" onAction="#onExportButton2" text="Export PDF" />
+            <TextField fx:id="friendName" layoutX="75.0" layoutY="38.0" prefHeight="26.0" prefWidth="166.0" />
             <Label layoutX="14.0" layoutY="88.0" text="Date:">
                 <font>
                     <Font size="14.0" />
@@ -50,8 +50,8 @@
                     <Font size="14.0" />
                 </font>
             </Label>
-            <TextField fx:id="dateMessages" layoutX="75.0" layoutY="85.0" prefHeight="26.0" prefWidth="158.0" promptText="dd/mm/yy - dd/mm/yy" />
-            <Button fx:id="findButton2" layoutX="266.0" layoutY="61.0" mnemonicParsing="false" text="Find" />
+            <TextField fx:id="dateMessages" layoutX="75.0" layoutY="85.0" prefHeight="26.0" prefWidth="166.0" promptText="dd/mm/yyyy - dd/mm/yyyy" />
+            <Button layoutX="266.0" layoutY="61.0" mnemonicParsing="false" onAction="#onFindButton2" text="Find" />
             <TableView fx:id="table2" layoutX="7.0" layoutY="127.0" prefHeight="311.0" prefWidth="306.0">
                 <columns>
                     <TableColumn fx:id="tableMessages2" prefWidth="232.80001217126846" text="Messages" />

@@ -24,6 +24,7 @@ public class HelloApplication extends Application {
 
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("MeetApp");
+
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }

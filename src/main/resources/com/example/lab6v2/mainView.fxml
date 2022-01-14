@@ -128,7 +128,7 @@
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button fx:id="rapoarte" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Reports">
+                                 <Button fx:id="rapoarte" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openRapoarte" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Reports">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>

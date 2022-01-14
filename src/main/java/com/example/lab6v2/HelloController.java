@@ -13,10 +13,8 @@ public class HelloController {
 
     private ServiceManager sM = ServiceManager.getInstance();
 
-    @FXML
-    private Label welcomeText;
-    @FXML
-    private Circle btnClose;
+    public Label welcomeText;
+    public Circle btnClose;
 
     public void openLogin(ActionEvent actionEvent) throws IOException {
         HelloApplication.changeScene("login.fxml", actionEvent,"Login");
