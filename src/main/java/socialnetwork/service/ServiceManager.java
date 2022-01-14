@@ -22,6 +22,7 @@ public class ServiceManager {
     private final ServiceLogin srvLogin;
     private final ServiceCereriPrietenie srvCereriPrietenie;
     private final ServiceGrup srvGrup;
+    private final ServiceEvents srvEvents;
 
     public static ServiceManager getInstance() {
         if(instance == null)  instance = new ServiceManager();
@@ -51,6 +52,7 @@ public class ServiceManager {
         LoginDbRepo repoLogin = new LoginDbRepo(url, user, password);
         GrupDbRepo repoGrup = new GrupDbRepo(url, user, password);
         UseriGrupDbRepo repoUseriGrup = new UseriGrupDbRepo(url, user, password);
+        EventsDbRepo eventsDbRepo = new EventsDbRepo(url, user, password);
         ServiceUtilizator srvUtilizatori = new ServiceUtilizator(repoUtilizator);
         ServicePrietenie srvPrietenie = new ServicePrietenie(repoPrietenie);
         ServiceMesaje srvMesaje = new ServiceMesaje(repoUtilizator, repoGrup, repoPrietenie,
@@ -61,6 +63,7 @@ public class ServiceManager {
         ServiceCereri srvCereri = new ServiceCereri(repoUtilizator,repoPrietenie,repoCereri,srvUtilizatori,srvPrietenie);
         ServiceCereriPrietenie srvCereriPrietenie = new ServiceCereriPrietenie(srvCereri,srvPrietenie);
         ServiceGrup srvGrup = new ServiceGrup(repoUtilizator, repoGrup, repoUseriGrup);
+        ServiceEvents srvEvents = new ServiceEvents(eventsDbRepo);
         this.srvUtilizator = srvUtilizatori;
         this.srvPrietenie = srvPrietenie;
         this.srvPrietenieUtilizator = srvUtilizatoriPrieteni;
@@ -69,10 +72,15 @@ public class ServiceManager {
         this.srvGrup = srvGrup;
         this.srvLogin = srvLogin;
         this.srvCereriPrietenie = srvCereriPrietenie;
+        this.srvEvents = srvEvents;
     }
 
     public ServiceUtilizator getSrvUtilizator() {
         return srvUtilizator;
+    }
+
+    public ServiceEvents getSrvEvents() {
+        return srvEvents;
     }
 
     public ServicePrietenie getSrvPrietenie() {

@@ -39,13 +39,13 @@ public class UseriGrupDbRepo {
     }
 
     public void save(Long idUser, Long idGrup){
-        String sql = "insert into groups (id_grup, id_user) values (?, ?)";
+        String sql = "insert into useri_grup (id_grup, id_user) values (?, ?)";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
 
-            ps.setLong(1, idGrup);
-            ps.setLong(2, idUser);
+            ps.setInt(1, idGrup.intValue());
+            ps.setInt(2, idUser.intValue());
 
             ps.executeUpdate();
         } catch (SQLException e) {

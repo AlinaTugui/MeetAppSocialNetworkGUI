@@ -1,6 +1,5 @@
 package com.example.lab6v2;
 
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +26,7 @@ public class AddFriendsControllerNew {
     private TableColumn<UserRecord, String> nameColumn = new TableColumn<>("Name");
     @FXML
     private TableColumn<UserRecord, Button> addFriendColumn = new TableColumn<>("Add Friend");
-    private ObservableList<UserRecord> userRecordList = FXCollections.observableArrayList();
+    private final ObservableList<UserRecord> userRecordList = FXCollections.observableArrayList();
     private final ServiceManager sM = ServiceManager.getInstance();
 
     @FXML

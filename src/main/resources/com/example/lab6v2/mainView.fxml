@@ -26,14 +26,17 @@
                         </children></AnchorPane>
                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="108.0">
                         <children>
-                           <VBox alignment="CENTER" layoutY="-6.0" prefHeight="196.0" prefWidth="108.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <VBox layoutY="-3.0" prefHeight="303.0" prefWidth="145.0">
                               <children>
-                                 <Button mnemonicParsing="false" onAction="#openChat" text="Chat" />
-                                 <Button mnemonicParsing="false" onAction="#showFriends" text="Friends" />
-                                 <Button mnemonicParsing="false" onAction="#openAddFriends" text="Add friends" />
-                                  <Button onAction="#openFriendRequests" prefHeight="21.0" prefWidth="98.0" text="Friend requests" />
-                                 <Button fx:id="rapoarte" mnemonicParsing="false" text="Rapoarte" />
-                                 <Button mnemonicParsing="false" onAction="#logout" text="Logout" />
+                                 <Button mnemonicParsing="false" onAction="#openNotifications" prefHeight="33.0" prefWidth="145.0" text="Notifications" wrapText="true" />
+                                 <Button mnemonicParsing="false" onAction="#showFriends" prefHeight="33.0" prefWidth="145.0" text="Friends" />
+                                 <Button mnemonicParsing="false" onAction="#openAddFriends" prefHeight="37.0" prefWidth="145.0" text="Add friends" textAlignment="CENTER" wrapText="true" />
+                                  <Button onAction="#openFriendRequests" prefHeight="34.0" prefWidth="145.0" text="Friend requests" />
+                                 <Button mnemonicParsing="false" onAction="#openChat" prefHeight="33.0" prefWidth="145.0" text="Chat" />
+                                 <Button mnemonicParsing="false" onAction="#btnGroups" prefHeight="35.0" prefWidth="145.0" text="Create GroupChat" />
+                                 <Button mnemonicParsing="false" onAction="#openEvents" prefHeight="37.0" prefWidth="145.0" text="Events" />
+                                 <Button fx:id="rapoarte" mnemonicParsing="false" prefHeight="33.0" prefWidth="145.0" text="Reports" />
+                                 <Button mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="145.0" text="Logout" />
                               </children>
                            </VBox>
                         </children>

@@ -76,7 +76,7 @@ public class MainViewController {
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {
-        HelloApplication.changeScene("hello-view.fxml", actionEvent, "Main View");
+        HelloApplication.changeScene("hello-view1.fxml", actionEvent, "Main View");
     }
 
 
@@ -110,5 +110,17 @@ public class MainViewController {
                     StandardCopyOption.REPLACE_EXISTING);
         }
         pozaLogat.setFill( changeImage(idLogin));
+    }
+
+    public void btnGroups(ActionEvent actionEvent) throws IOException {
+        changeRightPane("groupView.fxml");
+    }
+
+    public void openEvents(ActionEvent actionEvent) throws IOException{
+        changeRightPane("eventsView.fxml");
+    }
+
+    public void openNotifications(ActionEvent actionEvent) throws IOException{
+        changeRightPane("allNotificationsView.fxml");
     }
 }

@@ -23,20 +23,25 @@ public class ServiceGrup {
         this.repoUseriGrup = repoUseriGrup;
     }
 
-    public Grup findOne(Long id){
+    public Grup findOne(Long id) {
         return repoGrup.findOne(id);
     }
-    
+
     public void addGrup(String nume, Long id_admin, List<Long> membrii) {
-        if(repoUtilizator.findOne(id_admin) == null) throw new RepositoryException("Id admin invalid!");
-        membrii.forEach(idUser -> {if(repoUtilizator.findOne(idUser) == null) throw new RepositoryException("Iduri membrii invalid!");});
-        Long idGrup = repoGrup.save(new Grup(1L, nume, id_admin)).getId();
-        membrii.forEach(idUser -> repoUseriGrup.save(idGrup, idUser));
+        if (repoUtilizator.findOne(id_admin) == null) throw new RepositoryException("Id admin invalid!");
+        membrii.forEach(idUser -> {
+            if (repoUtilizator.findOne(idUser) == null) throw new RepositoryException("Iduri membrii invalid!");
+        });
+        Grup grup = repoGrup.save(new Grup(null, nume, id_admin));
+        if (grup != null)
+            membrii.forEach(idUser -> repoUseriGrup.save(idUser,grup.getId()));
     }
 
-    public void addMembruInGrup(){}
+    public void addMembruInGrup() {
+    }
 
-    public void stergeMembruDinGrup(){}
+    public void stergeMembruDinGrup() {
+    }
 
     public Iterable<Grup> findAll() {
         return repoGrup.findAll();
@@ -48,7 +53,7 @@ public class ServiceGrup {
     }
 
     public Grup updateGrup(Long id, String nume, Long id_admin) {
-        Grup g = new Grup( id, nume, id_admin);
+        Grup g = new Grup(id, nume, id_admin);
         return repoGrup.update(g);
     }
 

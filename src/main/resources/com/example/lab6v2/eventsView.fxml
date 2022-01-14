@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="490.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.EventsController">
+   <children>
+      <TextField fx:id="textFieldSearchEvent" layoutX="379.0" layoutY="20.0" prefHeight="25.0" prefWidth="217.0" />
+      <Label layoutX="291.0" layoutY="24.0" prefHeight="17.0" prefWidth="81.0" text="Search Event">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="eventsScrollPane" layoutX="293.0" layoutY="58.0" prefHeight="423.0" prefWidth="344.0">
+         <content>
+            <VBox fx:id="eventsVBox" prefHeight="425.0" prefWidth="343.0" />
+         </content>
+      </ScrollPane>
+      <Line endX="-100.0" endY="444.0" layoutX="375.0" layoutY="39.0" startX="-100.0" startY="-33.0" />
+      <Label layoutX="31.0" layoutY="24.0" prefHeight="17.0" prefWidth="167.0" text="Create an Event">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="83.0" text="Event Name" />
+      <TextField fx:id="eventNameTextField" layoutX="93.0" layoutY="83.0" prefHeight="25.0" prefWidth="167.0" />
+      <Label layoutX="23.0" layoutY="129.0" text="Description" />
+      <TextArea fx:id="descriptionTextArea" layoutX="93.0" layoutY="129.0" prefHeight="91.0" prefWidth="167.0" />
+      <Label layoutX="20.0" layoutY="255.0" prefHeight="25.0" prefWidth="66.0" text="Start Time" wrapText="true" />
+      <DatePicker fx:id="beginDatePicker" layoutX="89.0" layoutY="257.0" promptText="dd/mm/yyyy" />
+      <Label layoutX="21.0" layoutY="359.0" prefHeight="25.0" prefWidth="51.0" text="End Time" wrapText="true" />
+      <DatePicker fx:id="endDatePicker" layoutX="89.0" layoutY="359.0" promptText="dd/mm/yyyy" />
+      <ComboBox fx:id="beginHour" layoutX="93.0" layoutY="295.0" prefHeight="25.0" prefWidth="64.0" />
+      <ComboBox fx:id="beginMinute" layoutX="170.0" layoutY="295.0" prefHeight="25.0" prefWidth="64.0" />
+      <Line endX="89.0" layoutX="171.0" layoutY="58.0" startX="-158.0" />
+      <ComboBox fx:id="endHour" layoutX="93.0" layoutY="403.0" prefHeight="25.0" prefWidth="64.0" />
+      <ComboBox fx:id="endMinute" layoutX="170.0" layoutY="403.0" prefHeight="25.0" prefWidth="64.0" />
+      <Button fx:id="createEventButton" layoutX="197.0" layoutY="22.0" mnemonicParsing="false" onAction="#onCreateEventButtonClick" text="Create" />
+   </children>
+</AnchorPane>

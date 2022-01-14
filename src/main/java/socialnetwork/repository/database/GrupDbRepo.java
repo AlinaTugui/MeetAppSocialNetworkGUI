@@ -59,20 +59,20 @@ public class GrupDbRepo implements Repository0<Long, Grup> {
 
     @Override
     public Grup save(Grup entity) {
-
         Integer id=-1;
-        String sql = "insert into groups (name, id_admin) values (?, ?) returning id into id";
-
+        String sql = "insert into groups (name,id_admin) values (?,?)";
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement ps = connection.prepareStatement(sql)) {
-
+             PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, entity.getNume());
-            ps.setLong(2, entity.getIdAdmin());
-
+            ps.setInt(2, entity.getIdAdmin().intValue());
             ps.executeUpdate();
+            ResultSet rs= ps.getGeneratedKeys();
+            rs.next();
+            id=rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("Acesta este id ul grupului"+id);
         return new Grup(Long.valueOf(id), entity.getNume(), entity.getId());
     }
 
