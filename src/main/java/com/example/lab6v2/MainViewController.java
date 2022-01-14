@@ -29,7 +29,7 @@ public class MainViewController {
     static ImagePattern changeImage(Long id){
         String imgPath = ServiceManager.getInstance().getSrvUtilizator().findOne(id).getImage_path();
         String directory = getDirectory();
-        if(imgPath == null) imgPath = directory + "\\default-user-image.png";
+        if(imgPath == null) imgPath = directory + "\\imaginiUseri\\default-user-image.png";
         String path = "file:///" + imgPath;
         Image img = new Image(path,false);
         return new ImagePattern(img);
@@ -37,7 +37,7 @@ public class MainViewController {
 
     static ImagePattern ImageGrup(){
         String directory = getDirectory();
-        String path = "file:///" + directory + "\\default-group-image.png";
+        String path = "file:///" + directory + "\\imaginiUseri\\default-group-image.png";
         Image img = new Image(path,false);
         return new ImagePattern(img);
     }
