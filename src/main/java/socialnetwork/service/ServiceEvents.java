@@ -37,14 +37,6 @@ public class ServiceEvents {
         List<Notification> notifications = new ArrayList<>();
         List<Event> events = repo.getAllEventsUser(idUser);
         for(Event e:events) {
-            /*LocalDateTime time = e.getStartDate().minusDays(3);
-            System.out.println(e.getName());
-            System.out.println(time);
-            boolean ok = time.isBefore((LocalDateTime.now()));
-            System.out.println(ok);
-            System.out.println('\n');
-            if(ok)
-                notifications.add(new Notification("3 zile",LocalDateTime.now(),e.getName()));*/
             for(var notificationTimer:NotificationTimer.values()) {
                 if (notificationTimer.equals(NotificationTimer.SUBSCRIBED))
                     notifications.add(new Notification(notificationTimer.getMessage(), findSubscriptionDate(e.getId()), e.getName()));
