@@ -7,12 +7,9 @@ import socialnetwork.domain.Notification;
 import java.time.format.DateTimeFormatter;
 
 public class NotificationController {
-    @FXML
-    private Label msgLabel;
-    @FXML
-    private Label dateLabel;
-    @FXML
-    private Label eventNameLabel;
+    public Label msgLabel;
+    public Label dateLabel;
+    public Label eventNameLabel;
 
     public void setValues(Notification notification) {
         if(notification == null) {

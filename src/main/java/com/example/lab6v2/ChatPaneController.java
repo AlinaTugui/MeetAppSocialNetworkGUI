@@ -122,7 +122,7 @@ public class ChatPaneController implements Initializable {
                 e.printStackTrace();
             }
             ChatUserPaneController ctrl = loader.getController();
-            ctrl.setValues(grup,this);
+            ctrl.setValues(grup, this);
             chatLeftBottomVbox.getChildren().add(root);
         }
     }

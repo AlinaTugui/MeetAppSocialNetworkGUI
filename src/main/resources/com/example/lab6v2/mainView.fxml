@@ -35,8 +35,9 @@
                                  <Button mnemonicParsing="false" onAction="#openChat" prefHeight="33.0" prefWidth="145.0" text="Chat" />
                                  <Button mnemonicParsing="false" onAction="#btnGroups" prefHeight="35.0" prefWidth="145.0" text="Create GroupChat" />
                                  <Button mnemonicParsing="false" onAction="#openEvents" prefHeight="37.0" prefWidth="145.0" text="Events" />
-                                 <Button fx:id="rapoarte" mnemonicParsing="false" prefHeight="33.0" prefWidth="145.0" text="Reports" />
+                                 <Button onAction="#openRapoarte"  mnemonicParsing="false" prefHeight="33.0" prefWidth="145.0" text="Reports" />
                                  <Button mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="145.0" text="Logout" />
+
                               </children>
                            </VBox>
                         </children>

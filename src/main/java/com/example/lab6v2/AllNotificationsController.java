@@ -14,8 +14,7 @@ import java.util.List;
 public class AllNotificationsController {
     private final ServiceManager sM = ServiceManager.getInstance();
 
-    @FXML
-    private VBox vBox;
+    public VBox vBox;
 
 
     @FXML

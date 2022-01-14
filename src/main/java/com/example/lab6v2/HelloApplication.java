@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
         HelloController ctrl=loader.getController();
 
         primaryStage.setScene(new Scene(root));
-        //primaryStage.setTitle("Social Network");
+        primaryStage.setTitle("Social Network");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }

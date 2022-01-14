@@ -23,25 +23,16 @@ import java.util.stream.Collectors;
 public class FriendRequestsControllerNew {
 
     private final ServiceManager sM = ServiceManager.getInstance();
-    @FXML
-    private TableView<CerereTrimisa> sentReqTableView = new TableView<>();
-    @FXML
-    private TableView<CererePrimita> recReqTableView = new TableView<>();
-    @FXML
-    private TableColumn<CerereTrimisa, String> receiverNameTableColumn = new TableColumn<>("Receiver Name");
-    @FXML
-    private TableColumn<CerereTrimisa, Timestamp> timestampTableColumn = new TableColumn<>("TimeStamp");
-    @FXML
-    private TableColumn<CerereTrimisa, Button> unsendTableColumn = new TableColumn<>("Unsend");
+    public TableView<CerereTrimisa> sentReqTableView = new TableView<>();
+    public TableView<CererePrimita> recReqTableView = new TableView<>();
+    public TableColumn<CerereTrimisa, String> receiverNameTableColumn = new TableColumn<>("Receiver Name");
+    public TableColumn<CerereTrimisa, Timestamp> timestampTableColumn = new TableColumn<>("TimeStamp");
+    public TableColumn<CerereTrimisa, Button> unsendTableColumn = new TableColumn<>("Unsend");
 
-    @FXML
-    private TableColumn<CererePrimita, String> senderNameTableColumn = new TableColumn<>("Sender Name");
-    @FXML
-    private TableColumn<CererePrimita, Timestamp> timestampTableColumn1 = new TableColumn<>("TimeStamp");
-    @FXML
-    private TableColumn<CerereTrimisa, Button> acceptTableColumn = new TableColumn<>("Accept");
-    @FXML
-    private TableColumn<CerereTrimisa, Button> declineTableColumn = new TableColumn<>("Decline");
+    public TableColumn<CererePrimita, String> senderNameTableColumn = new TableColumn<>("Sender Name");
+    public TableColumn<CererePrimita, Timestamp> timestampTableColumn1 = new TableColumn<>("TimeStamp");
+    public TableColumn<CerereTrimisa, Button> acceptTableColumn = new TableColumn<>("Accept");
+    public TableColumn<CerereTrimisa, Button> declineTableColumn = new TableColumn<>("Decline");
     ObservableList<CerereTrimisa> sentReqObservableList = FXCollections.observableArrayList();
     ObservableList<CererePrimita> recReqObservableList = FXCollections.observableArrayList();
 

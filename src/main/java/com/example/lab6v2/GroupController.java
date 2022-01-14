@@ -15,23 +15,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GroupController {
-    @FXML
-    private TableView tableView = new TableView();
-    @FXML
-    private TableColumn<UtilizatorFriends,String> columnFirstName = new TableColumn<>();
-    @FXML
-    private TableColumn<UtilizatorFriends,String> columnLastName = new TableColumn<>();
-    @FXML
-    private TableColumn<UtilizatorFriends,Button> columnAddBtn = new TableColumn<>();
+    public  TableView tableView = new TableView();
+    public  TableColumn<UtilizatorFriends,String> columnFirstName = new TableColumn<>();
+    public TableColumn<UtilizatorFriends,String> columnLastName = new TableColumn<>();
+    public TableColumn<UtilizatorFriends,Button> columnAddBtn = new TableColumn<>();
     private final ObservableList userList = FXCollections.observableArrayList();
-    @FXML
-    private final TextField textField = new TextField();
-    @FXML
-    private TextField groupNameField = new TextField();
+    public final TextField textField = new TextField();
+    public TextField groupNameField = new TextField();
     ServiceManager sM = ServiceManager.getInstance();
     private final List<Long> friendsGroup =  new ArrayList();
-    @FXML
-    Label label = new Label();
+    public Label label = new Label();
     @FXML
     public void initialize() {
         tableView.setItems(userList);
