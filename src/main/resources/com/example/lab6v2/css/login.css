@@ -10,3 +10,12 @@
     -fx-text-fill: #2e107a;
     -fx-border-color: #2e107a;
 }
+.text-field {
+    -fx-border-radius: 20;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #2e107a;
+    -fx-border-color: #2e107a;
+}
+.label1{
+
+}

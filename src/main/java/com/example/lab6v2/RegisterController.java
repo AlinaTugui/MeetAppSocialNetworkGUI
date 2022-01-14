@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import socialnetwork.config.Encryptor;
 import socialnetwork.domain.Utilizator;
@@ -52,6 +53,7 @@ public class RegisterController {
     }
 
     public void openHello(ActionEvent actionEvent) throws IOException {
-        HelloApplication.changeScene("hello-view.fxml", actionEvent, "Main View");
+        HelloApplication.changeScene("hello-view1.fxml", actionEvent, "Main View");
     }
+
 }

@@ -4,16 +4,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="271.0" prefWidth="408.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.RegisterController">
+<AnchorPane prefHeight="392.0" prefWidth="477.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.RegisterController">
    <children>
       <Label fx:id="registerFailed" layoutX="170.0" layoutY="14.0" textFill="RED" />
-      <GridPane alignment="CENTER" layoutX="26.0" layoutY="40.0" prefHeight="166.0" prefWidth="356.0">
+      <GridPane alignment="CENTER" layoutX="60.0" layoutY="83.0" prefHeight="229.0" prefWidth="393.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="163.20003662109374" minWidth="10.0" prefWidth="143.8" />
           <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="286.39996337890625" minWidth="10.0" prefWidth="211.8" />
@@ -27,63 +29,79 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="50.0" text="Email" GridPane.rowIndex="3">
+            <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" prefHeight="27.0" prefWidth="165.0" text="Email" textFill="#2e107a" GridPane.rowIndex="3">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="81.0" text="Password" GridPane.rowIndex="4">
+            <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" prefHeight="27.0" prefWidth="166.0" text="Password" textFill="#2e107a" GridPane.rowIndex="4">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="First name" GridPane.rowIndex="1">
+            <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" prefHeight="27.0" prefWidth="182.0" text="First name" textFill="#2e107a" GridPane.rowIndex="1">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Last name" GridPane.rowIndex="2">
+            <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" prefHeight="27.0" prefWidth="176.0" text="Last name" textFill="#2e107a" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Repeat password" GridPane.rowIndex="5">
+            <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" prefHeight="27.0" prefWidth="180.0" text="Repeat password" textFill="#2e107a" GridPane.rowIndex="5">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="reg_firstName" alignment="CENTER" prefHeight="31.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="reg_firstName" alignment="CENTER" prefHeight="41.0" prefWidth="235.0" stylesheets="@css/login.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="reg_lastName" alignment="CENTER" prefHeight="31.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="reg_lastName" alignment="CENTER" prefHeight="37.0" prefWidth="238.0" stylesheets="@css/login.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="reg_email" alignment="CENTER" prefHeight="31.0" prefWidth="247.0" promptText="example@yahoo.com" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="reg_email" alignment="CENTER" prefHeight="42.0" prefWidth="235.0" promptText="example@yahoo.com" stylesheets="@css/login.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="reg_password" alignment="CENTER" prefHeight="31.0" prefWidth="213.0" promptText="********" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <PasswordField fx:id="reg_password" alignment="CENTER" prefHeight="39.0" prefWidth="232.0" promptText="********" style="-fx-border-color: #2e107a; -fx-background-radius: 20; -fx-border-radius: 20;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="15.0" />
                </font>
             </PasswordField>
-            <PasswordField fx:id="reg_password1" alignment="CENTER" prefHeight="31.0" prefWidth="213.0" promptText="********" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <PasswordField fx:id="reg_password1" alignment="CENTER" prefHeight="41.0" prefWidth="244.0" promptText="********" style="-fx-border-color: #2e107a; -fx-background-radius: 20; -fx-border-radius: 20;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="15.0" />
                </font>
             </PasswordField>
          </children>
       </GridPane>
-      <Button layoutX="157.0" layoutY="225.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="94.0" text="Register" textAlignment="CENTER">
+      <Button layoutX="177.0" layoutY="332.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="94.0" styleClass="button1" stylesheets="@css/login.css" text="Register" textAlignment="CENTER">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#openHello" text="&lt;-" />
+      <ImageView fitHeight="42.0" fitWidth="52.0" layoutX="411.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/icons8_meeting_room_60px.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#openHello" prefHeight="17.0" prefWidth="88.0" style="-fx-background-color: #ffffff; -fx-border-color: #2e107a; -fx-background-radius: 20; -fx-border-radius: 20;" text="Back" textFill="#2e107a">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/icons8_undo_60px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

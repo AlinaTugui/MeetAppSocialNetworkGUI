@@ -47,7 +47,7 @@
 
 
 .table-row-cell:selected {
-    -fx-background-color: #3b9696;
+    -fx-background-color: #807e9b;
 }
 
 .table-view .virtual-flow .scroll-bar .increment-button,

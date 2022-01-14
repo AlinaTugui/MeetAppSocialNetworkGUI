@@ -25,7 +25,7 @@
             <Image url="@icons/icons8_available_updates_104px.png" />
          </image>
       </ImageView>
-      <Label layoutX="65.0" layoutY="24.0" prefHeight="17.0" prefWidth="48.0" text="Refresh">
+      <Label layoutX="65.0" layoutY="24.0" prefHeight="17.0" prefWidth="48.0" text="Refresh" textFill="#2e107a">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
