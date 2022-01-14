@@ -6,10 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
         HelloController ctrl=loader.getController();
 
         primaryStage.setScene(new Scene(root));
-        //primaryStage.setTitle("Social Network");
+        primaryStage.setTitle("MeetApp");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }

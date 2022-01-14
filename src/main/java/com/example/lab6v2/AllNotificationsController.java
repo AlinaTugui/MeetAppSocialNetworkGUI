@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import socialnetwork.domain.Notification;
 import socialnetwork.service.ServiceManager;
@@ -42,6 +43,11 @@ public class AllNotificationsController {
         }
 
     public void onRefreshButton(ActionEvent actionEvent) {
+        vBox.getChildren().clear();
+        load();
+    }
+
+    public void onRefreshButton1(MouseEvent mouseEvent) {
         vBox.getChildren().clear();
         load();
     }

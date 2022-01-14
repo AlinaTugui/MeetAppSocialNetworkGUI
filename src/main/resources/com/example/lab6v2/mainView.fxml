@@ -3,9 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="492.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.MainViewController">
     <SplitPane dividerPositions="0.18749999999999997" prefHeight="500.0" prefWidth="768.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -16,27 +19,139 @@
                  <items>
                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="97.0">
                         <children>
-                           <VBox alignment="CENTER" layoutX="32.0" layoutY="-10.0" prefHeight="179.2" prefWidth="145.6" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <VBox alignment="CENTER" layoutX="32.0" layoutY="-10.0" prefHeight="179.2" prefWidth="145.6" spacing="10.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <children>
                                  <Circle fx:id="pozaLogat" fill="DODGERBLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
-                                 <Label fx:id="numeLogat" text="Nume" />
-                                 <Button mnemonicParsing="false" onAction="#changeImage" text="Change image" />
+                                 <Label fx:id="numeLogat" text="Nume" textFill="#2e107a">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font></Label>
+                                 <Button mnemonicParsing="false" onAction="#changeImage" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Change image">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_user_folder_100px_4.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic></Button>
                               </children>
                            </VBox>
                         </children></AnchorPane>
                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="108.0">
                         <children>
-                           <VBox layoutY="-3.0" prefHeight="303.0" prefWidth="145.0">
+                           <VBox layoutY="3.0" prefHeight="297.0" prefWidth="145.0" style="-fx-background-color: #FF2E107A;">
                               <children>
-                                 <Button mnemonicParsing="false" onAction="#openNotifications" prefHeight="33.0" prefWidth="145.0" text="Notifications" wrapText="true" />
-                                 <Button mnemonicParsing="false" onAction="#showFriends" prefHeight="33.0" prefWidth="145.0" text="Friends" />
-                                 <Button mnemonicParsing="false" onAction="#openAddFriends" prefHeight="37.0" prefWidth="145.0" text="Add friends" textAlignment="CENTER" wrapText="true" />
-                                  <Button onAction="#openFriendRequests" prefHeight="34.0" prefWidth="145.0" text="Friend requests" />
-                                 <Button mnemonicParsing="false" onAction="#openChat" prefHeight="33.0" prefWidth="145.0" text="Chat" />
-                                 <Button mnemonicParsing="false" onAction="#btnGroups" prefHeight="35.0" prefWidth="145.0" text="Create GroupChat" />
-                                 <Button mnemonicParsing="false" onAction="#openEvents" prefHeight="37.0" prefWidth="145.0" text="Events" />
-                                 <Button fx:id="rapoarte" mnemonicParsing="false" prefHeight="33.0" prefWidth="145.0" text="Reports" />
-                                 <Button mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="145.0" text="Logout" />
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openNotifications" prefHeight="35.0" prefWidth="145.0" style="-fx-border-radius: 20; -fx-background-color: #ffffff;" styleClass="button1" stylesheets="@css/helloView1.css" text="Notifications" wrapText="true">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_notification_48px_2.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#showFriends" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Friends">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="20.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_friends_64px_1.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openAddFriends" prefHeight="31.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Add friends" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_add_48px_1.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                                  <Button alignment="BOTTOM_LEFT" onAction="#openFriendRequests" prefHeight="34.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Friend requests">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_petition_48px_4.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openChat" prefHeight="31.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Chat">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_chat_52px.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#btnGroups" prefHeight="35.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Create Group">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_user_groups_64px.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openEvents" prefHeight="37.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Events">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_schedule_52px_3.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                                 <Button fx:id="rapoarte" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Reports">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_download_graph_report_48px_2.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#logout" prefHeight="34.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Logout">
+                                    <font>
+                                       <Font name="System Bold Italic" size="12.0" />
+                                    </font>
+                                    <graphic>
+                                       <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@icons/icons8_Logout_48px_2.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
                               </children>
                            </VBox>
                         </children>
@@ -45,7 +160,7 @@
                </SplitPane>
             </children>
          </AnchorPane>
-       <AnchorPane fx:id="rightPane" prefWidth="698.0" />
+       <AnchorPane fx:id="rightPane" prefWidth="698.0" style="-fx-background-color: #ffffff;" />
      </items>
    </SplitPane>
 </AnchorPane>

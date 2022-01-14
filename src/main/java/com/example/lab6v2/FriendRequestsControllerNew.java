@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import socialnetwork.domain.Cerere;
 import socialnetwork.domain.CererePrimita;
 import socialnetwork.domain.CerereTrimisa;
@@ -131,6 +132,11 @@ public class FriendRequestsControllerNew {
     }
 
     public void onBtnRefresh(ActionEvent actionEvent) {
+        sentReqObservableList.setAll(loadSentRequests());
+        recReqObservableList.setAll(loadReceivedRequests());
+    }
+
+    public void onBtnRefresh1(MouseEvent mouseEvent) {
         sentReqObservableList.setAll(loadSentRequests());
         recReqObservableList.setAll(loadReceivedRequests());
     }

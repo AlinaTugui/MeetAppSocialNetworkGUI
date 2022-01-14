@@ -1,5 +1,5 @@
 .linear-grad {
-    -fx-background-color: linear-gradient(to bottom left, #05ffa1,#b967ff);
+    -fx-background-color: linear-gradient(to bottom left, #eeeee4,#154c79);
 }
 .text-id {
     -fx-font-smoothing-type: lcd;
@@ -17,4 +17,97 @@
 .pane {
     /*-fx-background-color: linear-gradient(to bottom left, #a8a1a1, #d9d9d0);*/
     -fx-background-color: #ffffff;
+}
+.combo-box{
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 50;
+    -fx-text-fill: #2e107a;
+    -fx-border-color: #2e107a;
+}
+.date-picker {
+    -fx-border-color: #2e107a;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 50;
+    -fx-text-fill: #2e107a;
+}
+.date-picker>.text-field {
+    -fx-border-radius: 50;
+    -fx-background-radius: 10 10 10 10;
+}
+.date-picker>.arrow-button {
+    -fx-border-radius: 50;
+    -fx-background-radius: 10 10 10 10;
+}
+.text-area {
+    /*-fx-border-color: #2e107a;*/
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 50;
+    /*-fx-text-fill: #2e107a;*/
+    -fx-background-radius: 50;
+}
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+.text-field1{
+    -fx-border-color: #2e107a;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 20;
+    -fx-text-fill: #2e107a;
+    -fx-background-radius: 20;
+}
+/*.label{
+    -fx-border-radius: 50;
+    -fx-background-color: #ffffff;
+    -fx-border-color:#2e107a;
+    -fx-font-family: System;
+    -fx-font-size: 14;
+    -fx-font-style: Bold Italic;
+
+}*/
+.scroll-pane {
+    -fx-background-color: white;
+    -fx-border-radius: 7;
+    -fx-background-radius: 7;
+    -fx-border-color: #2e107a;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:#2e107a;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: #2e107a;
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius: 20;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 5em;
+    -fx-border-radius: 20;
+   /* -fx-background-radius: 20;*/
+}
+.vbox{
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+   /* -fx-background-radius: 20;*/
+    /*-fx-border-radius: 30 30 30 30;*/
 }

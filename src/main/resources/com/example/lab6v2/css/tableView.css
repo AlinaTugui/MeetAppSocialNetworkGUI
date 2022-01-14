@@ -1,0 +1,57 @@
+.table-view{
+    -fx-background-color: #d8d8e0;
+    -fx-background-radius: 10 10 10 10;
+    -fx-fill: #2e107a;
+}
+
+.table-view .column-header-background{
+    -fx-background-color:  #2e107a;
+    -fx-background-radius: 10 10 10 10;
+    -fx-background-insets: 0 0 10 0;
+    /*-fx-border-color: #ffffff;*/
+    /*-fx-effect: dropshadow(two-pass-box, #1E5B5C,15,0.0,0.1,3);*/
+
+}
+
+.table-view .column-header, .table-view .filler{
+    -fx-size: 40;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color: transparent;
+    -fx-font-size: 15px;
+    -fx-font-style: italic bold;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: #d8d8e0;
+    -fx-background-radius: 10 10 10 10;
+    -fx-border-radius: 10;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;/*
+    -fx-border-color: #2e107a;;*/
+}
+
+.table-row-cell:even{
+    -fx-background-color: #d8d8e0;/*#c0c0c0;*/
+    -fx-background-radius: 10 10 10 10;
+    -fx-border-radius: 10;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;/*
+    -fx-border-color: #2e107a;;*/
+}
+
+
+.table-row-cell:selected {
+    -fx-background-color: #3b9696;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
