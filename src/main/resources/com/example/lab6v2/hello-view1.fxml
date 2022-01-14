@@ -29,17 +29,12 @@
                         <Image url="@icons/icons8_meeting_room_24px_4.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="179.0" prefHeight="61.0" prefWidth="237.0" text="Meet Up with Your Friends from All Around the World" textFill="#2e107a" wrapText="true">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="251.0" prefHeight="61.0" prefWidth="237.0" text="Meet Up with Your Friends from All Around the World" textAlignment="CENTER" textFill="#2e107a" wrapText="true">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="95.0" fitWidth="91.0" layoutX="74.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/icons8_meeting_arrows_globe_96px.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="105.0" fitWidth="112.0" layoutX="74.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="105.0" fitWidth="112.0" layoutX="74.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/icons8_meeting_room_100px.png" />
                      </image>
@@ -55,7 +50,7 @@
                         <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnRegister" layoutX="109.0" layoutY="121.0" mnemonicParsing="false" onAction="#openRegister" prefHeight="25.0" prefWidth="93.0" styleClass="button1" stylesheets="@css/helloView1.css" text="Register">
+                  <Button fx:id="btnRegister" layoutX="109.0" layoutY="121.0" mnemonicParsing="false" onAction="#openRegister" prefHeight="25.0" prefWidth="93.0" style="-fx-border-radius: 50; -fx-background-color: #ffffff;" styleClass="button1" stylesheets="@css/helloView1.css" text="Register">
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
@@ -81,17 +76,17 @@
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnLogin" layoutX="128.0" layoutY="272.0" mnemonicParsing="false" onAction="#openLogin" styleClass="button1" stylesheets="@css/helloView1.css" text="Login" textFill="#2e107a">
+                  <Button fx:id="btnLogin" layoutX="128.0" layoutY="272.0" mnemonicParsing="false" onAction="#openLogin" style="-fx-background-color: #ffffff; -fx-border-radius: 25;" styleClass="button1" stylesheets="@css/helloView1.css" text="Login" textFill="#2e107a">
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Button>
-                  <Label layoutX="13.0" layoutY="166.0" prefHeight="47.0" prefWidth="321.0" text="By registering, you agree to the Terms of Use and the Privacy Policy, including the Use of Cookies." textFill="#2e107a" wrapText="true">
+                  <Label layoutX="13.0" layoutY="166.0" prefHeight="47.0" prefWidth="321.0" text="By registering, you agree to the Terms of Use and the Privacy Policy, including the Use of Cookies." textAlignment="CENTER" textFill="#2e107a" wrapText="true">
                      <font>
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnFastLogin" layoutX="120.0" layoutY="348.0" mnemonicParsing="false" onAction="#fastLogin" styleClass="button1" text="fastLogin" textFill="#2e107a">
+                  <Button fx:id="btnFastLogin" layoutX="119.0" layoutY="330.0" mnemonicParsing="false" onAction="#fastLogin" style="-fx-background-radius: 50; -fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" text="fastLogin" textFill="#2e107a">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -101,7 +96,7 @@
                         <Image url="@icons/icons8_meeting_room_60px.png" />
                      </image>
                   </ImageView>
-                  <Circle fx:id="btnClose" fill="#fc5d57" layoutX="333.0" layoutY="14.0" onMouseClicked="#handleMouseEvent" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="btnClose" fill="#f24842" layoutX="333.0" layoutY="14.0" onMouseClicked="#handleMouseEvent" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
                </children></Pane>
          </center>
       </BorderPane>

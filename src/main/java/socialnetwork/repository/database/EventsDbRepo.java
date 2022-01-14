@@ -19,7 +19,7 @@ public class EventsDbRepo {
         this.password = password;
     }
 
-    protected Event extractEntityFromResultSetEntry(ResultSet resultSet) throws SQLException {
+    /*protected Event extractEntityFromResultSetEntry(ResultSet resultSet) throws SQLException {
         Long id = resultSet.getLong("id");
         String name = resultSet.getString("name");
         String description = resultSet.getString("description");
@@ -29,7 +29,7 @@ public class EventsDbRepo {
         Event event = new Event(name, description, beginDate, endDate, creator);
         event.setId(id);
         return event;
-    }
+    }*/
 
     public void save(Event event) {
         String sql1 = "select * from events where name=?";
@@ -174,8 +174,7 @@ public class EventsDbRepo {
             statement.setInt(1, idEvent.intValue());
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                LocalDateTime timestamp = resultSet.getTimestamp("subscription_date").toLocalDateTime();
-                return timestamp;
+                return resultSet.getTimestamp("subscription_date").toLocalDateTime();
             }
 
         } catch (SQLException e) {

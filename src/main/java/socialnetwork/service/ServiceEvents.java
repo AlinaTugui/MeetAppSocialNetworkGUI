@@ -7,13 +7,12 @@ import socialnetwork.domain.NotificationTimer;
 import socialnetwork.repository.database.EventsDbRepo;
 
 import java.time.LocalDateTime;
-import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ServiceEvents {
-    private EventsDbRepo repo;
+    private final EventsDbRepo repo;
     public ServiceEvents(EventsDbRepo repoEvents) {
         this.repo = repoEvents;
     }
@@ -47,12 +46,14 @@ public class ServiceEvents {
             if(ok)
                 notifications.add(new Notification("3 zile",LocalDateTime.now(),e.getName()));*/
             for(var notificationTimer:NotificationTimer.values()) {
-                if(notificationTimer.equals(NotificationTimer.SUBSCRIBED))
-                    notifications.add(new Notification(notificationTimer.getMessage(),findSubscriptionDate(e.getId()),e.getName()));
-                LocalDateTime notifyTime = e.getStartDate().minus(notificationTimer.getDifferenceInTime());
-                if(notifyTime.isBefore(findSubscriptionDate(e.getId()))) continue;
-                if(notifyTime.isBefore(LocalDateTime.now()))
-                    notifications.add(new Notification(notificationTimer.getMessage(),notifyTime,e.getName()));
+                if (notificationTimer.equals(NotificationTimer.SUBSCRIBED))
+                    notifications.add(new Notification(notificationTimer.getMessage(), findSubscriptionDate(e.getId()), e.getName()));
+                else {
+                    LocalDateTime notifyTime = e.getStartDate().minus(notificationTimer.getDifferenceInTime());
+                    if (notifyTime.isBefore(findSubscriptionDate(e.getId()))) continue;
+                    if (notifyTime.isBefore(LocalDateTime.now()))
+                        notifications.add(new Notification(notificationTimer.getMessage(), notifyTime, e.getName()));
+                }
             }
         }
         return notifications.stream().sorted((a,b)-> {

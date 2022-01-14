@@ -7,26 +7,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="469.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.FriendRequestsControllerNew">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="646.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.FriendRequestsControllerNew">
     <children>
-        <Label fx:id="sentFriendReq" layoutX="162.0" layoutY="22.0" prefHeight="19.0" prefWidth="146.0" text="Sent Friend Requests">
+        <Label fx:id="sentFriendReq" layoutX="271.0" layoutY="22.0" prefHeight="19.0" prefWidth="125.0" text="Sent Friend Requests" textAlignment="CENTER">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <Label fx:id="recFriendReq" layoutX="162.0" layoutY="199.0" text="Received Friend Requests">
+        <Label fx:id="recFriendReq" layoutX="261.0" layoutY="263.0" text="Received Friend Requests">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <TableView fx:id="sentReqTableView" layoutX="36.0" layoutY="41.0" prefHeight="132.0" prefWidth="398.0">
+        <TableView fx:id="sentReqTableView" layoutX="44.0" layoutY="50.0" prefHeight="195.0" prefWidth="579.0">
             <columns>
                 <TableColumn fx:id="receiverNameTableColumn" prefWidth="217.0" text="Receiver Name" />
                 <TableColumn fx:id="timestampTableColumn" prefWidth="106.0" text="TimeStamp" />
                 <TableColumn fx:id="unsendTableColumn" prefWidth="74.0" text="Unsend" />
             </columns>
         </TableView>
-        <TableView fx:id="recReqTableView" layoutX="36.0" layoutY="225.0" prefHeight="122.0" prefWidth="398.0">
+        <TableView fx:id="recReqTableView" layoutX="44.0" layoutY="295.0" prefHeight="165.0" prefWidth="579.0">
             <columns>
                 <TableColumn fx:id="senderNameTableColumn" prefWidth="173.0" text="Sender Name" />
                 <TableColumn fx:id="timestampTableColumn1" prefWidth="91.0" text="TimeStamp" />
@@ -34,6 +34,6 @@
                 <TableColumn fx:id="declineTableColumn" prefWidth="68.0" text="Decline" />
             </columns>
         </TableView>
-      <Button fx:id="btnRefresh" layoutX="215.0" layoutY="347.0" mnemonicParsing="false" onAction="#onBtnRefresh" prefHeight="25.0" prefWidth="66.0" text="Refresh" />
+      <Button fx:id="btnRefresh" layoutX="549.0" layoutY="19.0" mnemonicParsing="false" onAction="#onBtnRefresh" prefHeight="25.0" prefWidth="66.0" text="Refresh" />
     </children>
 </AnchorPane>

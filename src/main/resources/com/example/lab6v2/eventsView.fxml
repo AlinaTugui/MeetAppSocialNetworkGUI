@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="429.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.EventsController">
+<AnchorPane prefHeight="490.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.EventsController">
    <children>
       <TextField fx:id="textFieldSearchEvent" layoutX="379.0" layoutY="20.0" prefHeight="25.0" prefWidth="217.0" />
       <Label layoutX="291.0" layoutY="24.0" prefHeight="17.0" prefWidth="81.0" text="Search Event">
@@ -20,30 +20,30 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="eventsScrollPane" layoutX="293.0" layoutY="58.0" prefHeight="362.0" prefWidth="324.0">
+      <ScrollPane fx:id="eventsScrollPane" layoutX="293.0" layoutY="58.0" prefHeight="423.0" prefWidth="344.0">
          <content>
-            <VBox fx:id="eventsVBox" prefHeight="361.0" prefWidth="324.0" />
+            <VBox fx:id="eventsVBox" prefHeight="425.0" prefWidth="343.0" />
          </content>
       </ScrollPane>
-      <Line endX="-100.0" endY="384.0" layoutX="375.0" layoutY="39.0" startX="-100.0" startY="-33.0" />
+      <Line endX="-100.0" endY="444.0" layoutX="375.0" layoutY="39.0" startX="-100.0" startY="-33.0" />
       <Label layoutX="31.0" layoutY="24.0" prefHeight="17.0" prefWidth="167.0" text="Create an Event">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="21.0" layoutY="66.0" text="Event Name" />
-      <TextField fx:id="eventNameTextField" layoutX="93.0" layoutY="62.0" prefHeight="25.0" prefWidth="167.0" />
-      <Label layoutX="23.0" layoutY="96.0" text="Description" />
-      <TextArea fx:id="descriptionTextArea" layoutX="92.0" layoutY="103.0" prefHeight="91.0" prefWidth="167.0" />
-      <Label layoutX="19.0" layoutY="219.0" prefHeight="40.0" prefWidth="66.0" text="Start Time" wrapText="true" />
-      <DatePicker fx:id="beginDatePicker" layoutX="89.0" layoutY="227.0" promptText="dd/mm/yyyy" />
-      <Label layoutX="17.0" layoutY="323.0" prefHeight="48.0" prefWidth="61.0" text="End Time" wrapText="true" />
-      <DatePicker fx:id="endDatePicker" layoutX="89.0" layoutY="335.0" promptText="dd/mm/yyyy" />
-      <ComboBox fx:id="beginHour" layoutX="93.0" layoutY="270.0" prefHeight="25.0" prefWidth="64.0" />
-      <ComboBox fx:id="beginMinute" layoutX="170.0" layoutY="270.0" prefHeight="25.0" prefWidth="64.0" />
+      <Label layoutX="21.0" layoutY="83.0" text="Event Name" />
+      <TextField fx:id="eventNameTextField" layoutX="93.0" layoutY="83.0" prefHeight="25.0" prefWidth="167.0" />
+      <Label layoutX="23.0" layoutY="129.0" text="Description" />
+      <TextArea fx:id="descriptionTextArea" layoutX="93.0" layoutY="129.0" prefHeight="91.0" prefWidth="167.0" />
+      <Label layoutX="20.0" layoutY="255.0" prefHeight="25.0" prefWidth="66.0" text="Start Time" wrapText="true" />
+      <DatePicker fx:id="beginDatePicker" layoutX="89.0" layoutY="257.0" promptText="dd/mm/yyyy" />
+      <Label layoutX="21.0" layoutY="359.0" prefHeight="25.0" prefWidth="51.0" text="End Time" wrapText="true" />
+      <DatePicker fx:id="endDatePicker" layoutX="89.0" layoutY="359.0" promptText="dd/mm/yyyy" />
+      <ComboBox fx:id="beginHour" layoutX="93.0" layoutY="295.0" prefHeight="25.0" prefWidth="64.0" />
+      <ComboBox fx:id="beginMinute" layoutX="170.0" layoutY="295.0" prefHeight="25.0" prefWidth="64.0" />
       <Line endX="89.0" layoutX="171.0" layoutY="58.0" startX="-158.0" />
-      <ComboBox fx:id="endHour" layoutX="89.0" layoutY="371.0" prefHeight="25.0" prefWidth="64.0" />
-      <ComboBox fx:id="endMinute" layoutX="170.0" layoutY="371.0" prefHeight="25.0" prefWidth="64.0" />
+      <ComboBox fx:id="endHour" layoutX="93.0" layoutY="403.0" prefHeight="25.0" prefWidth="64.0" />
+      <ComboBox fx:id="endMinute" layoutX="170.0" layoutY="403.0" prefHeight="25.0" prefWidth="64.0" />
       <Button fx:id="createEventButton" layoutX="197.0" layoutY="22.0" mnemonicParsing="false" onAction="#onCreateEventButtonClick" text="Create" />
    </children>
 </AnchorPane>

@@ -12,17 +12,8 @@ public class Notification {
         this.eventName = eventName;
     }
 
-    public Notification(String message, LocalDateTime time) {
-        this.message = message;
-        this.time = time;
-    }
-
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public LocalDateTime getTime() {

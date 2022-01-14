@@ -8,20 +8,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="466.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.AddFriendsControllerNew">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="646.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.AddFriendsControllerNew">
     <children>
-        <Label fx:id="label" layoutX="48.0" layoutY="38.0" text="Search">
+        <Label fx:id="label" layoutX="101.0" layoutY="52.0" text="Search">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
-        <TextField fx:id="textField" layoutX="131.0" layoutY="38.0" prefHeight="25.0" prefWidth="205.0" />
-        <TableView fx:id="tableView" layoutX="98.0" layoutY="86.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="287.0">
+        <TextField fx:id="textField" layoutX="198.0" layoutY="52.0" prefHeight="25.0" prefWidth="281.0" />
+        <TableView fx:id="tableView" layoutX="35.0" layoutY="96.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="369.0" prefWidth="573.0">
             <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="174.0" text="Name" />
-                <TableColumn fx:id="addFriendColumn" prefWidth="111.0" text="Add Friend" />
+                <TableColumn fx:id="nameColumn" prefWidth="423.0" text="Name" />
+                <TableColumn fx:id="addFriendColumn" prefWidth="149.0" text="Add Friend" />
             </columns>
         </TableView>
-      <Button fx:id="btnRefresh" layoutX="370.0" layoutY="38.0" mnemonicParsing="false" onAction="#onRefreshBtn" text="Refresh" />
+      <Button fx:id="btnRefresh" layoutX="512.0" layoutY="52.0" mnemonicParsing="false" onAction="#onRefreshBtn" text="Refresh" />
     </children>
 </AnchorPane>
