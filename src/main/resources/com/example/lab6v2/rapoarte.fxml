@@ -28,7 +28,7 @@
                     <Font size="14.0" />
                 </font>
             </Label>
-            <Button fx:id="exportButton1" layoutX="132.0" layoutY="444.0" mnemonicParsing="false" text="Export PDF" />
+            <Button layoutX="132.0" layoutY="444.0" mnemonicParsing="false" onAction="#onExportButton1" text="Export PDF" />
             <TextField fx:id="dateActivity" layoutX="70.0" layoutY="62.0" prefHeight="26.0" prefWidth="165.0" promptText="dd/mm/yyyy - dd/mm/yyyy" />
             <Button layoutX="266.0" layoutY="62.0" mnemonicParsing="false" onAction="#onFindButton1" text="Find" />
         </AnchorPane>
@@ -38,7 +38,7 @@
                     <Font name="System Bold" size="14.0" />
                 </font>
             </Label>
-            <Button fx:id="exportButton2" layoutX="123.0" layoutY="449.0" mnemonicParsing="false" text="Export PDF" />
+            <Button layoutX="123.0" layoutY="449.0" mnemonicParsing="false" onAction="#onExportButton2" text="Export PDF" />
             <TextField fx:id="friendName" layoutX="75.0" layoutY="38.0" prefHeight="26.0" prefWidth="166.0" />
             <Label layoutX="14.0" layoutY="88.0" text="Date:">
                 <font>
