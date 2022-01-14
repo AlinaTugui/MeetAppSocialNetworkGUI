@@ -28,14 +28,16 @@ public class MainViewController {
 
     static ImagePattern changeImage(Long id){
         String imgPath = ServiceManager.getInstance().getSrvUtilizator().findOne(id).getImage_path();
-        if(imgPath == null) imgPath="C:\\Users\\turtu\\Desktop\\Lucrari\\IntelliGay\\Lab6v2\\imaginiUseri\\default-user-image.png";
+        String directory = getDirectory();
+        if(imgPath == null) imgPath = directory + "\\default-user-image.png";
         String path = "file:///" + imgPath;
         Image img = new Image(path,false);
         return new ImagePattern(img);
     }
 
     static ImagePattern ImageGrup(){
-        String path = "file:///C:\\Users\\turtu\\Desktop\\Lucrari\\IntelliGay\\Lab6v2\\imaginiUseri\\default-group-image.png";
+        String directory = getDirectory();
+        String path = "file:///" + directory + "\\default-group-image.png";
         Image img = new Image(path,false);
         return new ImagePattern(img);
     }
@@ -96,7 +98,8 @@ public class MainViewController {
         File file = chooser.getSelectedFile();
         String pathUser = sM.getSrvUtilizator().findOne(idLogin).getImage_path();
         if(pathUser == null){
-            pathUser = "C:\\Users\\turtu\\Desktop\\Lucrari\\IntelliGay\\Lab6v2\\imaginiUseri\\Imagini\\" +
+            String directory = getDirectory();
+            pathUser = directory + "\\imaginiUseri\\Imagini\\" +
                     imgNr +".png";
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("imaginiUseri/ImagineNr.txt"));
             bufferedWriter.write(String.valueOf(imgNr+1));
@@ -114,6 +117,29 @@ public class MainViewController {
                     StandardCopyOption.REPLACE_EXISTING);
         }
         pozaLogat.setFill( changeImage(idLogin));
+    }
+
+    private static String getDirectory() {
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new FileReader("Data/DbConnectData.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            in.readLine();
+            in.readLine();
+            in.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String directory = null;
+        try {
+            directory = in.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return directory;
     }
 
     public void btnGroups(ActionEvent actionEvent) throws IOException {
