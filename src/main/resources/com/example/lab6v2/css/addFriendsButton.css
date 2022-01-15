@@ -6,3 +6,6 @@
     -fx-font-style: bold italic;
     -fx-font-size: 12px;
 }
+.button:hover{
+    -fx-background-color: #000000;
+}

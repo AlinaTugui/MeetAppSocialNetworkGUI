@@ -91,6 +91,10 @@ public class FriendRequestsControllerNew {
 
     private Button createAcceptButton(Long id) {
         Button acceptButton = new Button("Accept");
+        acceptButton.setStyle("-fx-background-color: #ffffff");
+        acceptButton.setStyle("-fx-border-color: #2e107a");
+        acceptButton.setStyle("-fx-border-radius: 20px");
+        acceptButton.setStyle("-fx-background-radius: 20px");
         acceptButton.setOnAction(event -> {
                     sM.getSrvCereri().acceptCerere(id);
                     recReqObservableList.remove(sM.getSrvCereri().findOne(id));
@@ -102,6 +106,10 @@ public class FriendRequestsControllerNew {
 
     private Button createDeclineButton(Long id) {
         Button declineButton = new Button("Decline");
+        declineButton.setStyle("-fx-background-color: #ffffff");
+        declineButton.setStyle("-fx-border-color: #2e107a");
+        declineButton.setStyle("-fx-border-radius: 20px");
+        declineButton.setStyle("-fx-background-radius: 20px");
         declineButton.setOnAction(event -> {
             sM.getSrvCereri().declineCerere(id);
             recReqObservableList.remove(sM.getSrvCereri().findOne(id));
@@ -113,6 +121,10 @@ public class FriendRequestsControllerNew {
 
     private Button createUnsendButton(Long idSender, Long idReceiver, LocalDateTime timestamp ) {
         Button unsendButton = new Button("Unsend");
+        unsendButton.setStyle("-fx-background-color: #ffffff");
+        unsendButton.setStyle("-fx-border-color: #2e107a");
+        unsendButton.setStyle("-fx-border-radius: 20px");
+        unsendButton.setStyle("-fx-background-radius: 20px");
         unsendButton.setOnAction(event -> {
                     sM.getSrvCereri().delete(idSender, idReceiver,timestamp);
                     sentReqObservableList.remove(sM.getSrvCereri().findOne(idSender,idReceiver));

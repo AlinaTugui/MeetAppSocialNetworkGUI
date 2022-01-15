@@ -6,23 +6,23 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ChatPaneController">
-    <SplitPane dividerPositions="0.2916188289322617" layoutX="-1.0" prefHeight="500.0" prefWidth="698.0" style="-fx-background-color: #ffffff;">
+    <SplitPane dividerPositions="0.2916188289322617" layoutX="-1.0" prefHeight="500.0" prefWidth="698.0" style="-fx-background-color: #ffffff;" stylesheets="@css/helloView1.css">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="170.0" style="-fx-background-color: #ffffff;">
          <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="498.4" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <items>
-               <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@css/notification.css">
                   <content>
-                        <VBox fx:id="chatLeftUpperVbox" prefHeight="245.6" prefWidth="198.4" style="-fx-background-color: #ffffff;" />
+                        <VBox fx:id="chatLeftUpperVbox" prefHeight="245.6" prefWidth="198.4" style="-fx-background-color: #e3dff0;" />
                   </content>
                </ScrollPane>
-               <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@css/notification.css">
                   <content>
-                     <VBox fx:id="chatLeftBottomVbox" prefHeight="245.6" prefWidth="198.4" style="-fx-background-color: #ffffff;" />
+                     <VBox fx:id="chatLeftBottomVbox" prefHeight="245.6" prefWidth="198.4" style="-fx-background-color: #e3dff0;" />
                   </content>
                </ScrollPane>
            </items>
          </SplitPane>
         </AnchorPane>
-        <AnchorPane fx:id="chatRightPane" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="488.0" style="-fx-background-color: #ffffff;" />
+        <AnchorPane fx:id="chatRightPane" minHeight="0.0" minWidth="0.0" prefHeight="507.0" prefWidth="486.0" style="-fx-background-color: #e3dff0;" />
     </SplitPane>
 </AnchorPane>

@@ -59,6 +59,10 @@ public class GroupController {
 
     private Button createAddButton(Long x) {
         Button addButton = new Button("Add to Group");
+        addButton.setStyle("-fx-background-color: #ffffff");
+        addButton.setStyle("-fx-border-color: #2e107a");
+        addButton.setStyle("-fx-border-radius: 20px");
+        addButton.setStyle("-fx-background-radius: 20px");
         addButton.setOnAction(event -> {
                     friendsGroup.add(x);
                     userList.remove(sM.getSrvUtilizator().findOne(x));

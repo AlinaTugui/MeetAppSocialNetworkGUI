@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="492.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.MainViewController">
-    <SplitPane dividerPositions="0.18749999999999997" prefHeight="500.0" prefWidth="768.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <SplitPane dividerPositions="0.18749999999999997" prefHeight="500.0" prefWidth="768.0" stylesheets="@css/helloView1.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
      <items>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="86.0">
             <children>
@@ -19,14 +19,14 @@
                  <items>
                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="97.0">
                         <children>
-                           <VBox alignment="CENTER" layoutX="32.0" layoutY="-10.0" prefHeight="179.2" prefWidth="145.6" spacing="10.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <VBox alignment="CENTER" layoutX="32.0" layoutY="-10.0" prefHeight="179.0" prefWidth="145.0" spacing="10.0" style="-fx-background-color: #e3dff0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <children>
                                  <Circle fx:id="pozaLogat" fill="DODGERBLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
                                  <Label fx:id="numeLogat" text="Nume" textFill="#2e107a">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font></Label>
-                                 <Button mnemonicParsing="false" onAction="#changeImage" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Change image">
+                                 <Button mnemonicParsing="false" onAction="#changeImage" styleClass="button2" stylesheets="@css/helloView1.css" text="Change image">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -42,9 +42,9 @@
                         </children></AnchorPane>
                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="108.0">
                         <children>
-                           <VBox layoutY="3.0" prefHeight="297.0" prefWidth="145.0" style="-fx-background-color: #FF2E107A;">
+                           <VBox layoutY="-3.0" prefHeight="303.0" prefWidth="145.0" style="-fx-background-color: #e3dff0;">
                               <children>
-                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openNotifications" prefHeight="35.0" prefWidth="145.0" style="-fx-border-radius: 20; -fx-background-color: #ffffff;" styleClass="button1" stylesheets="@css/helloView1.css" text="Notifications" wrapText="true">
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openNotifications" prefHeight="35.0" prefWidth="145.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Notifications" wrapText="true">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -56,7 +56,7 @@
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#showFriends" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Friends">
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#showFriends" prefHeight="33.0" prefWidth="145.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Friends">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -68,7 +68,7 @@
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openAddFriends" prefHeight="31.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Add friends" textAlignment="CENTER" wrapText="true">
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openAddFriends" prefHeight="31.0" prefWidth="145.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Add friends" textAlignment="CENTER" wrapText="true">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -80,7 +80,7 @@
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                  <Button alignment="BOTTOM_LEFT" onAction="#openFriendRequests" prefHeight="34.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Friend requests">
+                                  <Button alignment="BOTTOM_LEFT" onAction="#openFriendRequests" prefHeight="34.0" prefWidth="145.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Friend requests">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -92,7 +92,7 @@
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openChat" prefHeight="31.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Chat">
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openChat" prefHeight="31.0" prefWidth="145.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Chat">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -104,7 +104,7 @@
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#btnGroups" prefHeight="35.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Create Group">
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#btnGroups" prefHeight="35.0" prefWidth="145.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Create Group">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -116,7 +116,7 @@
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openEvents" prefHeight="37.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Events">
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openEvents" prefHeight="37.0" prefWidth="145.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Events">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -128,7 +128,7 @@
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button fx:id="rapoarte" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openRapoarte" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Reports">
+                                 <Button fx:id="rapoarte" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#openRapoarte" prefHeight="33.0" prefWidth="145.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Reports">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -140,7 +140,7 @@
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#logout" prefHeight="34.0" prefWidth="145.0" style="-fx-background-color: #ffffff; -fx-border-radius: 50;" styleClass="button1" stylesheets="@css/helloView1.css" text="Logout">
+                                 <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#logout" prefHeight="34.0" prefWidth="145.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Logout">
                                     <font>
                                        <Font name="System Bold Italic" size="12.0" />
                                     </font>
@@ -160,7 +160,7 @@
                </SplitPane>
             </children>
          </AnchorPane>
-       <AnchorPane fx:id="rightPane" prefWidth="698.0" style="-fx-background-color: #ffffff;" />
+       <AnchorPane fx:id="rightPane" prefHeight="400.0" prefWidth="698.0" style="-fx-background-color: #e3dff0;" />
      </items>
    </SplitPane>
 </AnchorPane>

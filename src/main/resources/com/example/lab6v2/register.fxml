@@ -81,7 +81,7 @@
             </PasswordField>
          </children>
       </GridPane>
-      <Button layoutX="177.0" layoutY="332.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="94.0" styleClass="button1" stylesheets="@css/login.css" text="Register" textAlignment="CENTER">
+      <Button layoutX="177.0" layoutY="332.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="94.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Register" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
@@ -91,7 +91,7 @@
             <Image url="@icons/icons8_meeting_room_60px.png" />
          </image>
       </ImageView>
-      <Button layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#openHello" prefHeight="17.0" prefWidth="88.0" style="-fx-background-color: #ffffff; -fx-border-color: #2e107a; -fx-background-radius: 20; -fx-border-radius: 20;" text="Back" textFill="#2e107a">
+      <Button layoutX="16.0" layoutY="14.0" mnemonicParsing="false" onAction="#openHello" prefHeight="17.0" prefWidth="88.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Back" textFill="#2e107a">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>

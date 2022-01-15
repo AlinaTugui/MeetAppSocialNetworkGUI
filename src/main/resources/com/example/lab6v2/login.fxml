@@ -14,7 +14,6 @@
 
 <AnchorPane prefHeight="282.0" prefWidth="397.0" style="-fx-background-color: #ffffff; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.LoginController">
    <children>
-      <Label fx:id="loginFailed" layoutX="118.0" layoutY="14.0" prefHeight="18.0" prefWidth="190.0" textFill="RED" />
       <GridPane alignment="CENTER" layoutX="39.0" layoutY="62.0" prefHeight="122.0" prefWidth="332.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="127.20001220703125" minWidth="10.0" prefWidth="84.8" />
@@ -47,16 +46,28 @@
             </PasswordField>
          </children>
       </GridPane>
-      <Button layoutX="125.0" layoutY="206.0" mnemonicParsing="false" onAction="#login" prefHeight="33.0" prefWidth="148.0" styleClass="button1" stylesheets="@css/login.css" text="Login to MeetApp" textAlignment="CENTER">
+      <Button layoutX="125.0" layoutY="206.0" mnemonicParsing="false" onAction="#login" prefHeight="33.0" prefWidth="148.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Login to MeetApp" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="19.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="342.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icons/icons8_meeting_room_60px.png" />
          </image>
       </ImageView>
       <Label layoutX="152.0" layoutY="251.0" text="Forgot Password?" textFill="#2e107a" />
+      <Button layoutX="20.0" layoutY="18.0" mnemonicParsing="false" onAction="#onBackBtn" prefHeight="25.0" prefWidth="81.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Back" textFill="#2e107a">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/icons8_undo_60px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

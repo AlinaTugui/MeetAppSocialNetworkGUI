@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="85.0" prefWidth="592.0" style="-fx-background-color: #ffffff; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: #154c79;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.NotificationController">
+<AnchorPane prefHeight="85.0" prefWidth="592.0" style="-fx-background-color: #ffffff; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: #154c79;" styleClass="anchor-pane" stylesheets="@css/helloView1.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.NotificationController">
    <children>
       <Label fx:id="msgLabel" layoutX="14.0" layoutY="32.0" prefHeight="48.0" prefWidth="402.0" text="message" textFill="#2e107a" wrapText="true">
          <font>
