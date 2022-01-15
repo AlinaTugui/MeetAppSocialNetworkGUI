@@ -10,7 +10,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchorPane" prefHeight="392.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.HelloController">
@@ -96,7 +95,6 @@
                         <Image url="@icons/icons8_meeting_room_60px.png" />
                      </image>
                   </ImageView>
-                  <Circle fx:id="btnClose" fill="#f24842" layoutX="333.0" layoutY="14.0" onMouseClicked="#handleMouseEvent" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
                </children></Pane>
          </center>
       </BorderPane>

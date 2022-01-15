@@ -26,8 +26,13 @@ public class ServiceEvents {
     public void unsubscribeFromEvent(Long idEvent) {
         repo.removeUserFromEvent(MainViewController.getIdLogin(),idEvent);
     }
-    public void addEvent(String name, String description, LocalDateTime beginTime,LocalDateTime endTime, String creator) {
-            repo.save(new Event(name,description,beginTime,endTime,creator));
+    public void addEvent(String name, String description, LocalDateTime beginTime,LocalDateTime endTime, String creator) throws Exception{
+        String exceptions="";
+        if(name.isEmpty()) exceptions+="Name is null\n";
+        if(description.isEmpty()) exceptions+="Description is null\n";
+        if(endTime.isBefore(beginTime)) exceptions+="EndTime is not valid\n";
+        if(!exceptions.isEmpty()) throw new Exception(exceptions);
+        repo.save(new Event(name,description,beginTime,endTime,creator));
     }
     public List<Event> getAllEvents() {
         return repo.getAll();
