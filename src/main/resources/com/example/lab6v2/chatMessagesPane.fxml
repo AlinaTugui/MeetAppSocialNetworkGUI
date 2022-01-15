@@ -12,15 +12,15 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ap_main" prefHeight="492.0" prefWidth="490.0" style="-fx-background-color: #e3dff0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ChatMessagesPaneController">
+<AnchorPane fx:id="ap_main" prefHeight="482.0" prefWidth="439.0" style="-fx-background-color: #e3dff0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ChatMessagesPaneController">
     <children>
-        <ScrollPane fx:id="sp_main" fitToWidth="true" layoutX="12.0" layoutY="75.0" prefHeight="350.0" prefWidth="466.0" style="-fx-background-color: #ffffff;" stylesheets="@css/notification.css">
+        <ScrollPane fx:id="sp_main" fitToWidth="true" layoutX="12.0" layoutY="75.0" prefHeight="350.0" prefWidth="438.0" style="-fx-background-color: #ffffff;" stylesheets="@css/notification.css">
             <content>
                 <VBox fx:id="vbox_messages" style="-fx-background-color: #ffffff;" />
             </content>
         </ScrollPane>
-        <TextField fx:id="tf_message" layoutX="14.0" layoutY="440.0" prefHeight="36.0" prefWidth="374.0" style="-fx-background-radius: 20;" styleClass="label" stylesheets="@css/login.css" />
-        <Button fx:id="button_send" layoutX="393.0" layoutY="440.0" onAction="#onSendMessage" prefHeight="36.0" prefWidth="85.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Send" textFill="#2e107a">
+        <TextField fx:id="tf_message" layoutX="12.0" layoutY="440.0" prefHeight="36.0" prefWidth="348.0" style="-fx-background-radius: 20;" styleClass="label" stylesheets="@css/login.css" />
+        <Button fx:id="button_send" layoutX="365.0" layoutY="440.0" onAction="#onSendMessage" prefHeight="36.0" prefWidth="83.0" styleClass="button2" stylesheets="@css/helloView1.css" text="Send" textFill="#2e107a">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>

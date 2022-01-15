@@ -135,9 +135,9 @@ public class PrietenieDbRepo implements PagingRepository<Tuple<Long,Long>, Priet
                 pritenii.add(p);
             }
             while (resultSet2.next()) {
-                Prietenie p = new Prietenie(LocalDateTime.of(resultSet.getDate("date").toLocalDate(),
-                        resultSet.getTime("time").toLocalTime()));
-                p.setId(new Tuple<>(resultSet.getLong("id1"), resultSet.getLong("id2")));
+                Prietenie p = new Prietenie(LocalDateTime.of(resultSet2.getDate("date").toLocalDate(),
+                        resultSet2.getTime("time").toLocalTime()));
+                p.setId(new Tuple<>(resultSet2.getLong("id1"), resultSet2.getLong("id2")));
                 pritenii.add(p);
             }
             return pritenii;
