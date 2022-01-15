@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import socialnetwork.domain.Prietenie;
 import socialnetwork.domain.UtilizatorRow;
 import socialnetwork.service.ServiceManager;
 
@@ -15,6 +16,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.stream.StreamSupport;
 
 public class ShowFriendsController implements Initializable {
     private ServiceManager sM=ServiceManager.getInstance();
@@ -33,7 +36,7 @@ public class ShowFriendsController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 sM.getSrvPrietenie().deletePrietenie(id, MainViewController.getIdLogin());
-                modelPrieteni.setAll(load());
+                modelPrieteni.setAll(load2());
             }
         });
         return deleteButton;
@@ -56,10 +59,36 @@ public class ShowFriendsController implements Initializable {
         columnFirstName.prefWidthProperty().bind(tableViewPrieteni.widthProperty().multiply(0.4));
         columnLastName.prefWidthProperty().bind(tableViewPrieteni.widthProperty().multiply(0.4));
         columnButton.prefWidthProperty().bind(tableViewPrieteni.widthProperty().multiply(0.2));
-        columnFirstName.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, String>("firstName"));
-        columnLastName.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, String>("lastName"));
-        columnButton.setCellValueFactory(new PropertyValueFactory<UtilizatorRow, Button>("bDel"));
-        modelPrieteni.setAll(load());
+        columnFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        columnLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        columnButton.setCellValueFactory(new PropertyValueFactory<>("bDel"));
+        modelPrieteni.setAll(load2());
         tableViewPrieteni.setItems(modelPrieteni);
+    }
+
+    private List<UtilizatorRow> load2(){
+        List<UtilizatorRow> listaPrieteni = new ArrayList<>();
+        Iterable<Prietenie> prieteniID = sM.getSrvPrietenie().getPrieteniiOnPage();
+        if(prieteniID == null) return modelPrieteni;
+        prieteniID.forEach(x -> {
+            UtilizatorRow u = new UtilizatorRow(sM.getSrvUtilizator().findOne(x.getId().getLeft()));
+            u.setBDel(createDeleteButton(x.getId().getLeft()));
+            listaPrieteni.add(u);
+        });
+        return listaPrieteni;
+    }
+
+    public void handlePreviousPageButton() {
+        Set<Prietenie> prietenii = sM.getSrvPrietenie().getPreviousPrietenii();
+        if(prietenii != null && !prietenii.isEmpty()){
+            modelPrieteni.setAll(load2());
+        }
+    }
+
+    public void handleNextPageButton() {
+        Set<Prietenie> prietenii = sM.getSrvPrietenie().getNextPrietenii();
+        if(prietenii != null && !prietenii.isEmpty()){
+            modelPrieteni.setAll(load2());
+        }
     }
 }

@@ -3,9 +3,9 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
-Data
 imaginiUseri/Imagini
 imaginiUseri/ImagineNr.txt
+Data/DbConnectData.txt
 .gradle/
 .idea/
 build.gradle

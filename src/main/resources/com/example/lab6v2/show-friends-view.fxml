@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ShowFriendsController">
+<AnchorPane prefHeight="490.0" prefWidth="647.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.ShowFriendsController">
    <children>
-      <TableView styleClass="table-friends" fx:id="tableViewPrieteni" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="tableViewPrieteni" prefHeight="439.0" prefWidth="647.0" styleClass="table-friends" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn styleClass="centered-table-column" fx:id="columnFirstName" text="FirstName" />
-            <TableColumn styleClass="centered-table-column" fx:id="columnLastName"  text="LastName" />
-            <TableColumn styleClass="centered-table-column" fx:id="columnButton" sortable="false" text="Unfriend" />
+          <TableColumn fx:id="columnFirstName" prefWidth="192.0" styleClass="centered-table-column" text="FirstName" />
+            <TableColumn fx:id="columnLastName" prefWidth="222.4000244140625" styleClass="centered-table-column" text="LastName" />
+            <TableColumn fx:id="columnButton" prefWidth="226.39996337890625" sortable="false" styleClass="centered-table-column" text="Unfriend" />
         </columns>
       </TableView>
+      <Button layoutX="608.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleNextPageButton" text="&gt;" />
+      <Button layoutX="569.0" layoutY="450.0" mnemonicParsing="false" onAction="#handlePreviousPageButton" text="&lt;" />
    </children>
 </AnchorPane>
