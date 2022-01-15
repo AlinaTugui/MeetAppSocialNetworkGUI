@@ -40,6 +40,7 @@ public class ShowFriendsController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 sM.getSrvPrietenie().deletePrietenie(id, MainViewController.getIdLogin());
+                sM.getSrvPrietenie().reload_prietenii();
                 modelPrieteni.setAll(load2());
             }
         });
@@ -66,6 +67,7 @@ public class ShowFriendsController implements Initializable {
         columnFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         columnLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         columnButton.setCellValueFactory(new PropertyValueFactory<>("bDel"));
+        sM.getSrvPrietenie().reload_prietenii();
         modelPrieteni.setAll(load2());
         tableViewPrieteni.setItems(modelPrieteni);
     }

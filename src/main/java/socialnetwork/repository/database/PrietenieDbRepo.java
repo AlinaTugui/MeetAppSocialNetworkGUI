@@ -26,6 +26,7 @@ public class PrietenieDbRepo implements PagingRepository<Tuple<Long,Long>, Priet
     private String username;
     private String password;
     private Validator<Prietenie> validator;
+    private Iterable<Prietenie> prietenii;
 
     public PrietenieDbRepo(String url, String username, String password, Validator<Prietenie> validator) {
         this.url = url;
@@ -120,24 +121,19 @@ public class PrietenieDbRepo implements PagingRepository<Tuple<Long,Long>, Priet
 
     public Iterable<Prietenie> findAllUserPrietenie(Long id) {
         Set<Prietenie> pritenii = new HashSet<>();
+        String sql = "SELECT * from friends where id1=? or id2=?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement statement = connection.prepareStatement("SELECT * from friends where id1=?");
-             PreparedStatement statement2 = connection.prepareStatement("SELECT * from friends where id2=?")){
+             PreparedStatement statement = connection.prepareStatement(sql)){
 
             statement.setLong(1, id);
-            statement2.setLong(1, id);
+            statement.setLong(2, id);
             ResultSet resultSet = statement.executeQuery();
-            ResultSet resultSet2 = statement2.executeQuery();
             while (resultSet.next()) {
+                Long idOther = (id == resultSet.getLong("id1"))?
+                        resultSet.getLong("id2"):resultSet.getLong("id1");
                 Prietenie p = new Prietenie(LocalDateTime.of(resultSet.getDate("date").toLocalDate(),
                         resultSet.getTime("time").toLocalTime()));
-                p.setId(new Tuple<>(resultSet.getLong("id2"), resultSet.getLong("id1")));
-                pritenii.add(p);
-            }
-            while (resultSet2.next()) {
-                Prietenie p = new Prietenie(LocalDateTime.of(resultSet.getDate("date").toLocalDate(),
-                        resultSet.getTime("time").toLocalTime()));
-                p.setId(new Tuple<>(resultSet.getLong("id1"), resultSet.getLong("id2")));
+                p.setId(new Tuple<>(idOther, id));
                 pritenii.add(p);
             }
             return pritenii;
@@ -212,17 +208,27 @@ public class PrietenieDbRepo implements PagingRepository<Tuple<Long,Long>, Priet
         validator.validate(pValidate);
         String sql = "delete from friends where id1=? and id2=?";
         String sql2 = "delete from friends where id2=? and id1=?";
+        String sql3 = "delete from cereri_de_prietenie where id_sender=? and id_receiver=?";
+        String sql4 = "delete from cereri_de_prietenie where id_sender=? and id_receiver=?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql);
-             PreparedStatement ps2 = connection.prepareStatement(sql2)) {
+             PreparedStatement ps2 = connection.prepareStatement(sql2);
+             PreparedStatement ps3 = connection.prepareStatement(sql3);
+             PreparedStatement ps4 = connection.prepareStatement(sql4)) {
 
             ps.setInt(1, t.getLeft().intValue());
             ps.setInt(2, t.getRight().intValue());
             ps2.setInt(1, t.getLeft().intValue());
             ps2.setInt(2, t.getRight().intValue());
+            ps3.setInt(1, t.getLeft().intValue());
+            ps3.setInt(2, t.getRight().intValue());
+            ps4.setInt(1, t.getLeft().intValue());
+            ps4.setInt(2, t.getRight().intValue());
 
             ps.executeUpdate();
             ps2.executeUpdate();
+            ps3.executeUpdate();
+            ps4.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -233,10 +239,14 @@ public class PrietenieDbRepo implements PagingRepository<Tuple<Long,Long>, Priet
         return null;
     }
 
+    public void reloadPrietenii(){
+        this.prietenii = this.findAllUserPrietenie(MainViewController.getIdLogin());
+    }
+
     @Override
     public Page<Prietenie> findAll(Pageable pageable) {
         Paginator<Prietenie> paginator = new Paginator<>(pageable,
-                this.findAllUserPrietenie(MainViewController.getIdLogin()));
+                this.prietenii);
         return paginator.paginate();
     }
 }

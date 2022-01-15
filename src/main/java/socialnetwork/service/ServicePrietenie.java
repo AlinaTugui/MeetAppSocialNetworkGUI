@@ -26,8 +26,8 @@ public class ServicePrietenie {
     private int page = 0;
     private final int size = 2;
 
-    public PrietenieDbRepo getPrietenieRepo() {
-        return repoPrietenie;
+    public void reload_prietenii(){
+        repoPrietenie.reloadPrietenii();
     }
 
     public Set<Prietenie> getPrieteniiOnPage(){
