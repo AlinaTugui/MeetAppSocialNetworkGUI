@@ -43,8 +43,10 @@ public class EventsController {
     public ComboBox<String> endHour;
 
     public ComboBox<String> endMinute;
+    public Label errorLabel;
 
     public void initialize(){
+        errorLabel.setText("");
         ObservableList<String> hours = FXCollections.observableArrayList();
         for(int i = 0; i <= 9; i++){
             hours.add(i, "0" + i);
@@ -87,13 +89,13 @@ public class EventsController {
             sM.getSrvEvents().addEvent(name, description, begin, end, userName);
             setupEventsVBox(sM.getSrvEvents().getAllEvents());
             setDefaultEvent();
-        } catch (RuntimeException e){
-            System.out.println("Exceptie");
+        } catch (Exception e){
+            errorLabel.setText(e.getMessage());
         }
     }
 
     private void setDefaultEvent(){
-
+        errorLabel.setText("");
         eventNameTextField.clear();
         descriptionTextArea.clear();
         beginHour.getSelectionModel().select(12);

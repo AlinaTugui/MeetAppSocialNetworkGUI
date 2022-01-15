@@ -76,6 +76,7 @@ public class GroupController {
     }
 
     public void createGroup(ActionEvent actionEvent) {
+        friendsGroup.add(MainViewController.getIdLogin());
         String name = groupNameField.getText();
         sM.getSrvGrup().addGrup(name, MainViewController.getIdLogin(),friendsGroup);
         String msg="A group named "+name+" with the users ";

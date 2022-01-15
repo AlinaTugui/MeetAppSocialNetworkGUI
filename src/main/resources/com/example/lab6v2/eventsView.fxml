@@ -67,5 +67,6 @@
             <Image url="@icons/icons8_search_in_list_64px_1.png" />
          </image>
       </ImageView>
+      <Label fx:id="errorLabel" layoutX="65.0" layoutY="451.0" prefHeight="17.0" prefWidth="167.0" textFill="RED" />
    </children>
 </AnchorPane>
