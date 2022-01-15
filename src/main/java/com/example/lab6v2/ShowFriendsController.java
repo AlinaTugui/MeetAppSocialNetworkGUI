@@ -32,6 +32,10 @@ public class ShowFriendsController implements Initializable {
 
     private Button createDeleteButton(Long id) {
         Button deleteButton=new Button("Delete");
+        deleteButton.setStyle("-fx-background-color: #ffffff");
+        deleteButton.setStyle("-fx-border-color: #2e107a");
+        deleteButton.setStyle("-fx-border-radius: 20px");
+        deleteButton.setStyle("-fx-background-radius: 20px");
         deleteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

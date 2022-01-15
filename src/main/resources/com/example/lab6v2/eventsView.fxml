@@ -7,43 +7,65 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.EventsController">
+<AnchorPane prefHeight="490.0" prefWidth="646.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.EventsController">
    <children>
-      <TextField fx:id="textFieldSearchEvent" layoutX="379.0" layoutY="20.0" prefHeight="25.0" prefWidth="217.0" />
-      <Label layoutX="291.0" layoutY="24.0" prefHeight="17.0" prefWidth="81.0" text="Search Event">
+      <TextField fx:id="textFieldSearchEvent" layoutX="415.0" layoutY="22.0" prefHeight="25.0" prefWidth="217.0" styleClass="text-field1" stylesheets="@css/helloView1.css" />
+      <Label layoutX="291.0" layoutY="24.0" prefHeight="20.0" prefWidth="89.0" text="Search Event" textFill="#2e107a">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="eventsScrollPane" layoutX="293.0" layoutY="58.0" prefHeight="423.0" prefWidth="344.0">
+      <ScrollPane fx:id="eventsScrollPane" layoutX="293.0" layoutY="58.0" prefHeight="423.0" prefWidth="344.0" stylesheets="@css/helloView1.css">
          <content>
-            <VBox fx:id="eventsVBox" prefHeight="425.0" prefWidth="343.0" />
+            <VBox fx:id="eventsVBox" prefHeight="425.0" prefWidth="351.0" styleClass="vbox" stylesheets="@css/helloView1.css" />
          </content>
       </ScrollPane>
       <Line endX="-100.0" endY="444.0" layoutX="375.0" layoutY="39.0" startX="-100.0" startY="-33.0" />
-      <Label layoutX="31.0" layoutY="24.0" prefHeight="17.0" prefWidth="167.0" text="Create an Event">
+      <Label layoutX="31.0" layoutY="24.0" prefHeight="20.0" prefWidth="108.0" text="Create an Event" textFill="#2e107a">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="21.0" layoutY="83.0" text="Event Name" />
-      <TextField fx:id="eventNameTextField" layoutX="93.0" layoutY="83.0" prefHeight="25.0" prefWidth="167.0" />
-      <Label layoutX="23.0" layoutY="129.0" text="Description" />
-      <TextArea fx:id="descriptionTextArea" layoutX="93.0" layoutY="129.0" prefHeight="91.0" prefWidth="167.0" />
-      <Label layoutX="20.0" layoutY="255.0" prefHeight="25.0" prefWidth="66.0" text="Start Time" wrapText="true" />
-      <DatePicker fx:id="beginDatePicker" layoutX="89.0" layoutY="257.0" promptText="dd/mm/yyyy" />
-      <Label layoutX="21.0" layoutY="359.0" prefHeight="25.0" prefWidth="51.0" text="End Time" wrapText="true" />
-      <DatePicker fx:id="endDatePicker" layoutX="89.0" layoutY="359.0" promptText="dd/mm/yyyy" />
-      <ComboBox fx:id="beginHour" layoutX="93.0" layoutY="295.0" prefHeight="25.0" prefWidth="64.0" />
-      <ComboBox fx:id="beginMinute" layoutX="170.0" layoutY="295.0" prefHeight="25.0" prefWidth="64.0" />
-      <Line endX="89.0" layoutX="171.0" layoutY="58.0" startX="-158.0" />
-      <ComboBox fx:id="endHour" layoutX="93.0" layoutY="403.0" prefHeight="25.0" prefWidth="64.0" />
-      <ComboBox fx:id="endMinute" layoutX="170.0" layoutY="403.0" prefHeight="25.0" prefWidth="64.0" />
-      <Button fx:id="createEventButton" layoutX="197.0" layoutY="22.0" mnemonicParsing="false" onAction="#onCreateEventButtonClick" text="Create" />
+      <Label layoutX="21.0" layoutY="83.0" text="Event Name" textFill="#2e107a">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="eventNameTextField" layoutX="93.0" layoutY="83.0" prefHeight="25.0" prefWidth="167.0" styleClass="text-field1" stylesheets="@css/helloView1.css" />
+      <Label layoutX="23.0" layoutY="129.0" text="Description" textFill="#2e107a">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <TextArea fx:id="descriptionTextArea" layoutX="104.0" layoutY="129.0" prefHeight="91.0" prefWidth="156.0" styleClass="text-area" stylesheets="@css/helloView1.css" />
+      <Label layoutX="20.0" layoutY="255.0" prefHeight="25.0" prefWidth="66.0" text="Start Time" textFill="#2e107a" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font></Label>
+      <DatePicker fx:id="beginDatePicker" layoutX="89.0" layoutY="257.0" promptText="dd/mm/yyyy" styleClass="date-picker" stylesheets="@css/helloView1.css" />
+      <Label layoutX="21.0" layoutY="359.0" prefHeight="25.0" prefWidth="55.0" text="End Time" textFill="#2e107a" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <DatePicker fx:id="endDatePicker" layoutX="89.0" layoutY="359.0" promptText="dd/mm/yyyy" styleClass="date-picker" stylesheets="@css/helloView1.css" />
+      <ComboBox fx:id="beginHour" layoutX="93.0" layoutY="295.0" prefHeight="25.0" prefWidth="64.0" styleClass="combo-box" stylesheets="@css/helloView1.css" />
+      <ComboBox fx:id="beginMinute" layoutX="170.0" layoutY="295.0" prefHeight="25.0" prefWidth="64.0" styleClass="combo-box" stylesheets="@css/helloView1.css" />
+      <Line endX="94.0" layoutX="171.0" layoutY="58.0" startX="-161.0" />
+      <ComboBox fx:id="endHour" layoutX="93.0" layoutY="403.0" prefHeight="25.0" prefWidth="64.0" styleClass="combo-box" stylesheets="@css/helloView1.css" />
+      <ComboBox fx:id="endMinute" layoutX="170.0" layoutY="403.0" prefHeight="25.0" prefWidth="64.0" styleClass="combo-box" stylesheets="@css/helloView1.css" />
+      <Button fx:id="createEventButton" layoutX="197.0" layoutY="22.0" mnemonicParsing="false" onAction="#onCreateEventButtonClick" styleClass="button2" stylesheets="@css/helloView1.css" text="Create">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Button>
+      <ImageView fitHeight="27.0" fitWidth="30.0" layoutX="380.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/icons8_search_in_list_64px_1.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

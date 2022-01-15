@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import socialnetwork.domain.Tuple;
 import socialnetwork.domain.UserRecord;
 import socialnetwork.domain.Utilizator;
@@ -63,6 +64,14 @@ public class AddFriendsControllerNew {
 
     private Button createAddFriendButton(Long id) {
         Button addFriendButton = new Button("Add friend");
+        addFriendButton.setStyle("-fx-background-color: #ffffff");
+        addFriendButton.setStyle("-fx-border-color: #2e107a");
+        addFriendButton.setStyle("-fx-border-radius: 20px");
+        addFriendButton.setStyle("-fx-background-radius: 20px");
+        /*addFriendButton.setStyle("-fx-font-style: bold italic");
+        addFriendButton.setStyle("-fx-font-size: 12px");*/
+        addFriendButton.getStyleClass().add("D:\\faculta\\An2\\sem1\\map\\lab6_4\\lab6v2\\src\\main\\resources\\com\\example\\lab6v2\\css\\addFriendsButton.css");
+        //addFriendButton.getClass().getResource("helloView1.css").toExternalForm();
         addFriendButton.setOnAction(event -> {
             sM.getSrvCereri().trimiteCerereDePrietenie(MainViewController.getIdLogin(), id);
             findUserByName();
@@ -75,6 +84,10 @@ public class AddFriendsControllerNew {
     }
 
     public void onRefreshBtn(ActionEvent actionEvent) {
+        findUserByName();
+    }
+
+    public void onRefreshBtn1(MouseEvent mouseEvent) {
         findUserByName();
     }
 }
