@@ -6,6 +6,10 @@ import socialnetwork.domain.Prietenie;
 import socialnetwork.domain.validators.Validator;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.RepositoryException;
+import socialnetwork.repository.paging.Page;
+import socialnetwork.repository.paging.Pageable;
+import socialnetwork.repository.paging.Paginator;
+import socialnetwork.repository.paging.PagingRepository;
 import socialnetwork.service.ServiceManager;
 
 import java.sql.*;
@@ -17,7 +21,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.StreamSupport;
 
-public class PrietenieDbRepo {
+public class PrietenieDbRepo implements PagingRepository<Tuple<Long,Long>, Prietenie> {
     private String url;
     private String username;
     private String password;
@@ -60,6 +64,7 @@ public class PrietenieDbRepo {
         }
         return null;
     }
+
 
     public Iterable<Prietenie> findAll() {
         Set<Prietenie> pritenii = new HashSet<>();
@@ -105,6 +110,35 @@ public class PrietenieDbRepo {
             while (resultSet2.next()) {
                 Long id1 = resultSet2.getLong("id1");
                 pritenii.add(id1);
+            }
+            return pritenii;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Iterable<Prietenie> findAllUserPrietenie(Long id) {
+        Set<Prietenie> pritenii = new HashSet<>();
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = connection.prepareStatement("SELECT * from friends where id1=?");
+             PreparedStatement statement2 = connection.prepareStatement("SELECT * from friends where id2=?")){
+
+            statement.setLong(1, id);
+            statement2.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet2 = statement2.executeQuery();
+            while (resultSet.next()) {
+                Prietenie p = new Prietenie(LocalDateTime.of(resultSet.getDate("date").toLocalDate(),
+                        resultSet.getTime("time").toLocalTime()));
+                p.setId(new Tuple<>(resultSet.getLong("id2"), resultSet.getLong("id1")));
+                pritenii.add(p);
+            }
+            while (resultSet2.next()) {
+                Prietenie p = new Prietenie(LocalDateTime.of(resultSet.getDate("date").toLocalDate(),
+                        resultSet.getTime("time").toLocalTime()));
+                p.setId(new Tuple<>(resultSet.getLong("id1"), resultSet.getLong("id2")));
+                pritenii.add(p);
             }
             return pritenii;
         } catch (SQLException e) {
@@ -171,6 +205,7 @@ public class PrietenieDbRepo {
         return null;
     }
 
+
     public Prietenie delete(Tuple<Long, Long> t) {
         Prietenie pValidate = new Prietenie(LocalDateTime.now());
         pValidate.setId(t);
@@ -196,5 +231,12 @@ public class PrietenieDbRepo {
 
     public Prietenie update(Prietenie prietenie) {
         return null;
+    }
+
+    @Override
+    public Page<Prietenie> findAll(Pageable pageable) {
+        Paginator<Prietenie> paginator = new Paginator<>(pageable,
+                this.findAllUserPrietenie(MainViewController.getIdLogin()));
+        return paginator.paginate();
     }
 }

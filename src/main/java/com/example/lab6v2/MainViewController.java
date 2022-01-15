@@ -26,22 +26,6 @@ public class MainViewController {
     public Label numeLogat = new Label();
     public AnchorPane rightPane;
 
-    static ImagePattern changeImage(Long id){
-        String imgPath = ServiceManager.getInstance().getSrvUtilizator().findOne(id).getImage_path();
-        String directory = getDirectory();
-        if(imgPath == null) imgPath = directory + "\\imaginiUseri\\default-user-image.png";
-        String path = "file:///" + imgPath;
-        Image img = new Image(path,false);
-        return new ImagePattern(img);
-    }
-
-    static ImagePattern ImageGrup(){
-        String directory = getDirectory();
-        String path = "file:///" + directory + "\\imaginiUseri\\default-group-image.png";
-        Image img = new Image(path,false);
-        return new ImagePattern(img);
-    }
-
     public void setValues() {
         Utilizator u = sM.getSrvUtilizator().findOne(idLogin);
         numeLogat.setText(u.getFirstName() + " " + u.getLastName());
@@ -85,6 +69,33 @@ public class MainViewController {
         changeRightPane("rapoarte.fxml");
     }
 
+    public void btnGroups(ActionEvent actionEvent) throws IOException {
+        changeRightPane("groupView.fxml");
+    }
+
+    public void openEvents(ActionEvent actionEvent) throws IOException{
+        changeRightPane("eventsView.fxml");
+    }
+
+    public void openNotifications(ActionEvent actionEvent) throws IOException{
+        changeRightPane("allNotificationsView.fxml");
+    }
+
+    static ImagePattern changeImage(Long id){
+        String imgPath = ServiceManager.getInstance().getSrvUtilizator().findOne(id).getImage_path();
+        String directory = getDirectory();
+        if(imgPath == null) imgPath = directory + "\\imaginiUseri\\default-user-image.png";
+        String path = "file:///" + imgPath;
+        Image img = new Image(path,false);
+        return new ImagePattern(img);
+    }
+
+    static ImagePattern ImageGrup(){
+        String directory = getDirectory();
+        String path = "file:///" + directory + "\\imaginiUseri\\default-group-image.png";
+        Image img = new Image(path,false);
+        return new ImagePattern(img);
+    }
 
     public void changeImage(ActionEvent actionEvent) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("imaginiUseri/ImagineNr.txt"));
@@ -142,15 +153,4 @@ public class MainViewController {
         return directory;
     }
 
-    public void btnGroups(ActionEvent actionEvent) throws IOException {
-        changeRightPane("groupView.fxml");
-    }
-
-    public void openEvents(ActionEvent actionEvent) throws IOException{
-        changeRightPane("eventsView.fxml");
-    }
-
-    public void openNotifications(ActionEvent actionEvent) throws IOException{
-        changeRightPane("allNotificationsView.fxml");
-    }
 }

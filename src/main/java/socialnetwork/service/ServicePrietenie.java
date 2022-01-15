@@ -5,11 +5,16 @@ import socialnetwork.domain.Raport;
 import socialnetwork.domain.Tuple;
 import socialnetwork.repository.Repository0;
 import socialnetwork.repository.database.PrietenieDbRepo;
+import socialnetwork.repository.paging.Page;
+import socialnetwork.repository.paging.Pageable;
+import socialnetwork.repository.paging.PageableImplementation;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ServicePrietenie {
     private PrietenieDbRepo repoPrietenie;
@@ -17,6 +22,56 @@ public class ServicePrietenie {
     public ServicePrietenie(PrietenieDbRepo repoPrietenie){
         this.repoPrietenie = repoPrietenie;
     }
+
+    private int page = 0;
+    private final int size = 2;
+
+    public PrietenieDbRepo getPrietenieRepo() {
+        return repoPrietenie;
+    }
+
+    public Set<Prietenie> getPrieteniiOnPage(){
+        Pageable pageable = new PageableImplementation(page, this.size);
+        Page<Prietenie> prieteniePage = repoPrietenie.findAll(pageable);
+        return prieteniePage.getContent().collect(Collectors.toSet());
+    }
+
+    public Set<Prietenie> getPreviousPrietenii(){
+        this.page--;
+        if(page >= 0){
+            Set<Prietenie> prietenii = getPrieteniiOnPage();
+            if(prietenii != null && !prietenii.isEmpty()){
+                return getPrieteniiOnPage();
+            }
+            else{
+                this.page++;
+                return null;
+            }
+        }
+        this.page++;
+        return null;
+    }
+
+    public Set<Prietenie> getNextPrietenii(){
+        this.page++;
+        Set<Prietenie> prietenii = getPrieteniiOnPage();
+        if(prietenii != null && !prietenii.isEmpty()){
+            return prietenii;
+        }
+        else{
+            this.page--;
+            return null;
+        }
+    }
+
+    public int getPage(){
+        return this.page;
+    }
+
+    public void setPage(int newPage){
+        this.page = newPage;
+    }
+
 
     public void stergePrieteniiUtilizator(Long id){
         List<Tuple<Long,Boolean>> prieteniiDeSters = new ArrayList<>();
