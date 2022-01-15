@@ -6,18 +6,28 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.GroupController">
+<AnchorPane prefHeight="490.0" prefWidth="646.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.GroupController">
    <children>
-      <TableView fx:id="tableView" layoutX="68.0" layoutY="87.0" prefHeight="374.0" prefWidth="526.0">
+      <TableView fx:id="tableView" layoutX="58.0" layoutY="87.0" prefHeight="340.0" prefWidth="548.0" stylesheets="@css/tableView.css">
         <columns>
           <TableColumn fx:id="columnFirstName" prefWidth="186.0" text="FirstName" />
           <TableColumn fx:id="columnLastName" prefWidth="171.0" text="LastName" />
-            <TableColumn fx:id="columnAddBtn" prefWidth="168.0" text="Add to Group" />
+            <TableColumn fx:id="columnAddBtn" prefWidth="190.0" text="Add to Group" />
         </columns>
       </TableView>
-      <Button fx:id="btnCreateGroup" layoutX="507.0" layoutY="40.0" mnemonicParsing="false" onAction="#createGroup" text="Create Group" />
-      <TextField fx:id="groupNameField" layoutX="210.0" layoutY="40.0" prefHeight="25.0" prefWidth="226.0" promptText="Type Group Name" />
-      <Label fx:id="label" layoutX="48.0" layoutY="382.0" prefHeight="38.0" prefWidth="326.0" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="btnCreateGroup" layoutX="507.0" layoutY="40.0" mnemonicParsing="false" onAction="#createGroup" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #2e107a; -fx-border-radius: 20;" text="Create Group" textFill="#2e107a">
+         <font>
+            <Font name="System Bold Italic" size="11.0" />
+         </font></Button>
+      <TextField fx:id="groupNameField" layoutX="210.0" layoutY="40.0" prefHeight="25.0" prefWidth="226.0" promptText="Type Group Name" style="-fx-background-color: #ffffff; -fx-border-color: #2e107a;; -fx-background-radius: 20; -fx-border-radius: 20;">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></TextField>
+      <Label fx:id="label" layoutX="169.0" layoutY="438.0" prefHeight="38.0" prefWidth="326.0" textAlignment="CENTER" textFill="#2e107a" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font></Label>
    </children>
 </AnchorPane>

@@ -9,50 +9,62 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.RapoarteController">
-    <SplitPane dividerPositions="0.4999999999999999" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-            <TableView fx:id="table1" layoutX="7.0" layoutY="126.0" prefHeight="311.0" prefWidth="306.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="126.0">
+<AnchorPane prefHeight="490.0" prefWidth="647.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab6v2.RapoarteController">
+    <SplitPane dividerPositions="0.4999999999999999" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+            <TableView fx:id="table1" layoutX="7.0" layoutY="126.0" prefHeight="311.0" prefWidth="306.0" stylesheets="@css/tableView.css" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="126.0">
                 <columns>
                     <TableColumn fx:id="tableActivity1" prefWidth="232.80001217126846" text="Activitate" />
                     <TableColumn fx:id="tableDate1" minWidth="7.20001220703125" prefWidth="70.40005493164062" text="Date" />
                 </columns>
             </TableView>
-            <Label layoutX="116.0" layoutY="4.0" text="Your activity">
+            <Label layoutX="111.0" layoutY="14.0" text="Your activity" textFill="#2e107a">
                 <font>
-                    <Font name="System Bold" size="14.0" />
+                    <Font name="System Bold Italic" size="14.0" />
                 </font>
             </Label>
-            <Label layoutX="14.0" layoutY="66.0" text="Date:">
+            <Label layoutX="14.0" layoutY="65.0" text="Date:" textFill="#2e107a">
                 <font>
-                    <Font size="14.0" />
+                    <Font name="System Bold Italic" size="14.0" />
                 </font>
             </Label>
-            <Button layoutX="132.0" layoutY="444.0" mnemonicParsing="false" onAction="#onExportButton1" text="Export PDF" />
-            <TextField fx:id="dateActivity" layoutX="70.0" layoutY="62.0" prefHeight="26.0" prefWidth="165.0" promptText="dd/mm/yyyy - dd/mm/yyyy" />
-            <Button layoutX="266.0" layoutY="62.0" mnemonicParsing="false" onAction="#onFindButton1" text="Find" />
+            <Button layoutX="132.0" layoutY="444.0" mnemonicParsing="false" onAction="#onExportButton1" styleClass="button2" stylesheets="@css/helloView1.css" text="Export PDF">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Button>
+            <TextField fx:id="dateActivity" layoutX="70.0" layoutY="62.0" prefHeight="26.0" prefWidth="165.0" promptText="dd/mm/yyyy - dd/mm/yyyy" style="-fx-background-color: #ffffff; -fx-border-color: #2e107a; -fx-background-radius: 20; -fx-border-radius: 20;" />
+            <Button layoutX="266.0" layoutY="62.0" mnemonicParsing="false" onAction="#onFindButton1" styleClass="button2" stylesheets="@css/helloView1.css" text="Find">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Button>
         </AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-            <Label layoutX="106.0" layoutY="4.0" text="Received messages">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+            <Label layoutX="96.0" layoutY="14.0" text="Received messages" textFill="#2e107a">
                 <font>
-                    <Font name="System Bold" size="14.0" />
+                    <Font name="System Bold Italic" size="14.0" />
                 </font>
             </Label>
-            <Button layoutX="123.0" layoutY="449.0" mnemonicParsing="false" onAction="#onExportButton2" text="Export PDF" />
-            <TextField fx:id="friendName" layoutX="75.0" layoutY="38.0" prefHeight="26.0" prefWidth="166.0" />
-            <Label layoutX="14.0" layoutY="88.0" text="Date:">
+            <Button layoutX="123.0" layoutY="449.0" mnemonicParsing="false" onAction="#onExportButton2" styleClass="button1" stylesheets="@css/login.css" text="Export PDF">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Button>
+            <TextField fx:id="friendName" layoutX="75.0" layoutY="48.0" prefHeight="26.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #2e107a; -fx-border-radius: 20;" />
+            <Label layoutX="14.0" layoutY="88.0" text="Date:" textFill="#2e107a">
                 <font>
-                    <Font size="14.0" />
+                    <Font name="System Bold Italic" size="14.0" />
                 </font>
             </Label>
-            <Label layoutX="14.0" layoutY="41.0" text="Friend:">
+            <Label layoutX="14.0" layoutY="51.0" text="Friend:" textFill="#2e107a">
                 <font>
-                    <Font size="14.0" />
+                    <Font name="System Bold Italic" size="14.0" />
                 </font>
             </Label>
-            <TextField fx:id="dateMessages" layoutX="75.0" layoutY="85.0" prefHeight="26.0" prefWidth="166.0" promptText="dd/mm/yyyy - dd/mm/yyyy" />
-            <Button layoutX="266.0" layoutY="61.0" mnemonicParsing="false" onAction="#onFindButton2" text="Find" />
-            <TableView fx:id="table2" layoutX="7.0" layoutY="127.0" prefHeight="311.0" prefWidth="306.0">
+            <TextField fx:id="dateMessages" layoutX="75.0" layoutY="85.0" prefHeight="26.0" prefWidth="166.0" promptText="dd/mm/yyyy - dd/mm/yyyy" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #2e107a; -fx-border-radius: 20;" />
+            <Button layoutX="266.0" layoutY="61.0" mnemonicParsing="false" onAction="#onFindButton2" styleClass="button2" stylesheets="@css/helloView1.css" text="Find">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Button>
+            <TableView fx:id="table2" layoutX="7.0" layoutY="127.0" prefHeight="311.0" prefWidth="306.0" stylesheets="@css/tableView.css">
                 <columns>
                     <TableColumn fx:id="tableMessages2" prefWidth="232.80001217126846" text="Messages" />
                     <TableColumn fx:id="tableDate2" minWidth="7.20001220703125" prefWidth="70.40005493164062" text="Date" />

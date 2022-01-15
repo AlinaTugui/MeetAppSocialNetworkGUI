@@ -64,4 +64,7 @@ public class LoginController {
         }
     }
 
+    public void onBackBtn(ActionEvent actionEvent) throws IOException {
+        HelloApplication.changeScene("hello-view1.fxml", actionEvent, "Main View");
+    }
 }
