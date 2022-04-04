@@ -15,7 +15,21 @@ General Info<br>
   - Gradle
     
  3. Presentation
-  ...
+  <img src="Data/openApp.png" alt="meetapp">
+  <img src="Data/login.png" alt="meetapp">
+  <img src="Data/register.png" alt="meetapp">
+  <img src="Data/chats.png" alt="meetapp">
+  <img src="Data/groupChat.png" alt="meetapp">
+  <img src="Data/privateChat.png" alt="meetapp">
+  <img src="Data/notifications.png" alt="meetapp">
+  <img src="Data/events.png" alt="meetapp">
+  <img src="Data/profilePicture.png" alt="meetapp">
+  <img src="Data/reports.png" alt="meetapp">
+  <img src="Data/requestsStatus.png" alt="meetapp">
+  <img src="Data/searchForFriend.png" alt="meetapp">
+  <img src="Data/createGroupChat.png" alt="meetapp">
+  <img src="Data/friendList.png" alt="meetapp">
+
  4. Future Development
   - Dark Theme
   - NewsFeed
